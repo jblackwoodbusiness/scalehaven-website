@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScaleHaven — Med Spa Growth Agency</title>
+  <link rel="icon" type="image/png" href="brand_assets/scalehaven_mark_transparent.png" />
+  <link rel="apple-touch-icon" href="brand_assets/scalehaven_mark_transparent.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:  { DEFAULT: '#1A2745', dark: '#0D1720', light: '#253558' },
+            gold:  { DEFAULT: '#C09540', light: '#D4AE58', dark: '#9A7730', ghost: 'rgba(192,149,64,0.07)' },
+            cream: { DEFAULT: '#F4EFE6', dark: '#EAE3D6', light: '#FAF8F4' },
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            serif:   ['Libre Baskerville', 'Georgia', 'serif'],
+            sans:    ['Work Sans', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --navy: #1A2745;
+      --navy-dark: #0D1720;
+      --gold: #C09540;
+      --gold-light: #D4AE58;
+      --cream: #F4EFE6;
+      --cream-light: #FAF8F4;
+      --text-muted: #6B7890;
+      --border: rgba(192,149,64,0.16);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      background: var(--cream-light);
+      color: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN TEXTURE ─────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── SCROLL REVEAL ─────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d5 { transition-delay: 0.5s; }
+
+    /* ── HERO ENTRANCE ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .hero-label   { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+    .hero-h1      { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+    .hero-sub     { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s  both; }
+    .hero-ctas    { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.45s both; }
+    .hero-stats   { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s  both; }
+    .hero-img     { animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.1s  both; }
+    .hero-ghost   { animation: fadeIn 1.4s cubic-bezier(0.16,1,0.3,1) 0s    both; }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,248,244,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .nav-link {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .nav-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+    /* ── BUTTONS ────────────────────────────────────────── */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: #fff;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(192,149,64,0.32), 0 1px 4px rgba(192,149,64,0.2);
+      transition: background 0.22s ease, transform 0.15s ease, box-shadow 0.22s ease;
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark, #9A7730);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(192,149,64,0.38), 0 2px 8px rgba(192,149,64,0.2);
+    }
+    .btn-gold:active  { transform: translateY(0); box-shadow: none; }
+    .btn-gold:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.875rem 2rem;
+      border: 1.5px solid rgba(26,39,69,0.3);
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.22s ease, background 0.22s ease, color 0.22s ease, transform 0.15s ease;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .btn-ghost:active  { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.625rem 1.375rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.22s ease, transform 0.15s ease;
+    }
+    .btn-nav:hover { background: var(--gold); transform: translateY(-1px); }
+    .btn-nav:active { transform: translateY(0); }
+    .btn-nav:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    /* ── SECTION LABEL ──────────────────────────────────── */
+    .eyebrow {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+    }
+
+    /* ── GOLD RULE ──────────────────────────────────────── */
+    .gold-rule {
+      display: block;
+      width: 2.5rem;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background-image: url('images/Med-spa-interior-design-1024x574.webp');
+      background-size: cover;
+      background-position: center 35%;
+      padding: 2rem 0 2rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        rgba(10, 17, 28, 0.91) 0%,
+        rgba(10, 17, 28, 0.80) 45%,
+        rgba(10, 17, 28, 0.45) 75%,
+        rgba(10, 17, 28, 0.25) 100%
+      );
+      z-index: 0;
+    }
+
+    .hero-ghost-text {
+      position: absolute;
+      right: -2%;
+      top: 50%;
+      transform: translateY(-52%);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(200px, 28vw, 420px);
+      font-weight: 300;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.05);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 1050px;
+      margin: 0 auto;
+      text-align: center;
+      gap: 0;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.75rem, 5vw, 5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtext {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 440px;
+    }
+
+    /* ── STAT ITEMS ─────────────────────────────────────── */
+    .stat-item {
+      border-left: 2px solid rgba(192,149,64,0.35);
+      padding-left: 1.125rem;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── HERO IMAGE ─────────────────────────────────────── */
+    .hero-frame {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .hero-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(155deg, transparent 30%, rgba(26,39,69,0.45) 100%);
+      pointer-events: none;
+    }
+    .hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Floating badge */
+    .hero-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 8px 32px rgba(26,39,69,0.12), 0 2px 8px rgba(192,149,64,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      z-index: 2;
+    }
+    .badge-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: rgba(192,149,64,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .badge-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .badge-sub {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      margin-top: 0.125rem;
+    }
+
+    /* ── MARQUEE STRIP ──────────────────────────────────── */
+    .marquee-strip {
+      background: var(--navy);
+      overflow: hidden;
+      padding: 0.875rem 0;
+      border-top: 1px solid rgba(192,149,64,0.15);
+      border-bottom: 1px solid rgba(192,149,64,0.15);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(192,149,64,0.7);
+      padding: 0 2.5rem;
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      color: rgba(192,149,64,0.3);
+      padding: 0;
+    }
+
+    /* ── PROBLEM SECTION ────────────────────────────────── */
+    .section-problem {
+      background: var(--cream);
+      padding: 7rem 0 8rem;
+    }
+
+    /* ── PHOTO FRAME ────────────────────────────────────── */
+    .photo-frame {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(192,149,64,0.08) 0%, rgba(26,39,69,0.4) 100%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── ARROW LIST ─────────────────────────────────────── */
+    .arrow-list { list-style: none; }
+    .arrow-list li {
+      display: flex;
+      gap: 0.875rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(192,149,64,0.1);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    .arrow-list li:last-child { border-bottom: none; }
+    .arrow-list li::before {
+      content: '↗';
+      color: var(--gold);
+      font-size: 0.875rem;
+      flex-shrink: 0;
+      margin-top: 0.1em;
+    }
+
+    /* ── PROCESS SECTION ────────────────────────────────── */
+    .section-process {
+      background: var(--cream-light);
+      padding: 8rem 0 9rem;
+      position: relative;
+    }
+
+    .step-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      margin-bottom: 3.5rem;
+    }
+    .step-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0.625rem 1.375rem;
+      border-radius: 50px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      outline: none;
+    }
+    .step-tab:hover { color: var(--navy); }
+    .step-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .step-tab.active {
+      color: var(--navy);
+      border-color: var(--gold);
+      background: rgba(192,149,64,0.06);
+    }
+    .step-tab.active .tab-num { background: var(--gold); color: #fff; }
+    .tab-num {
+      width: 1.625rem;
+      height: 1.625rem;
+      border-radius: 50%;
+      background: rgba(26,39,69,0.1);
+      color: var(--text-muted);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .process-panel { display: none; }
+    .process-panel.active { display: grid; }
+
+    /* Big editorial step number */
+    .step-editorial-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 9rem;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(192,149,64,0.2);
+      display: block;
+      margin-bottom: -1.5rem;
+      user-select: none;
+    }
+
+    .step-h {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+    .step-h em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ── GUARANTEE SECTION ──────────────────────────────── */
+    .section-guarantee {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 0% 50%, rgba(192,149,64,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 80% at 100% 30%, rgba(192,149,64,0.07) 0%, transparent 50%),
+        var(--navy-dark, #0D1720);
+      padding: 8rem 0;
+    }
+    .guarantee-ghost {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(80px, 14vw, 200px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(192,149,64,0.08);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .guarantee-h {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .guarantee-h em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .guarantee-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(192,149,64,0.15);
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .guarantee-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      display: block;
+    }
+    .guarantee-desc {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    /* ── WHY SECTION ────────────────────────────────────── */
+    .section-why {
+      background: var(--cream);
+      padding: 8rem 0;
+    }
+
+    .why-card {
+      background: var(--cream-light);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(26,39,69,0.04), 0 8px 32px rgba(26,39,69,0.03);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(26,39,69,0.07), 0 16px 48px rgba(192,149,64,0.1);
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .why-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 4px;
+      background: rgba(192,149,64,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-h {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.875rem;
+    }
+    .card-p {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── INCLUDED SECTION ──────────────────────────────── */
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+    @media (max-width: 600px) { .included-grid { grid-template-columns: 1fr; } }
+
+    .included-item {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(192,149,64,0.1);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .check {
+      width: 1.375rem;
+      height: 1.375rem;
+      border-radius: 50%;
+      background: rgba(192,149,64,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 0.625rem;
+    }
+
+    /* ── CTA SECTION ───────────────────────────────────── */
+    .section-cta {
+      background: var(--cream-light);
+      padding: 9rem 0 8rem;
+      text-align: center;
+    }
+    .cta-h {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+    .cta-h em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    .footer {
+      background: var(--navy-dark, #0D1720);
+      padding: 3rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .footer-copy {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-email {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-email:hover { color: var(--gold); }
+    .footer-email:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+    /* ── SECTION HEADINGS ───────────────────────────────── */
+    .section-h {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.25rem, 4vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+    .section-h em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 5rem 0 8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" aria-label="ScaleHaven">
+        <img src="brand_assets/scalehaven_logo_transparent.png" alt="ScaleHaven" style="height:60px;" />
+      </a>
+      <div class="nav-links">
+        <a href="#process"   class="nav-link">How It Works</a>
+        <a href="#guarantee" class="nav-link">Guarantee</a>
+        <a href="#why"       class="nav-link">Why Us</a>
+      </div>
+      <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-nav">
+        Book a Free Call
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <!-- Ghost background number -->
+    <div class="hero-ghost hero-ghost-text" aria-hidden="true">15</div>
+
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Left: Copy -->
+        <div style="position:relative; z-index:1;">
+          <span class="eyebrow hero-label" style="margin-bottom:1.25rem; display:block; color:rgba(192,149,64,0.85);">Med Spa Growth Agency</span>
+          <div class="gold-rule hero-label" style="margin-bottom:1.75rem; transition-delay:0.08s; margin-left:auto; margin-right:auto; background:linear-gradient(90deg,transparent,#C09540,transparent); width:3rem;"></div>
+
+          <h1 class="hero-h1" style="margin-bottom:1.25rem; color:#fff;">
+            15+ Financially<br />
+            Qualified Patients<br />
+            Every Month —<br />
+            <em>Without Calling Leads.</em>
+          </h1>
+
+          <p class="hero-subtext hero-sub" style="margin-bottom:1.75rem; color:rgba(255,255,255,0.68); margin-left:auto; margin-right:auto; max-width:560px;">
+            Done-for-you Meta Ads for med spas. We script, edit, manage your campaigns, and build your follow-up system — so you stay focused on patients. Hit 15+ qualified bookings in month one or we work free.
+          </p>
+
+          <div class="hero-ctas" style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; justify-content:center;">
+            <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold">
+              Book a Free Strategy Call
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#process" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.35);">See How It Works</a>
+          </div>
+
+          <!-- Stats -->
+          <div class="hero-stats" style="display:flex; gap:2.5rem; flex-wrap:wrap; justify-content:center;">
+            <div class="stat-item" style="border-color:rgba(192,149,64,0.45); text-align:left;">
+              <div class="stat-num" style="color:#fff;">15+</div>
+              <div class="stat-label" style="color:rgba(255,255,255,0.5);">Qualified Patients / Mo</div>
+            </div>
+            <div class="stat-item" style="border-color:rgba(192,149,64,0.45); text-align:left;">
+              <div class="stat-num" style="color:#fff;">DFY</div>
+              <div class="stat-label" style="color:rgba(255,255,255,0.5);">Done-For-You</div>
+            </div>
+            <div class="stat-item" style="border-color:rgba(192,149,64,0.45); text-align:left;">
+              <div class="stat-num" style="color:#fff;">$0</div>
+              <div class="stat-label" style="color:rgba(255,255,255,0.5);">Risk</div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ MARQUEE ═══════════════ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Repeated twice for seamless loop -->
+      <span class="marquee-item">Botox &amp; Fillers</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Laser Treatments</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">GLP-1 Therapy</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Body Contouring</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Semaglutide</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Skin Rejuvenation</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Weight Loss Treatments</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Injectables</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Microneedling</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Tirzepatide</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Chemical Peels</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">PRP Therapy</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Botox &amp; Fillers</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Laser Treatments</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">GLP-1 Therapy</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Body Contouring</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Semaglutide</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Skin Rejuvenation</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Weight Loss Treatments</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Injectables</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Microneedling</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Tirzepatide</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">Chemical Peels</span><span class="marquee-item marquee-dot">·</span>
+      <span class="marquee-item">PRP Therapy</span><span class="marquee-item marquee-dot">·</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════ PROBLEM ═══════════════ -->
+  <section class="section-problem">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;" class="responsive-grid">
+
+        <!-- Image -->
+        <div class="reveal photo-frame" style="aspect-ratio:4/5; box-shadow: 0 16px 60px rgba(26,39,69,0.14), 0 4px 16px rgba(192,149,64,0.08);">
+          <img src="images/medspaaesthetic.jpg" alt="Luxury med spa interior" />
+        </div>
+
+        <!-- Copy -->
+        <div>
+          <span class="eyebrow reveal" style="margin-bottom:1rem;">The Real Problem</span>
+          <div class="gold-rule reveal reveal-d1" style="margin-bottom:1.5rem;"></div>
+
+          <h2 class="section-h reveal reveal-d2" style="margin-bottom:1.5rem;">
+            You're great<br />
+            at what you do.<br />
+            <em>Client flow is the problem.</em>
+          </h2>
+
+          <p class="reveal reveal-d3" style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75; margin-bottom:1.25rem;">
+            Most med spas run on referrals and hope. It works until one slow month — then you're wondering where the next client is coming from.
+          </p>
+          <p class="reveal reveal-d3" style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75; margin-bottom:2.5rem;">
+            Meta Ads work for this niche. But running them wrong wastes thousands. We've specialized entirely in injectables, laser, body contouring, and skin — we know exactly what converts.
+          </p>
+
+          <ul class="arrow-list reveal reveal-d4">
+            <li>Inconsistent client volume month to month</li>
+            <li>Referrals alone can't support real growth</li>
+            <li>No time to learn paid ads while running a practice</li>
+            <li>Wasted budget on campaigns that never convert</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ PROCESS ═══════════════ -->
+  <section class="section-process" id="process">
+    <div class="container">
+
+      <!-- Header -->
+      <div style="max-width:620px; margin-bottom:4rem;">
+        <span class="eyebrow reveal" style="margin-bottom:1rem;">Our System</span>
+        <div class="gold-rule reveal reveal-d1" style="margin-bottom:1.5rem;"></div>
+        <h2 class="section-h reveal reveal-d2" style="margin-bottom:1.25rem;">
+          The 4-Step<br /><em>Growth Framework</em>
+        </h2>
+        <p class="reveal reveal-d3" style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75;">
+          A complete done-for-you pipeline. From getting in front of the right people to turning them into loyal, repeat clients.
+        </p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="step-tabs reveal" role="tablist">
+        <button class="step-tab active" role="tab" aria-selected="true"  data-panel="1" onclick="switchStep(1)"><span class="tab-num">1</span> Attract</button>
+        <button class="step-tab"        role="tab" aria-selected="false" data-panel="2" onclick="switchStep(2)"><span class="tab-num">2</span> Automate</button>
+        <button class="step-tab"        role="tab" aria-selected="false" data-panel="3" onclick="switchStep(3)"><span class="tab-num">3</span> Convert</button>
+        <button class="step-tab"        role="tab" aria-selected="false" data-panel="4" onclick="switchStep(4)"><span class="tab-num">4</span> Scale</button>
+      </div>
+
+      <!-- Panel 1 -->
+      <div id="panel-1" class="process-panel active" style="grid-template-columns:1fr 1fr; gap:5rem; align-items:center;" role="tabpanel">
+        <div>
+          <span class="step-editorial-num">01</span>
+          <h3 class="step-h" style="margin-bottom:1.25rem;">
+            Attract High-Value Patients<br />
+            <em>Without the Hassle</em>
+          </h3>
+          <p style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75; margin-bottom:2rem;">
+            We put you in front of patients who are ready to book — not just browse. Precision targeting on Meta filtered toward high-intent buyers.
+          </p>
+          <ul class="arrow-list" style="margin-bottom:2.5rem;">
+            <li>Reach the right audience — clients ready to book, not browse</li>
+            <li>Filter out bargain seekers and attract patients who value your services</li>
+            <li>Steady stream of new high-quality patients every month</li>
+          </ul>
+          <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold">Book a Free Call</a>
+        </div>
+        <div class="photo-frame" style="aspect-ratio:4/3; box-shadow:0 12px 48px rgba(26,39,69,0.12), 0 4px 16px rgba(192,149,64,0.08);">
+          <img src="images/medspaimage.jpg" alt="Med spa patient consultation" />
+        </div>
+      </div>
+
+      <!-- Panel 2 -->
+      <div id="panel-2" class="process-panel" style="grid-template-columns:1fr 1fr; gap:5rem; align-items:center;" role="tabpanel">
+        <div>
+          <span class="step-editorial-num">02</span>
+          <h3 class="step-h" style="margin-bottom:1.25rem;">
+            Automate Bookings &amp;<br />
+            <em>Patient Follow-Ups</em>
+          </h3>
+          <p style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75; margin-bottom:2rem;">
+            Our automation handles patient inquiries, appointment scheduling, and follow-ups — so no lead falls through the cracks while you focus on treatment.
+          </p>
+          <ul class="arrow-list" style="margin-bottom:2.5rem;">
+            <li>Instant lead response — engage clients before they go elsewhere</li>
+            <li>Effortless scheduling — automated bookings and reminders</li>
+            <li>Follow-up sequences that nurture leads and bring past clients back</li>
+          </ul>
+          <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold">Book a Free Call</a>
+        </div>
+        <div class="photo-frame" style="aspect-ratio:4/3; box-shadow:0 12px 48px rgba(26,39,69,0.12), 0 4px 16px rgba(192,149,64,0.08);">
+          <img src="images/facialtreatment.jpg" alt="Facial treatment in progress" />
+        </div>
+      </div>
+
+      <!-- Panel 3 -->
+      <div id="panel-3" class="process-panel" style="grid-template-columns:1fr 1fr; gap:5rem; align-items:center;" role="tabpanel">
+        <div>
+          <span class="step-editorial-num">03</span>
+          <h3 class="step-h" style="margin-bottom:1.25rem;">
+            Convert Leads into<br />
+            <em>Paying Loyal Clients</em>
+          </h3>
+          <p style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75; margin-bottom:2rem;">
+            Getting leads is one thing. Getting them to show up is another. Our system builds trust and guides patients through the decision — so they book, not just inquire.
+          </p>
+          <ul class="arrow-list" style="margin-bottom:2.5rem;">
+            <li>Trust-building content that positions you as the obvious choice</li>
+            <li>High-intent nurturing keeps leads engaged until they're ready</li>
+            <li>Proven funnel minimizes drop-offs and maximizes booked appointments</li>
+          </ul>
+          <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold">Book a Free Call</a>
+        </div>
+        <div class="photo-frame" style="aspect-ratio:4/3; box-shadow:0 12px 48px rgba(26,39,69,0.12), 0 4px 16px rgba(192,149,64,0.08);">
+          <img src="images/top-quality-med-spa.jpg" alt="High quality med spa treatment" />
+        </div>
+      </div>
+
+      <!-- Panel 4 -->
+      <div id="panel-4" class="process-panel" style="grid-template-columns:1fr 1fr; gap:5rem; align-items:center;" role="tabpanel">
+        <div>
+          <span class="step-editorial-num">04</span>
+          <h3 class="step-h" style="margin-bottom:1.25rem;">
+            Scale Without<br />
+            <em>Sacrificing Quality</em>
+          </h3>
+          <p style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75; margin-bottom:2rem;">
+            Once the pipeline is running, we scale it — more volume, better margins, data-backed decisions. Growth without burning out your team.
+          </p>
+          <ul class="arrow-list" style="margin-bottom:2.5rem;">
+            <li>Scale your client base without sacrificing patient experience</li>
+            <li>Real analytics to refine and optimize as you grow</li>
+            <li>Long-term foundation for ongoing profitability</li>
+          </ul>
+          <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold">Book a Free Call</a>
+        </div>
+        <div class="photo-frame" style="aspect-ratio:4/3; box-shadow:0 12px 48px rgba(26,39,69,0.12), 0 4px 16px rgba(192,149,64,0.08);">
+          <img src="images/medspatreatment.jpg" alt="Scaled med spa operations" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ GUARANTEE ═══════════════ -->
+  <section class="section-guarantee" id="guarantee">
+    <div class="guarantee-ghost" aria-hidden="true">Guaranteed</div>
+
+    <div class="container" style="position:relative; z-index:1; text-align:center;">
+
+      <div style="width:3.5rem; height:3.5rem; border-radius:50%; background:rgba(192,149,64,0.15); display:flex; align-items:center; justify-content:center; margin:0 auto 1.75rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5h5.5l-4.5 3.5 1.5 5.5L12 13l-5 3 1.5-5.5L4 7h5.5L12 2z" stroke="#C09540" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <span class="eyebrow reveal" style="color:rgba(192,149,64,0.6); margin-bottom:1.25rem;">Our Commitment</span>
+
+      <h2 class="guarantee-h reveal reveal-d1" style="margin-bottom:1.5rem;">
+        15+ Consultations<br />
+        in 30 Days —<br />
+        <em>or We Work Free.</em>
+      </h2>
+
+      <p class="reveal reveal-d2" style="font-family:'Work Sans',sans-serif; font-size:1.0625rem; color:rgba(255,255,255,0.6); line-height:1.75; max-width:560px; margin:0 auto 3.5rem;">
+        We stand behind our results. If we don't hit 15 booked consultations in your first month, we keep working at no charge until we do. No excuses. No fine print.
+      </p>
+
+      <div class="reveal reveal-d3" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:720px; margin:0 auto 3.5rem;">
+        <div class="guarantee-card">
+          <span class="guarantee-num">15+</span>
+          <p class="guarantee-desc">Booked consultations guaranteed in month one</p>
+        </div>
+        <div class="guarantee-card">
+          <span class="guarantee-num">DFY</span>
+          <p class="guarantee-desc">Scripts, editing, ads, and follow-up systems handled</p>
+        </div>
+        <div class="guarantee-card">
+          <span class="guarantee-num">$0</span>
+          <p class="guarantee-desc">Risk — miss the goal and we keep working free</p>
+        </div>
+      </div>
+
+      <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold reveal reveal-d4" style="font-size:0.9375rem; padding:1rem 2.5rem;">
+        Claim Your Free Strategy Call
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ WHY ═══════════════ -->
+  <section class="section-why" id="why">
+    <div class="container">
+
+      <div style="text-align:center; max-width:620px; margin:0 auto 5rem;">
+        <span class="eyebrow reveal" style="margin-bottom:1rem;">Why ScaleHaven</span>
+        <div class="gold-rule reveal reveal-d1" style="margin:0 auto 1.5rem; background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
+        <h2 class="section-h reveal reveal-d2">
+          Built for Med Spas.<br /><em>Nothing Else.</em>
+        </h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:5rem;" class="responsive-3col">
+        <div class="why-card reveal reveal-d1">
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="#C09540" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card-h">Deep Niche Focus</h3>
+          <p class="card-p">We only work with med spas. Injectables, laser, body contouring, skin — we know what converts on Meta because we've tested it obsessively in this niche.</p>
+        </div>
+        <div class="why-card reveal reveal-d2">
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke="#C09540" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card-h">100% Done-For-You</h3>
+          <p class="card-p">You provide raw video. We handle scripts, editing, ad copy, campaign management, and follow-up systems. Your only job is treating patients.</p>
+        </div>
+        <div class="why-card reveal reveal-d3">
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#C09540" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card-h">Guaranteed Results</h3>
+          <p class="card-p">15 booked consultations in month one or we work free. We put skin in the game because we're confident in what we deliver.</p>
+        </div>
+      </div>
+
+      <!-- What's included -->
+      <div class="reveal" style="background:var(--cream-light); border:1px solid var(--border); border-radius:4px; padding:3.5rem 4rem; box-shadow:0 4px 24px rgba(26,39,69,0.05);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;">
+          <div>
+            <span class="eyebrow" style="margin-bottom:1rem;">What's Included</span>
+            <div class="gold-rule" style="margin-bottom:1.5rem;"></div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:2.25rem; font-weight:600; color:var(--navy); line-height:1.1; letter-spacing:-0.03em; margin-bottom:1rem;">
+              Everything.<br /><em style="font-style:italic; color:var(--gold);">You focus on your spa.</em>
+            </h3>
+            <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); line-height:1.75;">
+              Send us raw footage from your phone. We take it from there — every piece of the system is handled end-to-end.
+            </p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item"><span class="check">✓</span>Ad script writing</div>
+            <div class="included-item"><span class="check">✓</span>Video editing</div>
+            <div class="included-item"><span class="check">✓</span>Ad copy &amp; creative</div>
+            <div class="included-item"><span class="check">✓</span>Meta campaign management</div>
+            <div class="included-item"><span class="check">✓</span>Lead form optimization</div>
+            <div class="included-item"><span class="check">✓</span>Follow-up systems</div>
+            <div class="included-item"><span class="check">✓</span>Weekly reporting</div>
+            <div class="included-item"><span class="check">✓</span>Ongoing optimization</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="section-cta">
+    <div class="container">
+      <div style="max-width:2.5rem; margin:0 auto 2rem;">
+        <img src="brand_assets/scalehaven_mark_transparent.png" alt="" style="width:100%;" />
+      </div>
+
+      <h2 class="cta-h reveal" style="margin-bottom:1.5rem;">
+        Ready for 15+<br />
+        Consultations <em>This Month?</em>
+      </h2>
+
+      <p class="reveal reveal-d1" style="font-family:'Work Sans',sans-serif; font-size:1.0625rem; color:var(--text-muted); line-height:1.75; max-width:520px; margin:0 auto 2.75rem;">
+        Book a free 30-minute call. We'll walk you through exactly how we'd run your ads and tell you whether we're a fit — no pressure.
+      </p>
+
+      <div class="reveal reveal-d2" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-gold" style="font-size:0.9375rem; padding:1.0625rem 2.5rem;">
+          Book Your Free Call Today
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="reveal reveal-d3" style="font-family:'Work Sans',sans-serif; font-size:0.75rem; color:var(--text-muted); margin-top:1.25rem; letter-spacing:0.06em;">
+        No obligation. No pitch deck. Just a real conversation.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#" aria-label="ScaleHaven">
+          <img src="brand_assets/scalehaven_logo_white.png" alt="ScaleHaven" style="height:52px;" />
+        </a>
+        <p class="footer-copy">© 2025 ScaleHaven. All rights reserved.</p>
+        <div style="display:flex; align-items:center; gap:1.5rem;">
+          <a href="mailto:john@scalehaven.io" class="footer-email">john@scalehaven.io</a>
+          <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener" class="btn-nav">Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* ── PROCESS TABS ──────────────────────────── */
+    function switchStep(num) {
+      document.querySelectorAll('.step-tab').forEach(tab => {
+        const active = parseInt(tab.dataset.panel) === num;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-selected', active);
+      });
+      document.querySelectorAll('.process-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${num}`);
+      });
+    }
+
+    /* ── SCROLL REVEAL ─────────────────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ── RESPONSIVE GRIDS ──────────────────────── */
+    function applyResponsive() {
+      const w = window.innerWidth;
+      document.querySelectorAll('.responsive-grid').forEach(el => {
+        el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+        el.style.gap = w < 900 ? '3rem' : '5rem';
+      });
+      document.querySelectorAll('.responsive-3col').forEach(el => {
+        el.style.gridTemplateColumns = w < 768 ? '1fr' : w < 1024 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+      });
+      document.querySelectorAll('.process-panel.active').forEach(el => {
+        el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+        el.style.gap = w < 900 ? '3rem' : '5rem';
+      });
+    }
+    applyResponsive();
+    window.addEventListener('resize', applyResponsive);
+  </script>
+
+</body>
+</html>
