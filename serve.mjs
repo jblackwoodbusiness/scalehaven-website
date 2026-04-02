@@ -18,14 +18,23 @@ const mime = {
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
   '.webp': 'image/webp',
+  '.avif': 'image/avif',
   '.woff2': 'font/woff2',
   '.woff': 'font/woff',
   '.json': 'application/json',
+  '.xml': 'application/xml',
+  '.txt': 'text/plain',
+  '.toml': 'text/plain',
 };
 
 const server = createServer(async (req, res) => {
   let urlPath = req.url.split('?')[0];
   if (urlPath === '/') urlPath = '/index.html';
+
+  // Directory-based routing: /slug → /slug/index.html
+  if (!extname(urlPath)) {
+    urlPath = urlPath.replace(/\/+$/, '') + '/index.html';
+  }
 
   const filePath = join(__dirname, urlPath);
 

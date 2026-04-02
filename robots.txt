@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /brand_assets/scalehaven_brand_guidelines.png
+
+Sitemap: https://scalehaven.io/sitemap.xml

@@ -1,0 +1,56 @@
+# ════════════════════════════════════════════════════════════
+# ScaleHaven — Netlify Configuration
+# ════════════════════════════════════════════════════════════
+
+[build]
+  publish = "."
+
+# Force trailing slashes off — matches canonical URLs
+[[redirects]]
+  from = "/styles/main.css"
+  to = "/styles/main.css"
+  status = 200
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/styles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/brand_assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Security headers on all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-XSS-Protection = "1; mode=block"
+
+# Pretty URLs: Netlify handles /slug → /slug/index.html natively
+# No explicit redirects needed for directory-based routing
