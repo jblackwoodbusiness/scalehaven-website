@@ -1,0 +1,52 @@
+name: Publish Next Blog Post
+
+# Publishes the next queued blog post twice a week.
+# Tuesday + Friday at 13:00 UTC = 9:00 AM ET (during EDT) / 8:00 AM ET (during EST)
+# B2B engagement window. Cron times are UTC.
+on:
+  schedule:
+    - cron: "0 13 * * 2"   # Tuesdays 13:00 UTC
+    - cron: "0 13 * * 5"   # Fridays 13:00 UTC
+  workflow_dispatch:        # Allows manual runs from the GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run publish script
+        id: publish
+        run: |
+          set -e
+          python .github/scripts/publish-next-blog.py
+        continue-on-error: false
+
+      - name: Configure git
+        run: |
+          git config user.name "scalehaven-bot"
+          git config user.email "bot@scalehaven.io"
+
+      - name: Commit and push
+        run: |
+          git add blog/ sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Auto-publish: scheduled blog post
+
+          Published by GitHub Actions on $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
