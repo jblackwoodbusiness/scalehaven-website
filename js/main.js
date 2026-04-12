@@ -25,20 +25,9 @@ document.querySelectorAll('.reveal').forEach(function(el) {
   revealObserver.observe(el);
 });
 
-/* ── RESPONSIVE GRID HELPER ──────────────────────────────── */
-function applyResponsive() {
-  var w = window.innerWidth;
-  document.querySelectorAll('.responsive-grid').forEach(function(el) {
-    el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
-    el.style.gap = w < 900 ? '3rem' : '5rem';
-  });
-  document.querySelectorAll('.responsive-3col').forEach(function(el) {
-    el.style.gridTemplateColumns = w < 768 ? '1fr' : w < 1024 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
-  });
-}
-
-applyResponsive();
-window.addEventListener('resize', applyResponsive);
+/* ── RESPONSIVE GRID ────────────────────────────────────── */
+/* Handled entirely via CSS media queries in main.css.
+   No JS layout reads needed — eliminates forced reflow. */
 
 /* ── FAQ ACCORDION ───────────────────────────────────────── */
 document.querySelectorAll('.faq-question').forEach(function(btn) {

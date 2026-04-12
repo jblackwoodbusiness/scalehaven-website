@@ -665,8 +665,13 @@ nav {
   .hamburger { display: block; }
   .page-hero { padding: 8rem 0 4rem; }
   .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .responsive-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
   .responsive-3col { grid-template-columns: 1fr !important; }
   .responsive-4col { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 899px) and (min-width: 769px) {
+  .responsive-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
