@@ -74,7 +74,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_transparent.webp" alt="ScaleHaven — Med Spa Marketing Agency" width="96" height="60" style="height:60px;" /></a>
+      <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_transparent.webp" alt="ScaleHaven — Med Spa & Aesthetic Clinic Marketing" width="96" height="60" style="height:60px;" /></a>
       <div class="nav-links">
         <a href="/med-spa-lead-generation" class="nav-link">Lead Generation</a>
         <a href="/med-spa-facebook-ads" class="nav-link">Meta Ads</a>
@@ -252,7 +252,7 @@ def generate(data: dict) -> str:
         eyebrow=data["eyebrow"],
         h1_html=data["h1_html"],
         body_html=data["body_html"],
-        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you med spa marketing agency. We run Meta Ads, automate lead follow-up, and guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
+        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. We run Meta Ads, automate lead follow-up, and guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
         related_html="\n\n".join(related),
         cta_h2=data.get("cta_h2", 'Ready to <em>Get Started?</em>'),
         cta_p=data.get("cta_p", "Book a free 30-minute call and we'll show you exactly how we'd fill your calendar."),
