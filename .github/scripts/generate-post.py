@@ -174,7 +174,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3rem; padding:3rem 0 2rem; border-bottom:1px solid rgba(192,149,64,0.15); margin-bottom:2rem;" class="footer-grid">
         <div>
           <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_white.webp" alt="ScaleHaven" width="77" height="48" style="height:48px; margin-bottom:1rem;" /></a>
-          <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.7; max-width:280px;">Done-for-you Meta Ads, automation, and lead follow-up for med spas across the US &amp; Canada.</p>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.7; max-width:280px;">Done-for-you Meta Ads, automation, and lead follow-up for med spas and aesthetic clinics across the US &amp; Canada.</p>
         </div>
         <div>
           <p style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem;">Services</p>
