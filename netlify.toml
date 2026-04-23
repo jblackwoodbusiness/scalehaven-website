@@ -5,44 +5,8 @@
 [build]
   publish = "."
 
-# Force trailing slashes off — matches canonical URLs
-# This is CRITICAL for SEO: /page and /page/ should not both be indexed
-[[redirects]]
-  from = "/med-spa-lead-generation/"
-  to = "/med-spa-lead-generation"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/med-spa-facebook-ads/"
-  to = "/med-spa-facebook-ads"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/botox-clinic-marketing/"
-  to = "/botox-clinic-marketing"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/dermatology-marketing/"
-  to = "/dermatology-marketing"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/aesthetic-clinic-marketing/"
-  to = "/aesthetic-clinic-marketing"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/med-spa-marketing-near-me/"
-  to = "/med-spa-marketing-near-me"
-  status = 301
-  force = true
-
+# Netlify handles /page → /page/index.html natively.
+# Canonical tags in each HTML file tell Google which URL to index.
 [[redirects]]
   from = "/styles/main.css"
   to = "/styles/main.css"
