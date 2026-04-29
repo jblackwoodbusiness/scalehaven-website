@@ -122,13 +122,13 @@ def update_sitemap(slug: str, today: str) -> None:
     sm = SITEMAP.read_text(encoding="utf-8")
     new_url = (
         f"  <url>\n"
-        f"    <loc>https://scalehaven.io/blog/{slug}</loc>\n"
+        f"    <loc>https://scalehaven.io/blog/{slug}/</loc>\n"
         f"    <lastmod>{today}</lastmod>\n"
         f"    <changefreq>monthly</changefreq>\n"
         f"    <priority>0.7</priority>\n"
         f"  </url>\n"
     )
-    if f"https://scalehaven.io/blog/{slug}" in sm:
+    if f"https://scalehaven.io/blog/{slug}/" in sm:
         return  # already present
     sm = sm.replace("</urlset>", new_url + "</urlset>")
     SITEMAP.write_text(sm, encoding="utf-8")

@@ -17,12 +17,12 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <meta name="description" content="{excerpt}" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="John Blackwood, ScaleHaven" />
-  <link rel="canonical" href="https://scalehaven.io/blog/{slug}" />
+  <link rel="canonical" href="https://scalehaven.io/blog/{slug}/" />
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{title} | ScaleHaven" />
   <meta property="og:description" content="{excerpt}" />
-  <meta property="og:url" content="https://scalehaven.io/blog/{slug}" />
+  <meta property="og:url" content="https://scalehaven.io/blog/{slug}/" />
   <meta property="og:site_name" content="ScaleHaven" />
   <meta property="og:image" content="https://scalehaven.io/brand_assets/scalehaven_logo_transparent.webp" />
 
@@ -51,8 +51,8 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
         "@type": "BreadcrumbList",
         "itemListElement": [
           {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scalehaven.io/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://scalehaven.io/blog" }},
-          {{ "@type": "ListItem", "position": 3, "name": "{breadcrumb_name}", "item": "https://scalehaven.io/blog/{slug}" }}
+          {{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://scalehaven.io/blog/" }},
+          {{ "@type": "ListItem", "position": 3, "name": "{breadcrumb_name}", "item": "https://scalehaven.io/blog/{slug}/" }}
         ]
       }},
       {{
@@ -63,7 +63,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
         "publisher": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io", "logo": {{ "@type": "ImageObject", "url": "https://scalehaven.io/brand_assets/scalehaven_logo_transparent.webp" }} }},
         "datePublished": "{{{{TODAY}}}}",
         "dateModified": "{{{{TODAY}}}}",
-        "mainEntityOfPage": {{ "@type": "WebPage", "@id": "https://scalehaven.io/blog/{slug}" }}
+        "mainEntityOfPage": {{ "@type": "WebPage", "@id": "https://scalehaven.io/blog/{slug}/" }}
       }}
     ]
   }}
