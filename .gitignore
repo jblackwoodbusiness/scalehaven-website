@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Private data — keep out of public repo
+gsc-data/
+*.csv
+brand_assets/sales-funnel-notes/
+
+# Working files / not for production
+temporary screenshots/
+images/Ad Library.html
+images/Ad Library_files/
+images/*-original.jpg
+
+# Node / Python
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
