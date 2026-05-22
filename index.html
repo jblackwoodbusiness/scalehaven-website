@@ -480,19 +480,36 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "ScaleHaven",
-    "url": "https://scalehaven.io",
-    "logo": "https://scalehaven.io/brand_assets/scalehaven_logo_transparent.webp",
-    "email": "john@scalehaven.io",
-    "description": "Done-for-you marketing agency for med spas and aesthetic clinics, specializing in Meta Ads, lead follow-up automation, and patient booking systems. We guarantee 15+ booked consultations in month one.",
-    "areaServed": [
-      {"@type": "Country", "name": "United States"},
-      {"@type": "Country", "name": "Canada"}
-    ],
-    "serviceType": ["Med Spa Marketing", "Aesthetic Clinic Marketing", "Meta Advertising", "Lead Generation", "Patient Acquisition", "Lead Follow-Up Automation"],
-    "knowsAbout": ["Med Spa Marketing", "Aesthetic Clinic Marketing", "Cosmetic Clinic Marketing", "Facebook Ads", "Instagram Ads", "Botox Marketing", "Dermatology Marketing", "Lead Generation", "Booking Automation"],
-    "sameAs": []
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "name": "ScaleHaven",
+        "url": "https://scalehaven.io",
+        "logo": "https://scalehaven.io/brand_assets/scalehaven_logo_transparent.webp",
+        "email": "john@scalehaven.io",
+        "description": "Done-for-you growth agency for med spas and aesthetic clinics. Meta Ads, Google Ads, SEO, and automated lead follow-up. We guarantee 15+ booked consultations in month one.",
+        "areaServed": [
+          {"@type": "Country", "name": "United States"},
+          {"@type": "Country", "name": "Canada"}
+        ],
+        "serviceType": ["Med Spa Marketing", "Aesthetic Clinic Marketing", "Meta Advertising", "Google Ads Management", "Search Engine Optimization", "Lead Generation", "Patient Acquisition", "Lead Follow-Up Automation"],
+        "knowsAbout": ["Med Spa Marketing", "Aesthetic Clinic Marketing", "Cosmetic Clinic Marketing", "Facebook Ads", "Instagram Ads", "Google Ads", "Med Spa SEO", "Botox Marketing", "Dermatology Marketing", "Lead Generation", "Booking Automation"],
+        "sameAs": []
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "What does ScaleHaven actually do?", "acceptedAnswer": {"@type": "Answer", "text": "We're a done-for-you growth agency for med spas and aesthetic clinics. We run Meta Ads (Facebook and Instagram), Google Ads, SEO, and automated lead follow-up. You send raw video footage — we handle scripts, editing, ad copy, campaigns, follow-up systems, and reporting. We guarantee 15+ booked consultations in month one or we work free until you hit that target."}},
+          {"@type": "Question", "name": "How is your 15-consultation guarantee structured?", "acceptedAnswer": {"@type": "Answer", "text": "If you don't get 15 booked consultations in your first month, we keep working for free until you do. No partial refunds, no fine print. We can offer this because we specialize in this niche and know exactly what converts."}},
+          {"@type": "Question", "name": "How much do I need to spend on ads?", "acceptedAnswer": {"@type": "Answer", "text": "Most clients invest $1,500-5,000/month in ad spend. We recommend starting at $2,000-3,000/month for a single-location clinic. Our management fee is separate. At $3K/month in ad spend, most practices see 40-80+ leads and 15-25 booked consultations."}},
+          {"@type": "Question", "name": "Do you only do Meta Ads, or other channels too?", "acceptedAnswer": {"@type": "Answer", "text": "Meta Ads (Facebook + Instagram) is our core service because it has the highest ROI for med spas, but we also offer Google Ads management, SEO and local search optimization, and automated lead follow-up systems. Most clients start with Meta and add other channels as they scale."}},
+          {"@type": "Question", "name": "What kind of clinics do you work with?", "acceptedAnswer": {"@type": "Answer", "text": "Med spas, aesthetic clinics, cosmetic clinics, skincare clinics, dermatology practices, laser clinics, plastic surgery practices, and solo aesthetic providers (RN injectors, NPs). We work with any clinic offering aesthetic treatments — Botox, fillers, laser, body contouring, GLP-1 weight loss, microneedling, chemical peels, and more."}},
+          {"@type": "Question", "name": "Where are you based and who do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "We're based in Canada and serve clinics across the United States and Canada. Our team works remotely with clinics in every major market."}},
+          {"@type": "Question", "name": "Do I need a long-term contract?", "acceptedAnswer": {"@type": "Answer", "text": "No. We work month-to-month after the initial 90-day ramp-up period. Most clients stay because the results speak for themselves, but we don't lock you in."}},
+          {"@type": "Question", "name": "How quickly will I see results?", "acceptedAnswer": {"@type": "Answer", "text": "Ads typically launch within 5-7 days of onboarding. Most clients see their first booked consultations within the first 2 weeks. Month one is focused on hitting the 15+ consultation guarantee."}}
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -523,6 +540,8 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="/med-spa-lead-generation" onclick="toggleMobileMenu()">Lead Generation</a>
     <a href="/med-spa-facebook-ads" onclick="toggleMobileMenu()">Meta Ads</a>
+    <a href="/med-spa-google-ads" onclick="toggleMobileMenu()">Google Ads</a>
+    <a href="/med-spa-seo" onclick="toggleMobileMenu()">SEO</a>
     <a href="/botox-clinic-marketing" onclick="toggleMobileMenu()">Treatments</a>
     <a href="/dermatology-marketing" onclick="toggleMobileMenu()">Dermatology</a>
     <a href="/aesthetic-clinic-marketing" onclick="toggleMobileMenu()">Aesthetic Clinics</a>
@@ -552,7 +571,7 @@
           </h1>
 
           <p class="hero-subtext hero-sub" style="margin-bottom:1.75rem; color:rgba(255,255,255,0.68); margin-left:auto; margin-right:auto; max-width:560px;">
-            Done-for-you Meta Ads for med spas and aesthetic clinics. We script, edit, manage your campaigns, and build your follow-up system — so you stay focused on patients. Hit 15+ qualified bookings in month one or we work free.
+            Done-for-you Meta Ads, Google Ads, SEO, and lead automation for med spas and aesthetic clinics. We script, edit, manage your campaigns, and follow up with every lead — so you stay focused on patients. Hit 15+ qualified bookings in month one or we work free.
           </p>
 
           <div class="hero-ctas" style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; justify-content:center;">
@@ -874,12 +893,12 @@
             </p>
           </div>
           <div class="included-grid">
-            <div class="included-item"><span class="check">✓</span>Ad script writing</div>
-            <div class="included-item"><span class="check">✓</span>Video editing</div>
-            <div class="included-item"><span class="check">✓</span>Ad copy &amp; creative</div>
-            <div class="included-item"><span class="check">✓</span>Meta campaign management</div>
+            <div class="included-item"><span class="check">✓</span>Meta Ads (Facebook &amp; Instagram)</div>
+            <div class="included-item"><span class="check">✓</span>Google Ads management</div>
+            <div class="included-item"><span class="check">✓</span>SEO &amp; local search</div>
+            <div class="included-item"><span class="check">✓</span>Ad script &amp; video editing</div>
             <div class="included-item"><span class="check">✓</span>Lead form optimization</div>
-            <div class="included-item"><span class="check">✓</span>Follow-up systems</div>
+            <div class="included-item"><span class="check">✓</span>Automated follow-up systems</div>
             <div class="included-item"><span class="check">✓</span>Weekly reporting</div>
             <div class="included-item"><span class="check">✓</span>Ongoing optimization</div>
           </div>
@@ -993,6 +1012,8 @@
           <div style="display:flex; flex-direction:column; gap:0.625rem;">
             <a href="/med-spa-lead-generation" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">Lead Generation</a>
             <a href="/med-spa-facebook-ads" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">Meta Ads Management</a>
+            <a href="/med-spa-google-ads" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">Google Ads Management</a>
+            <a href="/med-spa-seo" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">SEO &amp; Local Search</a>
             <a href="/botox-clinic-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">Botox &amp; Injectables</a>
             <a href="/dermatology-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">Dermatology Marketing</a>
             <a href="/aesthetic-clinic-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s ease;">Aesthetic Clinics</a>
