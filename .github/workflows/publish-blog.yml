@@ -1,12 +1,14 @@
 name: Publish Next Blog Post
 
-# Publishes the next queued blog post twice a week.
-# Tuesday + Friday at 13:00 UTC = 9:00 AM ET (during EDT) / 8:00 AM ET (during EST)
-# B2B engagement window. Cron times are UTC.
+# Publishes the next queued blog post three times a week.
+# Tuesday + Thursday + Saturday at 13:00 UTC = 9:00 AM ET (during EDT) / 8:00 AM ET (during EST)
+# Evenly spaced (~2 days apart) for consistent Googlebot crawl signal.
+# Cron times are UTC.
 on:
   schedule:
     - cron: "0 13 * * 2"   # Tuesdays 13:00 UTC
-    - cron: "0 13 * * 5"   # Fridays 13:00 UTC
+    - cron: "0 13 * * 4"   # Thursdays 13:00 UTC
+    - cron: "0 13 * * 6"   # Saturdays 13:00 UTC
   workflow_dispatch:        # Allows manual runs from the GitHub Actions tab
 
 permissions:
