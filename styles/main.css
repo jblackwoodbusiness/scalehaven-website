@@ -53,6 +53,14 @@ body::before {
 .reveal-d4 { transition-delay: 0.4s; }
 .reveal-d5 { transition-delay: 0.5s; }
 
+/* On blog posts, show all content immediately (no scroll-triggered fade-in).
+   Better UX for content-heavy pages — readers see text instantly. */
+body.post .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 /* ── NAV ────────────────────────────────────────────────── */
 nav {
   position: sticky;

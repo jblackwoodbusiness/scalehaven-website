@@ -69,7 +69,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   }}
   </script>
 </head>
-<body>
+<body class="post">
 
   <!-- NAV -->
   <nav>
