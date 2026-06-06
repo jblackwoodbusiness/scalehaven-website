@@ -24,3 +24,7 @@ __pycache__/
 .vscode/
 .idea/
 *.swp
+
+# Logo source + archived old logos (kept local, not deployed)
+brand_assets/old/
+brand_assets/new logos_brand guidelines/
