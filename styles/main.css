@@ -693,3 +693,34 @@ nav {
   .responsive-3col { grid-template-columns: repeat(2, 1fr) !important; }
   .responsive-4col { grid-template-columns: repeat(2, 1fr) !important; }
 }
+
+/* ── SCORECARD SCROLL POP-UP ────────────────────────────── */
+.sh-popup-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(13,23,32,0.62); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.sh-popup-overlay.show { opacity: 1; visibility: visible; }
+.sh-popup {
+  background: var(--cream-light); border-radius: 12px; max-width: 440px; width: 100%;
+  padding: 2.5rem 2rem 2rem; text-align: center; position: relative;
+  box-shadow: 0 24px 64px rgba(13,23,32,0.4); border-top: 4px solid var(--gold);
+  transform: translateY(20px) scale(0.98); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.sh-popup-overlay.show .sh-popup { transform: translateY(0) scale(1); }
+.sh-popup-close {
+  position: absolute; top: 0.75rem; right: 0.75rem; width: 32px; height: 32px;
+  border: none; background: transparent; color: var(--text-muted); cursor: pointer;
+  font-size: 1.5rem; line-height: 1; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.sh-popup-close:hover { background: var(--cream-dark); color: var(--navy); }
+.sh-popup-eyebrow { font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); }
+.sh-popup h3 { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:600; color:var(--navy); margin:0.5rem 0 0.625rem; line-height:1.15; letter-spacing:-0.02em; }
+.sh-popup h3 em { font-style:italic; color:var(--gold); }
+.sh-popup p { font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); line-height:1.6; margin-bottom:1.5rem; }
+.sh-popup .btn-gold { width:100%; justify-content:center; }
+.sh-popup-dismiss { display:inline-block; margin-top:0.875rem; font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); background:none; border:none; cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
+.sh-popup-dismiss:hover { color:var(--navy); }
