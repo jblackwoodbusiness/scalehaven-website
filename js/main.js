@@ -49,8 +49,13 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
 (function() {
   var KEY = 'sh_popup_dismissed';
   var DAYS = 7;
-  // Never show on the scorecard page itself
-  if (location.pathname.indexOf('med-spa-marketing-scorecard') !== -1) return;
+  var path = location.pathname;
+  // Only show on the homepage and blog pages (not service pages or the scorecard)
+  var isHome = (path === '/' || path === '/index.html');
+  var isBlog = path.indexOf('/blog') === 0;
+  if (!(isHome || isBlog)) return;
+  // Never show to someone who already gave us their info via any form
+  try { if (localStorage.getItem('sh_lead_captured')) return; } catch (e) {}
   // Respect a recent dismissal
   try {
     var ts = parseInt(localStorage.getItem(KEY) || '0', 10);
@@ -107,4 +112,34 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   setTimeout(trigger, 35000); // fallback: show after 35s even without deep scroll
+})();
+
+/* ── GROWTH-PLAN LEAD FORM (AJAX → Netlify) ──────────────── */
+(function() {
+  function encode(data) {
+    return Object.keys(data).map(function (k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+    }).join('&');
+  }
+  document.querySelectorAll('.sh-leadform').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var get = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+      var name = get('name'), email = get('email'), phone = get('phone'), clinic = get('clinic');
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!name || !phone || !emailOk) { form.classList.add('sh-leadform-invalid'); return; }
+      form.classList.remove('sh-leadform-invalid');
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'growth-plan', 'name': name, 'clinic': clinic, 'email': email, 'phone': phone })
+      }).catch(function () {})
+        .finally(function () {
+          try { localStorage.setItem('sh_lead_captured', '1'); } catch (e) {}
+          form.classList.add('sh-leadform-done');
+        });
+    });
+  });
 })();

@@ -494,7 +494,10 @@
           'score': score + '/100', 'tier': tier, 'focus-areas': focusLabels, 'answers': answersSummary
         })
       }).catch(function(){ /* show results regardless of network */ })
-        .finally(function() { showResults(score, tier, tierClass, tierHeading, tierDesc, focus); });
+        .finally(function() {
+          try { localStorage.setItem('sh_lead_captured', '1'); } catch (e) {}
+          showResults(score, tier, tierClass, tierHeading, tierDesc, focus);
+        });
     }
 
     function showResults(score, tier, tierClass, tierHeading, tierDesc, focus) {

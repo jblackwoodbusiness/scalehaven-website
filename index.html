@@ -971,7 +971,39 @@
 
 
   <!-- ═══════════════ CTA ═══════════════ -->
-  <section class="section-cta">
+    <!-- GROWTH PLAN LEAD FORM -->
+  <section class="sh-leadform-section">
+    <div class="container">
+      <div class="sh-leadform-card">
+        <div class="sh-leadform-copy">
+          <span class="eyebrow">No call required</span>
+          <h2>Not ready to book a call? <em>Get a free growth plan.</em></h2>
+          <p>Tell us a bit about your clinic and we'll put together a free, no-obligation game plan to book you more consultations — then reach out with it. No pressure, no pitch.</p>
+          <ul class="sh-leadform-bullets">
+            <li>Where you're leaving consultations on the table</li>
+            <li>The fastest wins for your clinic right now</li>
+            <li>Exactly what we'd do in your first 30 days</li>
+          </ul>
+        </div>
+        <form name="growth-plan" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="sh-leadform">
+          <input type="hidden" name="form-name" value="growth-plan" />
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <div class="sh-leadform-fields">
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            <input type="text" name="clinic" placeholder="Clinic name" autocomplete="organization" />
+            <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
+            <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required />
+            <button type="submit" class="btn-gold">Get My Free Growth Plan &rarr;</button>
+            <p class="sh-leadform-note">We'll never spam you or share your info.</p>
+          </div>
+          <div class="sh-leadform-success"><strong>&#10003; You're all set.</strong><br />We've got your details and will reach out shortly with your free growth plan.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section-cta">
     <div class="container">
       <div style="max-width:2.5rem; margin:0 auto 2rem;">
         <img src="/brand_assets/scalehaven_icon.svg" alt="" width="40" height="40" style="width:100%;" loading="lazy" />
