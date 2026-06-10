@@ -28,3 +28,6 @@ __pycache__/
 # Logo source + archived old logos (kept local, not deployed)
 brand_assets/old/
 brand_assets/new logos_brand guidelines/
+
+# SEO strategy + keyword research + client data (local only, never deploy)
+keyword-data/

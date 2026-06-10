@@ -52,3 +52,64 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+---
+
+# SEO & Content Strategy (follow for ALL content + pages)
+
+ScaleHaven's goal is a BUSINESS goal — book consultations / capture leads from
+med spas, aesthetic / cosmetic clinics, and (now) plastic surgery practices.
+SEO is how we reach buyers at the moment they search. Follow this framework.
+
+## Local strategy docs (LOCAL ONLY — gitignored, never deployed)
+Read these in `keyword-data/` before SEO work (they hold the data + the moat):
+- `seo-master-reference.md` — the full playbook (chapters 1–8 + 30-day plan)
+- `SEO-PLAN.md` — our locked plan (money pages + clusters + priorities)
+- `content-map.md` / `master-keywords.csv` — validated US keywords (vol/KD/intent)
+- `differentiation-inputs.md` — **John's real material (the moat). Inject into content.**
+- DataForSEO API creds live in `.env` (gitignored). Validation via curl (Python SSL is blocked).
+
+## The order of operations (don't skip)
+1. **Money pages first** (transactional/commercial intent) — they convert + pay the bills.
+2. **Build ONE cluster at a time, bottom-to-top** (money page → commercial/MOF → educational/TOF), all internally linked UP to the money page.
+3. **Repeat cluster by cluster** — finish one before the next. This builds **topical authority** (covering a topic fully makes every keyword in it easier to rank).
+
+## The 4-phase content process (every post/page)
+1. **Research** — pull the top-ranking pages for the keyword (DataForSEO SERP API) → note topics they cover (table stakes), gaps (our opportunity), length benchmark, angles.
+2. **Structure** — outline before writing; match intent; cover comprehensively.
+3. **Write** — AI scaffolds; then **add the differentiation layer** (the moat).
+4. **Optimize** — beat the top results on coverage; apply the on-page checklist.
+
+## The differentiation layer (THE MOAT — non-negotiable)
+The bar is **5× better than what exists**, not "good." AI scaffolding alone = invisible
+(96% of pages get zero Google traffic because they're the same as everything else).
+Inject John's real material from `differentiation-inputs.md`:
+- His **case study** (a GTA med spa: $12.5K from $1K ad budget, ~$10 CPL, 100+ leads, PRP offer)
+- His **thesis**: build a real NAMED offer — never discount / "$10 Botox" price-shopper bait
+- His **take**: put clinic staff on camera (authenticity breaks the cold ad barrier)
+- His **founder story**: grew a cosmetic clinic to one of the largest in its region, sold to PE
+- His **speed-to-lead system**: instant text/voice on form fill → 5-min call → AI nurture
+
+## On-page checklist (apply to every page)
+- **Title:** keyword front-loaded, <60 chars, click-worthy
+- **One H1** (mirrors the title intent); H2/H3 hierarchy with natural keywords
+- **URL:** short, descriptive, includes keyword (we use `/slug/`)
+- **Meta description:** ~155 chars, ad-copy style, includes keyword + the outcome
+- **Internal linking:** contextual links to related posts AND to the money page (best ROI in SEO — never skip). Cluster spokes link UP to their money page with keyword-rich anchors.
+- **Images:** descriptive filenames, real alt text, WebP, compressed
+- **Schema:** JSON-LD (BreadcrumbList + BlogPosting/Service + FAQPage where relevant)
+
+## Link building (Ch 6) — once 10–15 pieces are live (we're past that)
+- **Be the source:** original-data assets earn links (our stats posts + the case study).
+- **Linkable assets:** free tools/calculators (we have the Scorecard; a CPL calculator is a natural next one).
+- **Journalist platforms:** Source of Sources (free HARO successor) / Featured.com — John, ~15 min/day. This is the top backlink lever right now.
+
+## AI search (Ch 8) — same fundamentals win
+Authoritative comprehensive content + clusters + schema + citations also drive
+visibility in ChatGPT/Perplexity/Gemini. AI favors "best of" / roundup articles.
+Our schema + cluster structure already help; keep direct, clearly-structured answers.
+
+## Auto-publisher
+- Queue: `blog/_queue/NNN-slug.html` — lowest number publishes next (Tue/Thu/Sat, 3×/week).
+- New posts via `.github/scripts/generate-post.py` (carries nav, footer, schema, hub CTA).
+- To prioritize a cluster, number its posts low so they publish first.
