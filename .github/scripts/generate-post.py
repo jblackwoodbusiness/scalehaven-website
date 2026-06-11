@@ -307,7 +307,7 @@ def generate(data: dict) -> str:
         eyebrow=data["eyebrow"],
         h1_html=data["h1_html"],
         body_html=data["body_html"],
-        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. We run Meta Ads, automate lead follow-up, and guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
+        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. Our founder grew a cosmetic clinic into one of the largest in its region — and sold it to a private equity firm. We run Meta Ads, automate lead follow-up, and guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
         related_html="\n\n".join(related),
         cta_h2=data.get("cta_h2", 'Ready to <em>Get Started?</em>'),
         cta_p=data.get("cta_p", "Book a free 30-minute call and we'll show you exactly how we'd fill your calendar."),
