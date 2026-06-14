@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Med Spa Marketing ROI Calculator (Free Tool)</title>
+  <meta name="description" content="Free med spa marketing ROI calculator — enter your ad budget and patient value to see projected leads, booked consults, new patients, revenue, and ROAS." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="John Blackwood, ScaleHaven" />
+  <link rel="canonical" href="https://scalehaven.io/med-spa-roi-calculator/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Med Spa Marketing ROI Calculator (Free Tool) | ScaleHaven" />
+  <meta property="og:description" content="See what your med spa ad budget could return — projected patients, revenue, and ROAS in seconds. Free, no sign-up." />
+  <meta property="og:url" content="https://scalehaven.io/med-spa-roi-calculator/" />
+  <meta property="og:site_name" content="ScaleHaven" />
+  <meta property="og:image" content="https://scalehaven.io/brand_assets/scalehaven_social.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Med Spa Marketing ROI Calculator (Free)" />
+  <meta name="twitter:description" content="See what your med spa ad budget could return — patients, revenue, and ROAS in seconds." />
+  <meta name="twitter:image" content="https://scalehaven.io/brand_assets/scalehaven_social.png" />
+
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/scalehaven_favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/brand_assets/scalehaven_favicon_96.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/brand_assets/scalehaven_favicon_48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand_assets/scalehaven_favicon_32.png" />
+  <link rel="apple-touch-icon" href="/brand_assets/scalehaven_favicon_256.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
+  <link rel="preload" as="style" href="/styles/main.css?v=20260611" />
+  <link rel="stylesheet" href="/styles/main.css?v=20260611" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scalehaven.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Med Spa Marketing ROI Calculator", "item": "https://scalehaven.io/med-spa-roi-calculator/" }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Med Spa Marketing ROI Calculator",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "A free calculator that projects a med spa's leads, booked consultations, new patients, revenue, and return on ad spend (ROAS) from a monthly ad budget.",
+        "url": "https://scalehaven.io/med-spa-roi-calculator/",
+        "publisher": { "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "What is a good ROAS for med spa marketing?", "acceptedAnswer": {"@type": "Answer", "text": "Most med spas with a proper system see a 3-5x return on ad spend within 90 days on first-visit revenue, and far higher once patient lifetime value is included. Because an aesthetic patient is worth $1,200-5,000+ over their lifetime, a campaign that looks break-even on the first visit is often 10x+ profitable over a year."}},
+          {"@type": "Question", "name": "How much should a med spa spend on marketing?", "acceptedAnswer": {"@type": "Answer", "text": "The common benchmark is 7-10% of revenue, weighted toward paid acquisition while scaling. A typical single-location med spa runs $2,000-6,000/month in total marketing, with $1,500-3,000 of that in ad spend. Use the calculator to model what a given budget could return for your clinic."}},
+          {"@type": "Question", "name": "What is the average cost per lead for a med spa?", "acceptedAnswer": {"@type": "Answer", "text": "On Meta (Facebook and Instagram), most med spa offers run $8-25 per lead. On Google Ads, expect $20-60 per lead because you're paying for high-intent search clicks. Cost per booked consultation and cost per patient matter more than cost per lead alone."}},
+          {"@type": "Question", "name": "How accurate is the med spa ROI calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It's a projection based on the inputs you provide — ad budget, cost per lead, conversion rates, and average patient value. The defaults reflect real med spa benchmarks, but your actual numbers depend on your market, offer, and especially your lead follow-up speed. Treat it as a realistic model, not a guarantee."}}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .roi-hero {
+      background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(192,149,64,0.10) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 80% at 80% 20%, rgba(192,149,64,0.06) 0%, transparent 50%),
+                  linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+      padding: 7.5rem 0 3rem; text-align: center;
+    }
+    .roi-eyebrow { font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+    .roi-h1 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,5vw,3.75rem); font-weight:600; line-height:1.08; letter-spacing:-0.03em; color:#fff; margin:1rem auto 1.25rem; max-width:760px; }
+    .roi-h1 em { font-style:italic; color:var(--gold); }
+    .roi-sub { font-family:'Work Sans',sans-serif; font-size:1.0625rem; color:rgba(255,255,255,0.65); line-height:1.7; max-width:600px; margin:0 auto; }
+
+    .roi-body { background:var(--cream); padding:3.5rem 0 5rem; }
+    .roi-wrap { max-width:1040px; margin:0 auto; padding:0 1.5rem; }
+    .roi-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
+    .roi-panel { background:#fff; border:1px solid var(--border); border-radius:12px; padding:2rem 1.875rem; box-shadow:0 4px 24px rgba(26,39,69,0.06); }
+    .roi-panel h2 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--navy); letter-spacing:-0.02em; margin-bottom:1.5rem; }
+
+    .roi-field { margin-bottom:1.5rem; }
+    .roi-label { display:flex; justify-content:space-between; align-items:baseline; font-family:'Work Sans',sans-serif; font-size:0.875rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem; }
+    .roi-label small { font-weight:400; color:var(--text-muted); font-size:0.75rem; }
+    .roi-input-wrap { position:relative; display:flex; align-items:center; }
+    .roi-input-wrap .roi-affix { position:absolute; font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); pointer-events:none; }
+    .roi-input-wrap .roi-affix.pre { left:1rem; }
+    .roi-input-wrap .roi-affix.post { right:1rem; }
+    .roi-input {
+      width:100%; padding:0.875rem 1rem; border:1.5px solid var(--cream-dark); border-radius:6px;
+      font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--navy); background:var(--cream-light);
+      transition:border-color 0.18s ease, background 0.18s ease;
+    }
+    .roi-input.has-pre { padding-left:1.875rem; }
+    .roi-input.has-post { padding-right:2.25rem; }
+    .roi-input:focus { outline:none; border-color:var(--gold); background:#fff; }
+    .roi-range { width:100%; margin-top:0.75rem; accent-color:var(--gold); cursor:pointer; }
+
+    .roi-results { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%); border-radius:12px; padding:2rem 1.875rem; box-shadow:0 16px 48px rgba(13,23,32,0.22); }
+    .roi-results h2 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:#fff; letter-spacing:-0.02em; margin-bottom:1.5rem; }
+    .roi-headline { text-align:center; padding:1.25rem 0 1.5rem; border-bottom:1px solid rgba(192,149,64,0.18); margin-bottom:1.5rem; }
+    .roi-headline .roi-roas { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:600; color:var(--gold); line-height:1; }
+    .roi-headline .roi-roas-label { font-family:'Work Sans',sans-serif; font-size:0.6875rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.5rem; }
+    .roi-metrics { display:grid; grid-template-columns:1fr 1fr; gap:0.875rem; }
+    .roi-metric { background:rgba(255,255,255,0.05); border:1px solid rgba(192,149,64,0.16); border-radius:8px; padding:1.125rem; }
+    .roi-metric .v { font-family:'Cormorant Garamond',serif; font-size:1.875rem; font-weight:600; color:#fff; line-height:1; }
+    .roi-metric .v.gold { color:var(--gold); }
+    .roi-metric .l { font-family:'Work Sans',sans-serif; font-size:0.6875rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.4rem; }
+    .roi-disclaimer { font-family:'Work Sans',sans-serif; font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.5; margin-top:1.25rem; }
+
+    .roi-cta { background:#fff; border:1px solid var(--border); border-radius:12px; padding:2.5rem 2rem; margin-top:2rem; text-align:center; box-shadow:0 4px 24px rgba(26,39,69,0.06); }
+    .roi-cta h2 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--navy); letter-spacing:-0.02em; margin-bottom:0.75rem; }
+    .roi-cta h2 em { font-style:italic; color:var(--gold); }
+    .roi-cta p { font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.7; max-width:560px; margin:0 auto 1.75rem; }
+
+    /* Email-me-plan form */
+    .roi-form { max-width:520px; margin:0 auto; }
+    .roi-form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+    .roi-form input {
+      width:100%; padding:0.875rem 1rem; border:1.5px solid var(--cream-dark); border-radius:6px; margin-bottom:0.75rem;
+      font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--navy); background:var(--cream-light);
+    }
+    .roi-form input:focus { outline:none; border-color:var(--gold); background:#fff; }
+    .roi-form-success { display:none; background:rgba(192,149,64,0.1); border:1px solid var(--gold); border-radius:8px; padding:1.5rem; color:var(--navy); font-family:'Work Sans',sans-serif; }
+    .roi-note { font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem; }
+
+    .roi-content { background:var(--cream-light); padding:4.5rem 0; }
+    .roi-content .article-body { max-width:760px; margin:0 auto; }
+
+    @media (max-width:780px) {
+      .roi-grid { grid-template-columns:1fr; }
+      .roi-form-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_horizontal.svg" alt="ScaleHaven — Med Spa & Aesthetic Clinic Marketing" width="139" height="42" style="height:42px; width:auto;" /></a>
+      <div class="nav-links">
+        <div class="nav-drop">
+          <button type="button" class="nav-link nav-drop-toggle" aria-haspopup="true">Services <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-drop-menu">
+            <a href="/med-spa-advertising">Advertising</a>
+            <a href="/med-spa-facebook-ads">Meta Ads</a>
+            <a href="/med-spa-google-ads">Google Ads</a>
+            <a href="/med-spa-seo">SEO &amp; Local Search</a>
+            <a href="/med-spa-web-design">Web Design</a>
+            <a href="/med-spa-lead-generation">Lead Generation</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <button type="button" class="nav-link nav-drop-toggle" aria-haspopup="true">Who We Help <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-drop-menu">
+            <a href="/">Med Spas</a>
+            <a href="/aesthetic-clinic-marketing">Aesthetic Clinics</a>
+            <a href="/plastic-surgery-marketing">Plastic Surgery</a>
+            <a href="/dermatology-marketing">Dermatology</a>
+            <a href="/botox-clinic-marketing">Botox Clinics</a>
+          </div>
+        </div>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/med-spa-marketing-scorecard" class="nav-link">Free Scorecard</a>
+      </div>
+      <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Free Call</a>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/med-spa-advertising" onclick="toggleMobileMenu()">Advertising</a>
+    <a href="/med-spa-facebook-ads" onclick="toggleMobileMenu()">Meta Ads</a>
+    <a href="/med-spa-google-ads" onclick="toggleMobileMenu()">Google Ads</a>
+    <a href="/med-spa-seo" onclick="toggleMobileMenu()">SEO &amp; Local Search</a>
+    <a href="/med-spa-web-design" onclick="toggleMobileMenu()">Web Design</a>
+    <a href="/med-spa-lead-generation" onclick="toggleMobileMenu()">Lead Generation</a>
+    <a href="/aesthetic-clinic-marketing" onclick="toggleMobileMenu()">Aesthetic Clinics</a>
+    <a href="/plastic-surgery-marketing" onclick="toggleMobileMenu()">Plastic Surgery</a>
+    <a href="/dermatology-marketing" onclick="toggleMobileMenu()">Dermatology</a>
+    <a href="/botox-clinic-marketing" onclick="toggleMobileMenu()">Botox Clinics</a>
+    <a href="/blog" onclick="toggleMobileMenu()">Blog</a>
+    <a href="/med-spa-marketing-scorecard" onclick="toggleMobileMenu()">Free Scorecard</a>
+    <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold" style="margin-top:1rem;">Book a Free Call</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="roi-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content:center; margin-bottom:1.5rem;">
+        <a href="/">Home</a><span>/</span><span class="current">ROI Calculator</span>
+      </nav>
+      <span class="roi-eyebrow">Free Tool</span>
+      <h1 class="roi-h1">Med Spa Marketing <em>ROI Calculator</em></h1>
+      <p class="roi-sub">See what your ad budget could actually return. Enter a few numbers and get projected leads, booked consultations, new patients, revenue, and return on ad spend — instantly.</p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="roi-body">
+    <div class="roi-wrap">
+
+      <!-- Netlify form detection (hidden static form) -->
+      <form name="roi-calculator" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <input type="text" name="clinic" />
+        <input type="text" name="ad-budget" />
+        <input type="text" name="projected-patients" />
+        <input type="text" name="projected-revenue" />
+        <input type="text" name="projected-roas" />
+      </form>
+
+      <div class="roi-grid">
+        <!-- Inputs -->
+        <div class="roi-panel">
+          <h2>Your numbers</h2>
+
+          <div class="roi-field">
+            <label class="roi-label" for="inBudget">Monthly ad budget <small>what you'll spend</small></label>
+            <div class="roi-input-wrap"><span class="roi-affix pre">$</span><input class="roi-input has-pre" type="number" id="inBudget" value="3000" min="0" step="100" oninput="recalc()" /></div>
+            <input class="roi-range" type="range" min="500" max="20000" step="100" value="3000" id="rgBudget" oninput="document.getElementById('inBudget').value=this.value; recalc()" />
+          </div>
+
+          <div class="roi-field">
+            <label class="roi-label" for="inCpl">Cost per lead <small>Meta $8–25 · Google $20–60</small></label>
+            <div class="roi-input-wrap"><span class="roi-affix pre">$</span><input class="roi-input has-pre" type="number" id="inCpl" value="20" min="1" step="1" oninput="recalc()" /></div>
+            <input class="roi-range" type="range" min="5" max="80" step="1" value="20" id="rgCpl" oninput="document.getElementById('inCpl').value=this.value; recalc()" />
+          </div>
+
+          <div class="roi-field">
+            <label class="roi-label" for="inConsult">Lead → booked consult rate <small>typical 25–45%</small></label>
+            <div class="roi-input-wrap"><input class="roi-input has-post" type="number" id="inConsult" value="35" min="1" max="100" step="1" oninput="recalc()" /><span class="roi-affix post">%</span></div>
+            <input class="roi-range" type="range" min="5" max="80" step="1" value="35" id="rgConsult" oninput="document.getElementById('inConsult').value=this.value; recalc()" />
+          </div>
+
+          <div class="roi-field">
+            <label class="roi-label" for="inClose">Consult → patient rate <small>typical 40–60%</small></label>
+            <div class="roi-input-wrap"><input class="roi-input has-post" type="number" id="inClose" value="50" min="1" max="100" step="1" oninput="recalc()" /><span class="roi-affix post">%</span></div>
+            <input class="roi-range" type="range" min="10" max="90" step="1" value="50" id="rgClose" oninput="document.getElementById('inClose').value=this.value; recalc()" />
+          </div>
+
+          <div class="roi-field" style="margin-bottom:0;">
+            <label class="roi-label" for="inValue">Average patient value <small>first-visit revenue</small></label>
+            <div class="roi-input-wrap"><span class="roi-affix pre">$</span><input class="roi-input has-pre" type="number" id="inValue" value="1500" min="0" step="50" oninput="recalc()" /></div>
+            <input class="roi-range" type="range" min="200" max="6000" step="50" value="1500" id="rgValue" oninput="document.getElementById('inValue').value=this.value; recalc()" />
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="roi-results">
+          <h2>Your projected return</h2>
+          <div class="roi-headline">
+            <div class="roi-roas" id="outRoas">13.1×</div>
+            <div class="roi-roas-label">Return on ad spend</div>
+          </div>
+          <div class="roi-metrics">
+            <div class="roi-metric"><div class="v" id="outLeads">150</div><div class="l">Leads / month</div></div>
+            <div class="roi-metric"><div class="v" id="outConsults">53</div><div class="l">Booked consults</div></div>
+            <div class="roi-metric"><div class="v gold" id="outPatients">26</div><div class="l">New patients / mo</div></div>
+            <div class="roi-metric"><div class="v gold" id="outRevenue">$39,375</div><div class="l">New revenue / mo</div></div>
+            <div class="roi-metric"><div class="v" id="outCpa">$114</div><div class="l">Cost per patient</div></div>
+            <div class="roi-metric"><div class="v" id="outAnnual">$472K</div><div class="l">Annualized revenue</div></div>
+          </div>
+          <p class="roi-disclaimer">Projection based on your inputs and typical med spa benchmarks. Real results hinge on your offer and how fast you follow up with leads — speed-to-lead is the single biggest swing factor. This is a model, not a guarantee.</p>
+        </div>
+      </div>
+
+      <!-- CTA / lead capture -->
+      <div class="roi-cta">
+        <div id="roiFormBlock">
+          <h2>Want these numbers to be <em>real?</em></h2>
+          <p>We build the system behind this math — ads, offer, and speed-to-lead follow-up — and guarantee 15+ booked consultations in your first month, or we work free until you hit it. Get your projection plus a custom plan emailed to you.</p>
+          <form class="roi-form" id="roiForm" onsubmit="return submitRoi(event)">
+            <div class="roi-form-row">
+              <input type="text" id="rf-name" placeholder="Your name" autocomplete="name" required />
+              <input type="text" id="rf-clinic" placeholder="Clinic name" autocomplete="organization" />
+            </div>
+            <input type="email" id="rf-email" placeholder="Email address" autocomplete="email" required />
+            <input type="tel" id="rf-phone" placeholder="Phone number" autocomplete="tel" required />
+            <button type="submit" class="btn-gold" style="width:100%; justify-content:center; font-size:0.9375rem; padding:1.0625rem 2rem;">Email Me My Projection + Plan &rarr;</button>
+            <p class="roi-note">No spam. We'll send your numbers and follow up about growing your clinic.</p>
+          </form>
+        </div>
+        <div class="roi-form-success" id="roiSuccess">
+          <strong>&#10003; On its way.</strong> We've got your details and your projection — we'll be in touch shortly with a custom plan. Prefer to talk now? <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" style="color:var(--gold); text-decoration:underline;">Book a free call</a>.
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" style="font-family:'Work Sans',sans-serif; font-size:0.875rem; color:var(--text-muted); text-decoration:underline; text-underline-offset:3px;">…or skip the form and book a free strategy call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORTING CONTENT -->
+  <section class="roi-content">
+    <div class="container">
+      <article class="article-body">
+        <h2>How the Med Spa ROI Calculator Works</h2>
+        <p>This calculator turns an ad budget into the numbers that actually matter to a med spa owner: booked consultations, new patients, revenue, and return on ad spend. It walks the same four-stage funnel every paid campaign runs through — and the defaults are real benchmarks, not optimism.</p>
+        <ul>
+          <li><strong>Leads</strong> = ad budget ÷ cost per lead. On Meta, med spa offers typically run $8–25 per lead; on Google, $20–60.</li>
+          <li><strong>Booked consults</strong> = leads × your lead-to-consult rate. This is where speed-to-lead lives — clinics that respond in under five minutes convert far more of the same leads.</li>
+          <li><strong>New patients</strong> = consults × your consult-to-patient rate, which combines show rate and close rate.</li>
+          <li><strong>Revenue</strong> = patients × average patient value. We use first-visit revenue; lifetime value is usually multiples higher.</li>
+          <li><strong>ROAS</strong> = revenue ÷ ad budget. Anything above 3–4x on the first visit is healthy for a med spa, and it compounds with retention.</li>
+        </ul>
+
+        <h2>What's a Good ROAS for a Med Spa?</h2>
+        <p>Most med spas with a real system see 3–5x return on ad spend within 90 days on first-visit revenue alone. But the first visit understates the truth: an aesthetic patient is worth <strong>$1,200–5,000+</strong> over their lifetime. A campaign that merely breaks even on visit one is often wildly profitable across a year of Botox, filler, and treatment packages. That's why the smartest clinics measure cost per acquired patient against lifetime value — not against a single transaction. For the full breakdown, see our <a href="/blog/med-spa-roi-marketing">med spa marketing ROI guide</a>.</p>
+
+        <h2>The Number That Breaks the Whole Model</h2>
+        <p>Notice how sensitive the results are to the lead-to-consult rate. That single slider is mostly decided by one thing: <strong>how fast you follow up.</strong> Roughly 78% of patients book with whoever responds first, and leads contacted within five minutes convert at multiples of leads contacted an hour later. You can double your patients from the same ad budget without spending an extra dollar — just by fixing follow-up. It's the core of our <a href="/blog/med-spa-lead-follow-up-system">speed-to-lead system</a>.</p>
+
+        <h2>Turn the Projection Into Reality</h2>
+        <p>A model is only useful if someone executes it. That's what <a href="/">ScaleHaven</a> does — done-for-you <a href="/med-spa-advertising">med spa advertising</a> with the offer, creative, and automated follow-up that make these numbers real, backed by a 15-consultation month-one guarantee. Want to know where your current marketing stands first? Take the free <a href="/med-spa-marketing-scorecard">med spa marketing scorecard</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <div style="max-width:2.5rem; margin:0 auto 2rem;">
+        <img src="/brand_assets/scalehaven_icon.svg" alt="" width="40" height="40" style="width:100%;" loading="lazy" />
+      </div>
+      <h2 class="cta-h reveal" style="margin-bottom:1.5rem;">
+        Ready to Make the <em>Math Real?</em>
+      </h2>
+      <p class="reveal reveal-d1" style="font-size:1.0625rem; color:var(--text-muted); line-height:1.75; max-width:520px; margin:0 auto 2.75rem;">
+        Book a free 30-minute strategy call. We'll pressure-test these numbers for your market and show you exactly how we'd hit them — then tell you if we're a fit.
+      </p>
+      <div class="reveal reveal-d2" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.9375rem; padding:1.0625rem 2.5rem;">
+          Book Your Free Call Today
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="reveal reveal-d3" style="font-size:0.75rem; color:var(--text-muted); margin-top:1.25rem; letter-spacing:0.06em;">No obligation. No pitch deck. Just a real conversation.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3rem; padding:3rem 0 2rem; border-bottom:1px solid rgba(192,149,64,0.15); margin-bottom:2rem;" class="footer-grid">
+        <div>
+          <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_horizontal_ondark.svg" alt="ScaleHaven" width="159" height="48" style="height:48px; width:auto; margin-bottom:1rem;" /></a>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.7; max-width:280px;">More booked consultations for med spas &amp; aesthetic clinics — through done-for-you ads, SEO, and automated follow-up. 15+ in month one, guaranteed.</p>
+          <div style="display:flex; gap:0.75rem; margin-top:1.25rem;">
+            <a href="https://www.instagram.com/scalehaven.io/" target="_blank" rel="noopener noreferrer" aria-label="ScaleHaven on Instagram" style="display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border:1px solid rgba(192,149,64,0.28); border-radius:50%; color:rgba(255,255,255,0.6); transition:color 0.2s ease,border-color 0.2s ease;" onmouseover="this.style.color='#C09540';this.style.borderColor='#C09540';" onmouseout="this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(192,149,64,0.28)';">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/scalehaven-marketing/" target="_blank" rel="noopener noreferrer" aria-label="ScaleHaven on LinkedIn" style="display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border:1px solid rgba(192,149,64,0.28); border-radius:50%; color:rgba(255,255,255,0.6); transition:color 0.2s ease,border-color 0.2s ease;" onmouseover="this.style.color='#C09540';this.style.borderColor='#C09540';" onmouseout="this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(192,149,64,0.28)';">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.93H5.67v8.41h2.67zM7 8.67a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.67v-4.61c0-2.4-1.28-3.52-2.99-3.52-1.38 0-2 .76-2.34 1.29v-1.11H9.34c.04.75 0 8.41 0 8.41h2.67v-4.7c0-.24.02-.48.09-.65.19-.48.63-.97 1.36-.97.96 0 1.35.73 1.35 1.81v4.51h2.67z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61587222517501" target="_blank" rel="noopener noreferrer" aria-label="ScaleHaven on Facebook" style="display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border:1px solid rgba(192,149,64,0.28); border-radius:50%; color:rgba(255,255,255,0.6); transition:color 0.2s ease,border-color 0.2s ease;" onmouseover="this.style.color='#C09540';this.style.borderColor='#C09540';" onmouseout="this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(192,149,64,0.28)';">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem;">Services</p>
+          <div style="display:flex; flex-direction:column; gap:0.625rem;">
+            <a href="/med-spa-lead-generation" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Lead Generation</a>
+            <a href="/med-spa-facebook-ads" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Meta Ads Management</a>
+            <a href="/med-spa-advertising" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Med Spa Advertising</a>
+            <a href="/med-spa-google-ads" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Google Ads Management</a>
+            <a href="/med-spa-seo" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">SEO &amp; Local Search</a>
+            <a href="/med-spa-web-design" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Web Design</a>
+            <a href="/botox-clinic-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Botox &amp; Injectables</a>
+            <a href="/dermatology-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Dermatology Marketing</a>
+            <a href="/plastic-surgery-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Plastic Surgery Marketing</a>
+            <a href="/aesthetic-clinic-marketing" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Aesthetic Clinics</a>
+            <a href="/med-spa-marketing-near-me" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Local Clinic Marketing</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem;">Get Started</p>
+          <div style="display:flex; flex-direction:column; gap:0.625rem;">
+            <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Book a Free Call</a>
+            <a href="/med-spa-marketing-scorecard" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Free Marketing Scorecard</a>
+            <a href="/med-spa-roi-calculator" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">ROI Calculator</a>
+            <a href="mailto:john@scalehaven.io" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">john@scalehaven.io</a>
+            <a href="/blog" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Blog</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+        <p style="font-size:0.75rem; color:rgba(255,255,255,0.35);">&copy; 2026 ScaleHaven. All rights reserved.</p>
+        <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-nav" style="font-size:0.6875rem;">Book a Call</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js?v=20260611" defer></script>
+  <script>
+    function fmtMoney(n) {
+      if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+      if (n >= 10000) return '$' + Math.round(n/1000) + 'K';
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+    function num(id) { return parseFloat(document.getElementById(id).value) || 0; }
+    function syncRange(inId, rgId) {
+      var v = document.getElementById(inId).value, rg = document.getElementById(rgId);
+      if (rg && v !== '') rg.value = v;
+    }
+    function recalc() {
+      var budget = num('inBudget'), cpl = num('inCpl'),
+          consultRate = num('inConsult')/100, closeRate = num('inClose')/100, value = num('inValue');
+      ['inBudget|rgBudget','inCpl|rgCpl','inConsult|rgConsult','inClose|rgClose','inValue|rgValue']
+        .forEach(function(p){ var a=p.split('|'); syncRange(a[0],a[1]); });
+      var leads = cpl > 0 ? budget / cpl : 0;
+      var consults = leads * consultRate;
+      var patients = consults * closeRate;
+      var revenue = patients * value;
+      var roas = budget > 0 ? revenue / budget : 0;
+      var cpa = patients > 0 ? budget / patients : 0;
+      document.getElementById('outLeads').textContent = Math.round(leads).toLocaleString('en-US');
+      document.getElementById('outConsults').textContent = Math.round(consults).toLocaleString('en-US');
+      document.getElementById('outPatients').textContent = Math.round(patients).toLocaleString('en-US');
+      document.getElementById('outRevenue').textContent = fmtMoney(revenue);
+      document.getElementById('outCpa').textContent = patients > 0 ? '$' + Math.round(cpa).toLocaleString('en-US') : '—';
+      document.getElementById('outAnnual').textContent = fmtMoney(revenue * 12);
+      document.getElementById('outRoas').textContent = roas.toFixed(1) + '×';
+    }
+    function submitRoi(e) {
+      e.preventDefault();
+      var name = document.getElementById('rf-name').value.trim();
+      var email = document.getElementById('rf-email').value.trim();
+      var phone = document.getElementById('rf-phone').value.trim();
+      if (!name || !email || !phone) return false;
+      var data = {
+        'form-name': 'roi-calculator',
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'clinic': document.getElementById('rf-clinic').value.trim(),
+        'ad-budget': '$' + num('inBudget').toLocaleString('en-US') + '/mo',
+        'projected-patients': document.getElementById('outPatients').textContent + '/mo',
+        'projected-revenue': document.getElementById('outRevenue').textContent + '/mo',
+        'projected-roas': document.getElementById('outRoas').textContent
+      };
+      var body = Object.keys(data).map(function(k){
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+      }).join('&');
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+        .then(function(){
+          document.getElementById('roiFormBlock').style.display = 'none';
+          document.getElementById('roiSuccess').style.display = 'block';
+        })
+        .catch(function(){
+          document.getElementById('roiFormBlock').style.display = 'none';
+          document.getElementById('roiSuccess').style.display = 'block';
+        });
+      return false;
+    }
+    recalc();
+  </script>
+  <!-- LeadConnector Chat Widget (deferred to reduce TBT) -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.src = 'https://widgets.leadconnectorhq.com/loader.js';
+        s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+        s.setAttribute('data-widget-id', '69f2bdf9829cb997f57ac470');
+        s.setAttribute('data-source', 'WEB_USER');
+        document.body.appendChild(s);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
