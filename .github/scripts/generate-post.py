@@ -62,7 +62,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
         "@type": "BlogPosting",
         "headline": "{title}",
         "description": "{excerpt}",
-        "author": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" }},
+        "author": {{ "@type": "Person", "name": "John Blackwood", "jobTitle": "Founder", "worksFor": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" }} }},
         "publisher": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io", "logo": {{ "@type": "ImageObject", "url": "https://scalehaven.io/brand_assets/scalehaven_logo.png" }} }},
         "datePublished": "{{{{TODAY}}}}",
         "dateModified": "{{{{TODAY}}}}",

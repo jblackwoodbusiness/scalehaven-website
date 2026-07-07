@@ -1,0 +1,36 @@
+# ScaleHaven
+
+> ScaleHaven is a done-for-you marketing agency for med spas, aesthetic clinics, and plastic surgery practices in the US & Canada. We run Meta Ads, Google Ads, SEO, and automated lead follow-up — and guarantee 15+ booked consultations in a client's first month, or we work free until they hit it. Founded by an operator who grew a cosmetic clinic into one of the largest in its region before it sold to a private equity firm.
+
+## Services (money pages)
+
+- [Med Spa Advertising](https://scalehaven.io/med-spa-advertising/): Meta + Google paid advertising management for med spas
+- [Med Spa Facebook Ads](https://scalehaven.io/med-spa-facebook-ads/): Meta (Facebook & Instagram) ads management
+- [Med Spa Google Ads](https://scalehaven.io/med-spa-google-ads/): Google Ads & PPC management
+- [Med Spa SEO](https://scalehaven.io/med-spa-seo/): SEO and local search services for medical spas
+- [Med Spa Web Design](https://scalehaven.io/med-spa-web-design/): SEO-first websites built to rank and convert
+- [Med Spa Lead Generation](https://scalehaven.io/med-spa-lead-generation/): Guaranteed patient lead generation
+- [Aesthetic Clinic Marketing](https://scalehaven.io/aesthetic-clinic-marketing/): Marketing for aesthetic clinics
+- [Plastic Surgery Marketing](https://scalehaven.io/plastic-surgery-marketing/): Marketing for plastic & cosmetic surgery practices
+- [Dermatology Marketing](https://scalehaven.io/dermatology-marketing/): Marketing for dermatology practices
+- [Botox Clinic Marketing](https://scalehaven.io/botox-clinic-marketing/): Marketing for Botox & injectable clinics
+
+## Free Tools
+
+- [Med Spa Marketing Scorecard](https://scalehaven.io/med-spa-marketing-scorecard/): 12-question marketing self-assessment with instant score
+- [Med Spa ROI Calculator](https://scalehaven.io/med-spa-roi-calculator/): Projects leads, consultations, patients, revenue, and ROAS from an ad budget
+
+## Key Guides
+
+- [How to Market a Med Spa](https://scalehaven.io/blog/how-to-market-a-med-spa/): The complete med spa marketing playbook
+- [Med Spa SEO Playbook](https://scalehaven.io/blog/med-spa-seo/): How med spas rank #1 for local patient searches
+- [Med Spa Business Plan](https://scalehaven.io/blog/med-spa-business-plan/): How to write a fundable med spa business plan
+- [How to Start a Med Spa](https://scalehaven.io/blog/how-to-start-a-med-spa/): Step-by-step launch roadmap
+- [Med Spa Industry Statistics](https://scalehaven.io/blog/med-spa-industry-statistics/): 47 sourced industry statistics
+- [Med Spa Cost Per Lead Benchmarks](https://scalehaven.io/blog/med-spa-cost-per-lead-benchmarks/): Real CPL data by treatment and channel
+- [Blog index](https://scalehaven.io/blog/): All guides on med spa & aesthetic clinic marketing
+
+## Contact
+
+- Book a call: https://calendly.com/john-scalehaven/30min
+- Email: john@scalehaven.io
