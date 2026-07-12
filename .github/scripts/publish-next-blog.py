@@ -161,6 +161,19 @@ def main() -> int:
     queue_file.unlink()
     sys.stdout.write(f"  Removed from queue: {queue_file.name}\n")
 
+    # IndexNow: notify Bing (and partners) the instant a post publishes
+    try:
+        import urllib.request
+        indexnow_key = "1fb53da932a235a40b554c975585eb09"
+        ping_url = (
+            "https://api.indexnow.org/indexnow"
+            f"?url=https://scalehaven.io/blog/{slug}/&key={indexnow_key}"
+        )
+        urllib.request.urlopen(ping_url, timeout=10)
+        sys.stdout.write("  IndexNow: pinged Bing\n")
+    except Exception as exc:  # never fail a publish over a ping
+        sys.stdout.write(f"  IndexNow ping failed (non-fatal): {exc}\n")
+
     sys.stdout.write(f"Published successfully: /blog/{slug}\n")
     return 0
 
