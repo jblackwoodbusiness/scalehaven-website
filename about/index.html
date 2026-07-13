@@ -1,34 +1,24 @@
-#!/usr/bin/env python3
-"""
-generate-post.py — Generates a queue-ready blog post HTML file from a content dict.
-Usage: Called programmatically or via stdin JSON.
-"""
-
-import json, sys, textwrap
-from pathlib import Path
-
-TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | ScaleHaven</title>
-  <meta name="description" content="{excerpt}" />
+  <title>About ScaleHaven | Built by a Clinic Operator</title>
+  <meta name="description" content="ScaleHaven was founded by an operator who grew a cosmetic clinic into one of the largest in its region and sold it to private equity. Here's our story." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="John Blackwood, ScaleHaven" />
-  <link rel="canonical" href="https://scalehaven.io/blog/{slug}/" />
+  <link rel="canonical" href="https://scalehaven.io/about/" />
 
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{title} | ScaleHaven" />
-  <meta property="og:description" content="{excerpt}" />
-  <meta property="og:url" content="https://scalehaven.io/blog/{slug}/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About ScaleHaven | Built by a Clinic Operator" />
+  <meta property="og:description" content="Founded by an operator who grew a cosmetic clinic into one of the largest in its region — and sold it to private equity." />
+  <meta property="og:url" content="https://scalehaven.io/about/" />
   <meta property="og:site_name" content="ScaleHaven" />
   <meta property="og:image" content="https://scalehaven.io/brand_assets/scalehaven_social.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{title} | ScaleHaven" />
-  <meta name="twitter:description" content="{twitter_desc}" />
+  <meta name="twitter:title" content="About ScaleHaven" />
+  <meta name="twitter:description" content="Built by a clinic operator, not a career marketer." />
   <meta name="twitter:image" content="https://scalehaven.io/brand_assets/scalehaven_social.png" />
 
   <link rel="icon" type="image/svg+xml" href="/brand_assets/scalehaven_favicon.svg" />
@@ -38,8 +28,6 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <link rel="apple-touch-icon" href="/brand_assets/scalehaven_favicon_256.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://widgets.leadconnectorhq.com" />
-  <link rel="preconnect" href="https://services.leadconnectorhq.com" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
@@ -47,32 +35,38 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <link rel="stylesheet" href="/styles/main.css?v=20260611" />
 
   <script type="application/ld+json">
-  {{
+  {
     "@context": "https://schema.org",
     "@graph": [
-      {{
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scalehaven.io/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://scalehaven.io/blog/" }},
-          {{ "@type": "ListItem", "position": 3, "name": "{breadcrumb_name}", "item": "https://scalehaven.io/blog/{slug}/" }}
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scalehaven.io/" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://scalehaven.io/about/" }
         ]
-      }},
-      {{
-        "@type": "BlogPosting",
-        "headline": "{title}",
-        "description": "{excerpt}",
-        "author": {{ "@type": "Person", "name": "John Blackwood", "jobTitle": "Founder", "url": "https://scalehaven.io/about/", "worksFor": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" }} }},
-        "publisher": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io", "logo": {{ "@type": "ImageObject", "url": "https://scalehaven.io/brand_assets/scalehaven_logo.png" }} }},
-        "datePublished": "{{{{TODAY}}}}",
-        "dateModified": "{{{{TODAY}}}}",
-        "mainEntityOfPage": {{ "@type": "WebPage", "@id": "https://scalehaven.io/blog/{slug}/" }}
-      }}
+      },
+      {
+        "@type": "AboutPage",
+        "name": "About ScaleHaven",
+        "url": "https://scalehaven.io/about/",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "John Blackwood",
+          "jobTitle": "Founder",
+          "url": "https://scalehaven.io/about/",
+          "worksFor": { "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" },
+          "knowsAbout": ["Med Spa Marketing", "Aesthetic Clinic Marketing", "Patient Acquisition", "Meta Advertising", "Med Spa SEO"],
+          "sameAs": [
+            "https://www.linkedin.com/company/scalehaven-marketing/",
+            "https://www.instagram.com/scalehaven.io/"
+          ]
+        }
+      }
     ]
-  }}
+  }
   </script>
 </head>
-<body class="post">
+<body>
 
   <!-- NAV -->
   <nav>
@@ -123,109 +117,76 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
     <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold" style="margin-top:1rem;">Book a Free Call</a>
   </div>
 
-
   <!-- HERO -->
   <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">{ghost_text}</div>
+    <div class="ghost-text" aria-hidden="true">ABOUT</div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">{breadcrumb_name}</span>
+        <a href="/">Home</a><span>/</span><span class="current">About</span>
       </nav>
-      <div style="max-width:680px;">
-        <span class="eyebrow" style="color:rgba(192,149,64,0.85); margin-bottom:1rem;">{eyebrow}</span>
-        <div class="gold-rule" style="margin-bottom:1.5rem; background:linear-gradient(90deg,var(--gold),transparent); width:3rem;"></div>
-        <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4.5vw,3.75rem); font-weight:600; line-height:1.08; letter-spacing:-0.03em; color:#fff; margin-bottom:1.25rem;">
-          {h1_html}
+      <div style="max-width:720px;">
+        <span class="eyebrow" style="color:rgba(192,149,64,0.85); margin-bottom:1.25rem;">About ScaleHaven</span>
+        <div class="gold-rule" style="margin-bottom:1.75rem; background:linear-gradient(90deg,var(--gold),transparent); width:3rem;"></div>
+        <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.75rem,5vw,4.5rem); font-weight:600; line-height:1.05; letter-spacing:-0.03em; color:#fff; margin-bottom:1.5rem;">
+          Built by an Operator,<br /><em style="font-style:italic; color:var(--gold);">Not a Career Marketer</em>
         </h1>
-        <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); letter-spacing:0.04em;"><time datetime="{{{{TODAY}}}}">{{{{TODAY_HUMAN}}}}</time> &middot; {read_time} min read</p>
+        <p style="font-size:1.0625rem; color:rgba(255,255,255,0.65); line-height:1.75; max-width:560px;">
+          Most agencies learned aesthetics from the outside. ScaleHaven was built from inside a clinic — one that grew into one of the largest in its region and sold to private equity.
+        </p>
       </div>
     </div>
   </section>
 
-
-  <!-- ARTICLE -->
+  <!-- STORY -->
   <section style="background:var(--cream); padding:5rem 0 4rem;">
     <div class="container">
-      <article class="article-body reveal">
-{body_html}
+      <article class="article-body reveal" style="max-width:760px; margin:0 auto;">
+        <h2>The Story Behind ScaleHaven</h2>
+        <p>ScaleHaven's founder, <strong>John Blackwood</strong>, didn't start in marketing. He started in a cosmetic clinic — a family business that had to figure out, treatment by treatment and patient by patient, what actually fills an aesthetic practice's calendar.</p>
+        <p>That clinic grew into <strong>one of the largest in its region</strong>. The playbook that grew it wasn't complicated, but it was disciplined: named treatment offers instead of discounts, relentless speed on every lead, retention systems that turned one visit into years of visits, and marketing measured in booked consultations — never impressions. Eventually the clinic did what well-built businesses do: it attracted a buyer, and <strong>sold to a private equity firm</strong>.</p>
+        <p>ScaleHaven exists to run that same playbook for med spas, aesthetic clinics, and plastic surgery practices across the US and Canada. Not theory from a marketing textbook — the operating system of a clinic that actually won.</p>
+
+        <h2>What We Believe (and Build Into Every Engagement)</h2>
+        <ul>
+          <li><strong>Offers beat discounts.</strong> A named, specific offer attracts patients who stay. "$8 Botox" attracts price shoppers who churn. We saw this from inside the clinic; now it's the first thing we fix for clients.</li>
+          <li><strong>Speed decides revenue.</strong> Roughly 78% of patients book with whoever responds first. Every ScaleHaven system starts with instant follow-up — text-back in seconds, calls in minutes, automated nurture until the consult is booked.</li>
+          <li><strong>Real faces convert.</strong> Patients choose people, not logos. We put providers on camera because authenticity breaks the cold-ad barrier better than any production budget.</li>
+          <li><strong>One metric matters.</strong> Booked consultations. Not reach, not clicks, not likes. If it doesn't put a patient in a chair, we don't report it as a win.</li>
+        </ul>
+
+        <div style="background:linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%); border-radius:10px; padding:1.75rem 2rem; margin:2rem 0; border-left:3px solid var(--gold);">
+          <span style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">Proof, Not Promises</span>
+          <p style="color:rgba(255,255,255,0.85); font-size:0.9375rem; line-height:1.7; margin:0.625rem 0 0;">For a Greater Toronto Area med spa, we built a curated <strong style="color:#fff;">PRP hair-restoration offer</strong> and ran it on Meta. A <strong style="color:var(--gold);">$1,000 ad budget produced 100+ leads at roughly $10 each</strong> — 10 booked consultations, 5 closed packages, about <strong style="color:var(--gold);">$12,500 in month-one revenue</strong>. No procedure video existed; image ads and a strong offer carried it. That campaign is the ScaleHaven method in miniature.</p>
+        </div>
+
+        <h2>The Guarantee That Makes It Real</h2>
+        <p>Because the system is proven, we put our fee where our confidence is: <strong>15+ booked consultations in your first month, or we work free until you hit it.</strong> No agency that merely "manages ads" can offer that. An operator who has filled a clinic's calendar before can.</p>
+        <p>Want to see how we'd apply it to your clinic? Start with the free <a href="/med-spa-marketing-scorecard/">marketing scorecard</a>, model your numbers in the <a href="/med-spa-roi-calculator/">ROI calculator</a>, or read the full playbook in <a href="/blog/how-to-market-a-med-spa/">how to market a med spa</a>.</p>
       </article>
-
-      <div class="author-box reveal">
-        <h3>About ScaleHaven</h3>
-        <p>{author_bio}</p>
-        <a href="/about/">Meet the founder &rarr;</a>
-      </div>
-
-      <!-- OUR SERVICES (hub-and-spoke CTA) -->
-      <div class="reveal" style="margin-top:2.5rem; padding:2.5rem 2rem; background:#fff; border:1px solid var(--border); border-radius:4px; box-shadow:0 2px 8px rgba(26,39,69,0.04);">
-        <div style="text-align:center; margin-bottom:1.75rem;">
-          <span style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);">Our Services</span>
-          <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; font-weight:600; color:var(--navy); margin:0.625rem 0 0.5rem; letter-spacing:-0.02em;">Done-for-You Growth for <em style="font-style:italic; color:var(--gold);">Med Spas &amp; Aesthetic Clinics</em></h3>
-          <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); margin:0;">Pick the channel that fits your stage — we handle everything from creative to follow-up.</p>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.875rem;">
-          <a href="/med-spa-lead-generation/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Lead Generation</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">15+ Booked Patients/Mo</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Guaranteed — or we work free.</div>
-          </a>
-          <a href="/med-spa-facebook-ads/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Meta Ads</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">Facebook &amp; Instagram</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Highest-ROI channel for med spas.</div>
-          </a>
-          <a href="/med-spa-google-ads/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Google Ads</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">High-Intent Patients</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Capture "near me" searches.</div>
-          </a>
-          <a href="/med-spa-seo/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">SEO &amp; Local</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">Rank #1 Locally</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Long-term compounding traffic.</div>
-          </a>
-        </div>
-      </div>
     </div>
   </section>
-
-
-  <!-- RELATED POSTS -->
-  <section style="background:var(--cream-light); padding:5rem 0 6rem;">
-    <div class="container">
-      <div style="text-align:center; margin-bottom:3rem;">
-        <span class="eyebrow" style="margin-bottom:1rem;">Keep Reading</span>
-        <h2 class="section-h reveal">Related <em>Articles</em></h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1100px; margin:0 auto;" class="responsive-3col">
-{related_html}
-      </div>
-    </div>
-  </section>
-
 
   <!-- CTA -->
   <section class="section-cta">
     <div class="container">
       <div style="max-width:2.5rem; margin:0 auto 2rem;">
-        <img src="/brand_assets/scalehaven_icon.svg" alt="" width="40" height="40" style="width:100%;" />
+        <img src="/brand_assets/scalehaven_icon.svg" alt="" width="40" height="40" style="width:100%;" loading="lazy" />
       </div>
       <h2 class="cta-h reveal" style="margin-bottom:1.5rem;">
-        {cta_h2}
+        Talk to the <em>Operator, Not a Rep.</em>
       </h2>
       <p class="reveal reveal-d1" style="font-size:1.0625rem; color:var(--text-muted); line-height:1.75; max-width:520px; margin:0 auto 2.75rem;">
-        {cta_p}
+        Book a free 30-minute call with John. You'll get a straight read on your clinic's growth levers — and whether we're a fit. No pitch deck.
       </p>
       <div class="reveal reveal-d2" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-        <a href="{cta_link}" {cta_attrs} class="btn-gold" style="font-size:0.9375rem; padding:1.0625rem 2.5rem;">
-          {cta_btn}
+        <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.9375rem; padding:1.0625rem 2.5rem;">
+          Book Your Free Call Today
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
-      <p class="reveal reveal-d3" style="font-size:0.75rem; color:var(--text-muted); margin-top:1.25rem; letter-spacing:0.06em;">{cta_sub}</p>
+      <p class="reveal reveal-d3" style="font-size:0.75rem; color:var(--text-muted); margin-top:1.25rem; letter-spacing:0.06em;">No obligation. No pitch deck. Just a real conversation.</p>
     </div>
   </section>
-
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -259,7 +220,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
             <a href="/dermatology-marketing/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Dermatology Marketing</a>
             <a href="/plastic-surgery-marketing/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Plastic Surgery Marketing</a>
             <a href="/aesthetic-clinic-marketing/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Aesthetic Clinics</a>
-            <a href="/med-spa-marketing-near-me/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Local Med Spa Marketing</a>
+            <a href="/med-spa-marketing-near-me/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Local Clinic Marketing</a>
           </div>
         </div>
         <div>
@@ -283,69 +244,18 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   </footer>
 
   <script src="/js/main.js?v=20260611" defer></script>
-
   <!-- LeadConnector Chat Widget (deferred to reduce TBT) -->
   <script>
-    window.addEventListener('load', function() {{
-      setTimeout(function() {{
+    window.addEventListener('load', function() {
+      setTimeout(function() {
         var s = document.createElement('script');
         s.src = 'https://widgets.leadconnectorhq.com/loader.js';
         s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
         s.setAttribute('data-widget-id', '69f2bdf9829cb997f57ac470');
         s.setAttribute('data-source', 'WEB_USER');
         document.body.appendChild(s);
-      }}, 2000);
-    }});
+      }, 2000);
+    });
   </script>
-
 </body>
-</html>'''
-
-
-def related_card(href, tag, title, excerpt, delay=""):
-    cls = f"blog-card reveal{' ' + delay if delay else ''}"
-    return f'''        <a href="{href}" class="{cls}" style="position:relative;">
-          <div class="blog-card-body">
-            <span class="blog-card-tag">{tag}</span>
-            <h3 class="blog-card-title">{title}</h3>
-            <p class="blog-card-excerpt">{excerpt}</p>
-            <span class="read-more">Read &rarr;</span>
-          </div>
-        </a>'''
-
-
-def generate(data: dict) -> str:
-    related = []
-    for i, r in enumerate(data.get("related", [])):
-        delay = ["", "reveal-d1", "reveal-d2"][i] if i < 3 else ""
-        related.append(related_card(r["href"], r["tag"], r["title"], r["excerpt"], delay))
-
-    return TEMPLATE.format(
-        tag=data["tag"],
-        excerpt=data["excerpt"],
-        read_time=data["read_time"],
-        title=data["title"],
-        slug=data["slug"],
-        twitter_desc=data.get("twitter_desc", data["excerpt"][:120]),
-        breadcrumb_name=data["breadcrumb_name"],
-        ghost_text=data["ghost_text"],
-        eyebrow=data["eyebrow"],
-        h1_html=data["h1_html"],
-        body_html=data["body_html"],
-        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. Our founder grew a cosmetic clinic into one of the largest in its region — and sold it to a private equity firm. We run Meta Ads, automate lead follow-up, and guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
-        related_html="\n\n".join(related),
-        cta_h2=data.get("cta_h2", 'Ready to <em>Get Started?</em>'),
-        cta_p=data.get("cta_p", "Book a free 30-minute call and we'll show you exactly how we'd fill your calendar."),
-        cta_link=data.get("cta_link", "https://calendly.com/john-scalehaven/30min"),
-        cta_attrs=data.get("cta_attrs", 'target="_blank" rel="noopener noreferrer"'),
-        cta_btn=data.get("cta_btn", "Book Your Free Call Today"),
-        cta_sub=data.get("cta_sub", "No obligation. No pitch deck. Just a real conversation."),
-    )
-
-
-if __name__ == "__main__":
-    data = json.load(sys.stdin)
-    out_path = Path(data.pop("_output"))
-    html = generate(data)
-    out_path.write_text(html, encoding="utf-8")
-    print(f"Generated: {out_path}")
+</html>
