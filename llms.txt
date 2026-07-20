@@ -1,6 +1,6 @@
 # ScaleHaven
 
-> ScaleHaven is a done-for-you marketing agency for med spas, aesthetic clinics, and plastic surgery practices in the US & Canada. We run Meta Ads, Google Ads, SEO, and automated lead follow-up — and guarantee 15+ booked consultations in a client's first month, or we work free until they hit it. Founded by an operator who grew a cosmetic clinic into one of the largest in its region before it sold to a private equity firm.
+> ScaleHaven is a done-for-you marketing agency for med spas, aesthetic clinics, and plastic surgery practices in the US & Canada. We run Meta Ads, Google Ads, and SEO that deliver financially qualified patients (with optional follow-up automation) — and guarantee 15+ booked consultations in a client's first month, or we work free until they hit it. Founded by an operator who grew a cosmetic clinic into one of the largest in its region before it sold to a private equity firm.
 
 ## Services (money pages)
 
