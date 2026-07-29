@@ -5,9 +5,10 @@
  * Netlify publishes this repo as-is (publish = "."), so nothing between a typo
  * and production. This is that check.
  *
- *   node scripts/validate-site.mjs                 # sweep every page
+ *   node scripts/validate-site.mjs                 # sweep every page + queue
  *   node scripts/validate-site.mjs a.html b.html   # only these files
  *   node scripts/validate-site.mjs --quiet         # print only failures
+ *   node scripts/validate-site.mjs --skip-queue    # ignore blog/_queue (CI gate)
  *
  * Exit code 0 = clean, 1 = issues found (so CI can block a bad publish).
  */
@@ -133,11 +134,15 @@ async function checkSitemap(pages) {
 async function main() {
   const args = process.argv.slice(2);
   const quiet = args.includes('--quiet');
+  // CI gates on this: the post being published has already been moved out of
+  // _queue, so a broken FUTURE queued post must not block a good publish today.
+  const skipQueue = args.includes('--skip-queue');
   const explicit = args.filter((a) => !a.startsWith('--'));
 
-  const pages = explicit.length
+  let pages = explicit.length
     ? explicit.map((f) => path.resolve(ROOT, f))
     : (await findPages(ROOT)).sort();
+  if (skipQueue) pages = pages.filter((f) => !rel(f).startsWith(path.join('blog', '_queue')));
 
   let failed = 0;
   for (const file of pages) {

@@ -29,12 +29,25 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Run publish script
         id: publish
         run: |
           set -e
           python .github/scripts/publish-next-blog.py
         continue-on-error: false
+
+      # Gate: the new post, blog/index.html and sitemap.xml must all be valid
+      # before anything is pushed. Netlify publishes this repo as-is, so a
+      # failure here is the only thing standing between a bad post and prod.
+      # The runner is ephemeral — if this fails nothing is committed and the
+      # post stays in blog/_queue/ for the next scheduled run.
+      - name: Validate site
+        run: node scripts/validate-site.mjs --quiet --skip-queue
 
       - name: Configure git
         run: |
