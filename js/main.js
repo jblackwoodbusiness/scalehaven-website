@@ -1,3 +1,13 @@
+
+/* ── GA4 event tracking ── */
+window.shTrack = function (name, params) {
+  try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {}
+};
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href*="calendly.com"]') : null;
+  if (a) window.shTrack('calendly_click', { link_url: a.href, page_path: location.pathname });
+});
+
 /* ════════════════════════════════════════════════════════════
    ScaleHaven — Shared JavaScript
    ════════════════════════════════════════════════════════════ */
@@ -139,6 +149,7 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
         .finally(function () {
           try { localStorage.setItem('sh_lead_captured', '1'); } catch (e) {}
           form.classList.add('sh-leadform-done');
+          window.shTrack('lead_form_submit', { form_name: 'growth-plan', page_path: location.pathname });
         });
     });
   });
