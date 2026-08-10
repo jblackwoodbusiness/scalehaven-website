@@ -111,3 +111,73 @@ if (process.env.GA4_PROPERTY_ID) {
 } else {
   console.log(`\n## GA4\n- pending: set GA4_PROPERTY_ID in .env`);
 }
+
+// Authority watch (DataForSEO). Referring domains is THE bottleneck metric —
+// measured Aug 10, 2026: 1,442 backlinks but only 9 referring domains, and
+// 1,418 of those were a single sitewide footer link from thecliniccompass.com.
+// Page-1 entry in this niche costs ~60 referring domains (medspamagicmarketing.com).
+// OWNED is excluded from the "real" count so a sitewide self-link can never
+// flatter the number we steer by.
+const OWNED = ["thecliniccompass.com"];
+const dfs = async (path, body) => {
+  const auth = Buffer.from(`${process.env.DATAFORSEO_LOGIN}:${process.env.DATAFORSEO_PASSWORD}`).toString("base64");
+  const res = await fetch(`https://api.dataforseo.com/v3/${path}`, {
+    method: "POST",
+    headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
+    body: JSON.stringify([body]),
+  });
+  return (await res.json())?.tasks?.[0]?.result ?? [];
+};
+
+if (process.env.DATAFORSEO_LOGIN && process.env.DATAFORSEO_PASSWORD) {
+  try {
+    console.log(`\n## Authority watch (the bottleneck)`);
+    const [sum] = await dfs("backlinks/summary/live", { target: "scalehaven.io", internal_list_limit: 1, backlinks_status_type: "live" });
+    const [rd] = await dfs("backlinks/referring_domains/live", { target: "scalehaven.io", limit: 200, order_by: ["backlinks,desc"] });
+    const domains = rd?.items ?? [];
+    const real = domains.filter((d) => !OWNED.includes(d.domain));
+    console.log(`- Referring domains: **${sum?.referring_domains ?? "?"}** total · **${real.length}** excluding owned properties`);
+    console.log(`- Backlinks: ${sum?.backlinks?.toLocaleString() ?? "?"} · target for page 1 in this niche: **~60 referring domains**`);
+    for (const o of OWNED) {
+      const hit = domains.find((d) => d.domain === o);
+      if (hit) console.log(`- ⚠ ${o} (owned) still contributes ${hit.backlinks.toLocaleString()} links — sitewide self-links carry no ranking value`);
+    }
+    const fresh = real.filter((d) => d.first_seen && d.first_seen >= day(9)).map((d) => d.domain);
+    console.log(fresh.length ? `- **NEW this week: ${fresh.join(", ")}**` : `- No new referring domains this week`);
+
+    const [rk] = await dfs("dataforseo_labs/google/ranked_keywords/live", {
+      target: "scalehaven.io", location_code: 2840, language_code: "en", limit: 700,
+      order_by: ["ranked_serp_element.serp_item.rank_absolute,asc"],
+    });
+    const items = rk?.items ?? [];
+    const posOf = (i) => i.ranked_serp_element?.serp_item?.rank_absolute ?? 999;
+    const bands = { "1-3": 0, "4-10": 0, "11-20": 0, "21-50": 0, "51+": 0 };
+    for (const i of items) {
+      const p = posOf(i);
+      bands[p <= 3 ? "1-3" : p <= 10 ? "4-10" : p <= 20 ? "11-20" : p <= 50 ? "21-50" : "51+"]++;
+    }
+    console.log(`- Keywords ranked with tracked volume: **${rk?.total_count ?? items.length}** — top3 ${bands["1-3"]} · top10 ${bands["4-10"]} · 11-20 ${bands["11-20"]} · 21-50 ${bands["21-50"]} · 51+ ${bands["51+"]}`);
+    const close = items.filter((i) => posOf(i) >= 11 && posOf(i) <= 20 && (i.keyword_data?.keyword_info?.search_volume ?? 0) >= 40);
+    if (close.length) {
+      console.log(`- **One push from page 1** (pos 11-20, vol 40+):`);
+      for (const i of close.slice(0, 8)) {
+        const ki = i.keyword_data?.keyword_info ?? {};
+        console.log(`  - "${i.keyword_data.keyword}" — pos ${posOf(i)}, ${ki.search_volume}/mo, $${(ki.cpc ?? 0).toFixed(2)} CPC`);
+      }
+    }
+  } catch (e) { console.log(`- DataForSEO fetch failed: ${e.message}`); }
+}
+
+// Change log — what we shipped and when, so movement can be attributed.
+try {
+  const { execSync } = await import("node:child_process");
+  const log = execSync('git log --since="8 weeks ago" --date=short --pretty=format:"%ad|%s" -- . ":(exclude)blog/_queue"', { encoding: "utf8" })
+    .split("\n").filter((l) => l && !/^\S+\|Auto-publish/.test(l));
+  if (log.length) {
+    console.log(`\n## Change log (last 8 weeks — attribute movement to these)`);
+    for (const l of log.slice(0, 12)) {
+      const [d, ...s] = l.split("|");
+      console.log(`- ${d} — ${s.join("|")}`);
+    }
+  }
+} catch { /* not a git checkout — skip */ }
