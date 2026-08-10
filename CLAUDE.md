@@ -90,6 +90,10 @@ Inject John's real material from `differentiation-inputs.md`:
 - His **founder story**: grew a cosmetic clinic to one of the largest in its region, sold to PE
 - His **speed-to-lead system**: instant text/voice on form fill → 5-min call → AI nurture
 
+## Writing style (every page and post)
+- **No em dashes** (— or &amp;mdash;) anywhere in copy, metas, or excerpts. Restructure the sentence: period, comma, colon, or parentheses. Hyphen ranges ($3-12) are fine. This is John's standing rule.
+- Author is always John Blackwood, Founder (visible byline linked to /about/ + Person schema; both are wired into the templates).
+
 ## On-page checklist (apply to every page)
 - **Title:** keyword front-loaded, <60 chars, click-worthy
 - **One H1** (mirrors the title intent); H2/H3 hierarchy with natural keywords
