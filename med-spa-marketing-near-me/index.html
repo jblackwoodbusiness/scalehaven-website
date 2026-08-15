@@ -30,8 +30,8 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
-  <link rel="preload" as="style" href="/styles/main.css?v=20260611" />
-  <link rel="stylesheet" href="/styles/main.css?v=20260611" />
+  <link rel="preload" as="style" href="/styles/main.css?v=20260814" />
+  <link rel="stylesheet" href="/styles/main.css?v=20260814" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESH81N8XSV"></script>
   <script>
@@ -634,36 +634,53 @@
   </section>
 
   <!-- CTA -->
-    <!-- GROWTH PLAN LEAD FORM -->
+  <!-- CONTACT LEAD FORM -->
   <section class="sh-leadform-section">
     <div class="container">
       <div class="sh-leadform-card">
         <div class="sh-leadform-copy">
           <span class="eyebrow">No call required</span>
-          <h2>Not ready to book a call? <em>Get a free growth plan.</em></h2>
-          <p>Tell us a bit about your clinic and we'll put together a free, no-obligation game plan to book you more consultations — then reach out with it. No pressure, no pitch.</p>
+          <h2>Questions first? <em>Tell us about your practice.</em></h2>
+          <p>Not ready to book a call? Tell us a bit about your business and what you want help with, and John will personally reply within one business day. No pressure, no spam, no sales sequence.</p>
           <ul class="sh-leadform-bullets">
-            <li>Where you're leaving consultations on the table</li>
-            <li>The fastest wins for your clinic right now</li>
-            <li>Exactly what we'd do in your first 30 days</li>
+            <li>Ask anything about ads, SEO, or your website</li>
+            <li>Hear exactly how we would fill your calendar</li>
+            <li>A real reply from the founder, not a bot</li>
           </ul>
         </div>
-        <form name="growth-plan" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="sh-leadform">
-          <input type="hidden" name="form-name" value="growth-plan" />
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="sh-leadform">
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="page" value="" />
           <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
           <div class="sh-leadform-fields">
-            <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
-            <input type="text" name="clinic" placeholder="Clinic name" autocomplete="organization" />
-            <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
-            <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required />
-            <button type="submit" class="btn-gold">Get My Free Growth Plan &rarr;</button>
-            <p class="sh-leadform-note">We'll never spam you or share your info.</p>
+            <div class="sh-leadform-row">
+              <input type="text" name="first-name" placeholder="First name" autocomplete="given-name" required />
+              <input type="text" name="last-name" placeholder="Last name" autocomplete="family-name" required />
+            </div>
+            <input type="text" name="business" placeholder="Business name" autocomplete="organization" required />
+            <input type="text" name="website" placeholder="Business website (optional)" autocomplete="url" />
+            <div class="sh-leadform-row">
+              <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
+              <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required />
+            </div>
+            <select name="found-us" aria-label="How did you find us?">
+              <option value="">How did you find us? (optional)</option>
+              <option value="Google search">Google search</option>
+              <option value="ChatGPT or another AI">ChatGPT or another AI</option>
+              <option value="Instagram or TikTok">Instagram or TikTok</option>
+              <option value="Referral">Referral</option>
+              <option value="Other">Other</option>
+            </select>
+            <textarea name="message" rows="3" placeholder="What do you want help with? Ask us anything. (optional)"></textarea>
+            <button type="submit" class="btn-gold">Send My Questions &rarr;</button>
+            <p class="sh-leadform-note">John reads every message. We'll never spam you or share your info.</p>
           </div>
-          <div class="sh-leadform-success"><strong>&#10003; You're all set.</strong><br />We've got your details and will reach out shortly with your free growth plan.</div>
+          <div class="sh-leadform-success"><strong>&#10003; Got it.</strong><br />Your message is in. John will personally get back to you within one business day.</div>
         </form>
       </div>
     </div>
   </section>
+
 
 
 <section class="section-cta">
@@ -743,7 +760,7 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260728" defer></script>
+  <script src="/js/main.js?v=20260814" defer></script>
 
 </body>
 </html>

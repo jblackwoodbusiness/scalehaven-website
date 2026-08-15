@@ -777,6 +777,17 @@ nav {
   font-family: 'Work Sans', sans-serif; font-size: 0.9375rem; transition: border-color 0.18s ease, background 0.18s ease;
 }
 .sh-leadform input::placeholder { color: rgba(255,255,255,0.42); }
+.sh-leadform select, .sh-leadform textarea {
+  width: 100%; padding: 0.9375rem 1.125rem; margin-bottom: 0.75rem; border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.06); color: #fff;
+  font-family: 'Work Sans', sans-serif; font-size: 0.9375rem; transition: border-color 0.18s ease, background 0.18s ease;
+}
+.sh-leadform textarea { resize: vertical; min-height: 5rem; }
+.sh-leadform textarea::placeholder { color: rgba(255,255,255,0.42); }
+.sh-leadform select:focus, .sh-leadform textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.1); }
+.sh-leadform select { appearance: none; -webkit-appearance: none; padding-right: 2.75rem; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23C09540' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.125rem center; }
+.sh-leadform select option { color: var(--navy); background: #fff; }
+.sh-leadform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 .sh-leadform input:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.1); }
 .sh-leadform button[type="submit"] { width: 100%; justify-content: center; margin-top: 0.375rem; }
 .sh-leadform-note { font-family: 'Work Sans', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.875rem; text-align: center; }

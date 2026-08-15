@@ -32,8 +32,8 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
-  <link rel="preload" as="style" href="/styles/main.css?v=20260611" />
-  <link rel="stylesheet" href="/styles/main.css?v=20260611" />
+  <link rel="preload" as="style" href="/styles/main.css?v=20260814" />
+  <link rel="stylesheet" href="/styles/main.css?v=20260814" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESH81N8XSV"></script>
   <script>
@@ -337,6 +337,54 @@
 
 
   <!-- FOOTER -->
+  <!-- CONTACT LEAD FORM -->
+  <section class="sh-leadform-section">
+    <div class="container">
+      <div class="sh-leadform-card">
+        <div class="sh-leadform-copy">
+          <span class="eyebrow">No call required</span>
+          <h2>Questions first? <em>Tell us about your practice.</em></h2>
+          <p>Not ready to book a call? Tell us a bit about your business and what you want help with, and John will personally reply within one business day. No pressure, no spam, no sales sequence.</p>
+          <ul class="sh-leadform-bullets">
+            <li>Ask anything about ads, SEO, or your website</li>
+            <li>Hear exactly how we would fill your calendar</li>
+            <li>A real reply from the founder, not a bot</li>
+          </ul>
+        </div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="sh-leadform">
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="page" value="" />
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <div class="sh-leadform-fields">
+            <div class="sh-leadform-row">
+              <input type="text" name="first-name" placeholder="First name" autocomplete="given-name" required />
+              <input type="text" name="last-name" placeholder="Last name" autocomplete="family-name" required />
+            </div>
+            <input type="text" name="business" placeholder="Business name" autocomplete="organization" required />
+            <input type="text" name="website" placeholder="Business website (optional)" autocomplete="url" />
+            <div class="sh-leadform-row">
+              <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
+              <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required />
+            </div>
+            <select name="found-us" aria-label="How did you find us?">
+              <option value="">How did you find us? (optional)</option>
+              <option value="Google search">Google search</option>
+              <option value="ChatGPT or another AI">ChatGPT or another AI</option>
+              <option value="Instagram or TikTok">Instagram or TikTok</option>
+              <option value="Referral">Referral</option>
+              <option value="Other">Other</option>
+            </select>
+            <textarea name="message" rows="3" placeholder="What do you want help with? Ask us anything. (optional)"></textarea>
+            <button type="submit" class="btn-gold">Send My Questions &rarr;</button>
+            <p class="sh-leadform-note">John reads every message. We'll never spam you or share your info.</p>
+          </div>
+          <div class="sh-leadform-success"><strong>&#10003; Got it.</strong><br />Your message is in. John will personally get back to you within one business day.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
   <footer class="footer">
     <div class="container">
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3rem; padding:3rem 0 2rem; border-bottom:1px solid rgba(192,149,64,0.15); margin-bottom:2rem;" class="footer-grid">
@@ -391,7 +439,7 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260728" defer></script>
+  <script src="/js/main.js?v=20260814" defer></script>
 
 
 </body>

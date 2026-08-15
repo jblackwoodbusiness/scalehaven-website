@@ -124,7 +124,7 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
   setTimeout(trigger, 35000); // fallback: show after 35s even without deep scroll
 })();
 
-/* ── GROWTH-PLAN LEAD FORM (AJAX → Netlify) ──────────────── */
+/* ── CONTACT LEAD FORM (AJAX → Netlify) ──────────────── */
 (function() {
   function encode(data) {
     return Object.keys(data).map(function (k) {
@@ -132,24 +132,33 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
     }).join('&');
   }
   document.querySelectorAll('.sh-leadform').forEach(function (form) {
+    var pageField = form.querySelector('input[name="page"]');
+    if (pageField) pageField.value = location.pathname;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var get = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-      var name = get('name'), email = get('email'), phone = get('phone'), clinic = get('clinic');
-      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      if (!name || !phone || !emailOk) { form.classList.add('sh-leadform-invalid'); return; }
+      var fields = form.querySelectorAll('input[name], select[name], textarea[name]');
+      var data = {};
+      var valid = true;
+      fields.forEach(function (el) {
+        if (el.type === 'hidden' || el.name === 'bot-field') { data[el.name] = el.value; return; }
+        var v = el.value.trim();
+        if (el.required && !v) valid = false;
+        if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) valid = false;
+        data[el.name] = v;
+      });
+      if (!valid) { form.classList.add('sh-leadform-invalid'); return; }
       form.classList.remove('sh-leadform-invalid');
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'growth-plan', 'name': name, 'clinic': clinic, 'email': email, 'phone': phone })
+        body: encode(data)
       }).catch(function () {})
         .finally(function () {
           try { localStorage.setItem('sh_lead_captured', '1'); } catch (e) {}
           form.classList.add('sh-leadform-done');
-          window.shTrack('lead_form_submit', { form_name: 'growth-plan', page_path: location.pathname });
+          window.shTrack('lead_form_submit', { form_name: form.getAttribute('name') || 'contact', page_path: location.pathname });
         });
     });
   });
