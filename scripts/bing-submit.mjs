@@ -11,7 +11,12 @@
  *
  * Two gotchas found Aug 17 2026:
  *   - The verified Bing property is https://www.scalehaven.io/ (with www) even
- *     though our canonical is the apex. Submitted URLs stay apex (canonical);
+ *     though our canonical is the apex. This is HARMLESS and needs no fixing:
+ *     verified Aug 17 2026, the www property already reports on apex URLs (all
+ *     75 page rows come back as https://scalehaven.io/...) and querying the API
+ *     with either hostname returns byte-identical payloads. Do NOT add the apex
+ *     as a second Bing property; it would create a separate dashboard with no
+ *     history tracking the same data. Submitted URLs stay apex (canonical);
  *     only the siteUrl parameter uses www.
  *   - SubmitUrlBatch returns {"d":null} on SUCCESS. Confirm by reading the quota
  *     before and after rather than by the response body.
