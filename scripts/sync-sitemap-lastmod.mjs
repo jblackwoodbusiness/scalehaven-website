@@ -13,6 +13,11 @@
  * with one date reads as a mass reset and teaches Google to distrust our
  * lastmod. Per-page dates keep the signal honest.
  *
+ * ORDER MATTERS: this reads git history, so run it AFTER committing the week's
+ * content edits, then commit the sitemap separately. Running it first leaves the
+ * pages you just changed carrying their old lastmod, which is the exact problem
+ * this script exists to fix.
+ *
  * Run: node scripts/sync-sitemap-lastmod.mjs [--dry]
  */
 import { execSync } from "node:child_process";
