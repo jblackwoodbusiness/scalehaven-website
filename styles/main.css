@@ -621,6 +621,28 @@ nav {
 }
 
 /* ── BLOG CARD ──────────────────────────────────────────── */
+/* ── AUTHOR / ABOUT BOX (below every article) ── */
+.author-box {
+  margin-top: 3rem; padding: 2rem 2.25rem;
+  background: var(--cream-light); border: 1px solid var(--border);
+  border-left: 3px solid var(--gold); border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(26,39,69,0.05);
+}
+.author-box h3 {
+  font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.125rem; font-weight: 700;
+  color: var(--navy); margin: 0 0 0.75rem; letter-spacing: -0.01em;
+}
+.author-box p {
+  font-family: 'Work Sans', sans-serif; font-size: 0.9375rem; color: var(--text-muted);
+  line-height: 1.75; margin: 0 0 1rem;
+}
+.author-box a {
+  font-family: 'Work Sans', sans-serif; font-size: 0.875rem; font-weight: 600;
+  color: var(--gold-dark); text-decoration: none; letter-spacing: 0.02em;
+  transition: color 0.18s ease;
+}
+.author-box a:hover, .author-box a:focus-visible { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
 .blog-card {
   background: var(--cream-light);
   border: 1px solid var(--border);
