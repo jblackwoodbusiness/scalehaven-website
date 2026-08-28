@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Skintellect Onboarding | ScaleHaven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{--paper:#F6F3EA;--card:#FFFFFF;--ink:#1B2A4A;--ink2:#5C6478;--muted:#8B90A0;--line:#E5DFD0;--gold:#A8812F;--gold-soft:#F3EAD6;
+    --serif:'Cormorant Garamond',Georgia,serif;--sans:'Work Sans',-apple-system,'Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6}
+  .wrap{max-width:720px;margin:0 auto;padding:34px 24px 60px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:10px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:25px}
+  .brand span{color:var(--gold)}
+  h1{font-family:var(--serif);font-weight:500;font-size:31px;margin:18px 0 6px}
+  .lede{color:var(--ink2);margin:0 0 26px}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin:2px 0 4px}
+  label{display:block;font-weight:500;margin:16px 0 6px}
+  .hint{font-size:12.5px;color:var(--muted);margin:-3px 0 7px}
+  input[type=text],textarea{width:100%;font:inherit;font-size:14.5px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 13px}
+  textarea{min-height:74px;resize:vertical}
+  input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  .row{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-bottom:8px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:520px){.row,.grid2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-bottom:14px}
+  button.submit{display:block;width:100%;font:inherit;font-size:16px;font-weight:600;color:#F6F3EA;background:var(--ink);border:0;border-radius:9px;padding:15px;cursor:pointer;margin-top:24px}
+  button.submit:hover{background:#24365C}
+  button.submit:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .status{margin-top:12px;font-size:13.5px;color:var(--ink2);text-align:center;min-height:20px}
+  .fallback{display:none;background:var(--gold-soft);border:1px solid #E0D2AC;border-radius:9px;padding:16px 18px;margin-top:16px}
+  .fallback b{display:block;margin-bottom:6px}
+  .fallback button{font:inherit;font-size:14px;font-weight:600;background:var(--ink);color:#F6F3EA;border:0;border-radius:7px;padding:9px 16px;cursor:pointer;margin-top:8px}
+  .thanks{display:none;text-align:center;padding:60px 20px}
+  footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="form-view">
+  <header><div class="brand">Scale<span>Haven</span></div></header>
+  <h1>Skintellect onboarding</h1>
+  <p class="lede">About 10 minutes. Answer what you can and skip anything you're unsure about; we'll cover the rest on our call. Your answers save as a draft on this device as you type.</p>
+
+  <form name="skintellect-onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="ob-form">
+    <input type="hidden" name="form-name" value="skintellect-onboarding">
+    <p class="hidden"><label>Leave this empty: <input name="bot-field"></label></p>
+
+    <div class="card">
+      <div class="eyebrow">1 · Treatments and offers</div>
+      <label>Which treatments do you want to bring in more patients for, and what starting monthly budget would you like behind each?</label>
+      <p class="hint">Example: Laser hair removal, $2,000. Rough numbers are fine, we'll refine together on the call. Extra rows are optional.</p>
+      <div class="row"><input type="text" name="Treatment 1" placeholder="Treatment"><input type="text" name="Treatment 1 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 2" placeholder="Treatment"><input type="text" name="Treatment 2 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 3" placeholder="Treatment"><input type="text" name="Treatment 3 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 4" placeholder="Treatment (optional)"><input type="text" name="Treatment 4 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 5" placeholder="Treatment (optional)"><input type="text" name="Treatment 5 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 6" placeholder="Treatment (optional)"><input type="text" name="Treatment 6 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 7" placeholder="Treatment (optional)"><input type="text" name="Treatment 7 budget" placeholder="Starting budget"></div>
+      <div class="row"><input type="text" name="Treatment 8" placeholder="Treatment (optional)"><input type="text" name="Treatment 8 budget" placeholder="Starting budget"></div>
+      <label for="f-offers">Current or planned new-patient offers, and the pricing you'll honor</label>
+      <textarea id="f-offers" name="New patient offers"></textarea>
+      <label for="f-seasonal">Seasonal patterns: your busiest and slowest months</label>
+      <textarea id="f-seasonal" name="Seasonal patterns"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">2 · Goals and budget</div>
+      <div class="grid2">
+        <div><label for="f-good">Bookings from Google in a good month</label><input type="text" id="f-good" name="Good month bookings"></div>
+        <div><label for="f-great">In a great month</label><input type="text" id="f-great" name="Great month bookings"></div>
+      </div>
+      <div class="grid2">
+        <div><label for="f-budget">Total monthly ad spend to start</label><input type="text" id="f-budget" name="Starting monthly ad spend"></div>
+        <div><label for="f-ceiling">Highest you'd comfortably scale to</label><input type="text" id="f-ceiling" name="Comfortable ceiling"></div>
+      </div>
+      <label for="f-values">Rough average a new patient spends on a first visit, for your top treatments</label>
+      <p class="hint">Example: Botox $600, laser package $1,200, HydraFacial $250</p>
+      <textarea id="f-values" name="Average first visit values"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">3 · Patients and market</div>
+      <label for="f-radius">How far do patients realistically travel to you? (miles or areas)</label>
+      <input type="text" id="f-radius" name="Patient travel radius">
+      <label for="f-ideal">Describe your ideal patient for your most important treatment</label>
+      <textarea id="f-ideal" name="Ideal patient"></textarea>
+      <label for="f-comp">Top competitors you'd love to take patients from</label>
+      <textarea id="f-comp" name="Competitors"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">4 · Website and landing pages</div>
+      <label for="f-lps">Dedicated landing pages per treatment? List URLs for your top treatments</label>
+      <textarea id="f-lps" name="Landing pages"></textarea>
+      <label for="f-hidden">Any ads-only pages (not indexed on Google or not in your site menu)?</label>
+      <textarea id="f-hidden" name="Ads only pages"></textarea>
+      <label for="f-edits">Who makes website edits, and how fast can changes usually happen?</label>
+      <input type="text" id="f-edits" name="Website edits owner and speed">
+      <label for="f-booking">Direct online booking links, if different per treatment</label>
+      <textarea id="f-booking" name="Booking links"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">5 · Operations and brand</div>
+      <label for="f-hours">Clinic hours, and any upcoming closures or vacations</label>
+      <textarea id="f-hours" name="Clinic hours and closures"></textarea>
+      <label for="f-capacity">Any capacity limits we should respect? (e.g., limited slots per week for a treatment)</label>
+      <textarea id="f-capacity" name="Capacity limits"></textarea>
+      <label for="f-creds">Provider credentials you want featured in ads (e.g., nurse injector, MD oversight, years in practice)</label>
+      <textarea id="f-creds" name="Provider credentials"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">6 · History and assets</div>
+      <label for="f-history">Past agencies or campaigns: what actually worked, and what definitely didn't?</label>
+      <textarea id="f-history" name="Past agency learnings"></textarea>
+      <label for="f-content">Photos or videos of the clinic, team, or treatments we could use in ads later?</label>
+      <p class="hint">A link to a shared folder is perfect. No pressure to film anything new.</p>
+      <textarea id="f-content" name="Content library"></textarea>
+      <label for="f-notes">Anything else you want us to know</label>
+      <textarea id="f-notes" name="Anything else"></textarea>
+    </div>
+
+    <button class="submit" type="submit" id="submit-btn">Submit to ScaleHaven</button>
+    <div class="status" id="status" role="status"></div>
+  </form>
+
+  <div class="fallback" id="fallback">
+    <b>One more step to send it over</b>
+    Your answers are safe. Click below to copy them, then paste into an email or text to John.
+    <br><button type="button" id="copy-btn">Copy my answers</button>
+    <span id="copied" style="margin-left:10px;font-size:13px"></span>
+  </div>
+
+  <footer>Questions anytime: john@scalehaven.io · ScaleHaven</footer>
+</div>
+
+<div class="wrap thanks" id="thanks-view">
+  <header style="text-align:left"><div class="brand">Scale<span>Haven</span></div></header>
+  <h1>Got it. Thank you!</h1>
+  <p class="lede" style="margin-top:8px">Your answers are in. We'll go through everything on our call, and the setup work is already moving.</p>
+</div>
+
+<script>
+(function(){
+  var LSKEY="sh-onboarding-skintellect";
+  var form=document.getElementById('ob-form');
+  var fields=Array.prototype.slice.call(form.querySelectorAll('input[type=text],textarea'));
+
+  try{var d=JSON.parse(localStorage.getItem(LSKEY)||"{}");fields.forEach(function(f){if(d[f.name])f.value=d[f.name];});}catch(e){}
+  function saveDraft(){try{var o={};fields.forEach(function(f){o[f.name]=f.value;});localStorage.setItem(LSKEY,JSON.stringify(o));}catch(e){}}
+  fields.forEach(function(f){f.addEventListener('input',saveDraft)});
+
+  function answersText(){var lines=[];fields.forEach(function(f){var v=f.value.trim();if(v)lines.push(f.name+": "+v);});return lines.join("\n");}
+
+  document.getElementById('copy-btn').addEventListener('click',function(){
+    var t=answersText();
+    var done=function(){document.getElementById('copied').textContent="Copied!";};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){legacyCopy(t);done();});}
+    else{legacyCopy(t);done();}
+  });
+  function legacyCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!answersText()){document.getElementById('status').textContent="Nothing filled in yet. Add a few answers first.";return;}
+    var btn=document.getElementById('submit-btn');btn.disabled=true;
+    document.getElementById('status').textContent="Sending...";
+    var data=new URLSearchParams(new FormData(form)).toString();
+    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:data})
+      .then(function(res){
+        if(res.ok){
+          document.getElementById('form-view').style.display='none';
+          document.getElementById('thanks-view').style.display='block';
+          try{localStorage.removeItem(LSKEY);}catch(e){}
+        }else{fail();}
+      })
+      .catch(fail);
+    function fail(){
+      btn.disabled=false;
+      document.getElementById('status').textContent="";
+      var fb=document.getElementById('fallback');fb.style.display='block';fb.scrollIntoView({behavior:'smooth'});
+    }
+  });
+})();
+</script>
+</body>
+</html>
