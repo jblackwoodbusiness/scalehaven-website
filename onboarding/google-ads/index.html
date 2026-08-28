@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Skintellect Onboarding | ScaleHaven</title>
+<title>Google Ads Onboarding | ScaleHaven</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap">
 <style>
@@ -44,12 +44,24 @@
 
 <div class="wrap" id="form-view">
   <header><div class="brand">Scale<span>Haven</span></div></header>
-  <h1>Skintellect onboarding</h1>
+  <h1>Google Ads onboarding</h1>
   <p class="lede">About 10 minutes. Answer what you can and skip anything you're unsure about; we'll cover the rest on our call. Your answers save as a draft on this device as you type.</p>
 
-  <form name="skintellect-onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="ob-form">
-    <input type="hidden" name="form-name" value="skintellect-onboarding">
+  <form name="google-ads-onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="ob-form">
+    <input type="hidden" name="form-name" value="google-ads-onboarding">
     <p class="hidden"><label>Leave this empty: <input name="bot-field"></label></p>
+
+    <div class="card">
+      <div class="eyebrow">About your clinic</div>
+      <div class="grid2">
+        <div><label for="f-clinic">Clinic or business name</label><input type="text" id="f-clinic" name="Clinic name"></div>
+        <div><label for="f-site">Website URL</label><input type="text" id="f-site" name="Website URL"></div>
+      </div>
+      <div class="grid2">
+        <div><label for="f-name">Your name</label><input type="text" id="f-name" name="Contact name"></div>
+        <div><label for="f-email">Best email to reach you</label><input type="text" id="f-email" name="Contact email"></div>
+      </div>
+    </div>
 
     <div class="card">
       <div class="eyebrow">1 · Treatments and offers</div>
@@ -149,7 +161,7 @@
 
 <script>
 (function(){
-  var LSKEY="sh-onboarding-skintellect";
+  var LSKEY="sh-onboarding-googleads";
   var form=document.getElementById('ob-form');
   var fields=Array.prototype.slice.call(form.querySelectorAll('input[type=text],textarea'));
 
