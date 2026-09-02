@@ -126,7 +126,13 @@ async function checkSitemap(pages) {
       })
   );
 
-  for (const url of live) if (!listed.has(url)) issues.push(`page exists but missing from sitemap → ${url}`);
+  for (const url of live) {
+    if (listed.has(url)) continue;
+    const f = path.join(ROOT, url.replace('https://scalehaven.io/', ''), 'index.html');
+    let noindex = false;
+    try { noindex = /<meta[^>]+name="robots"[^>]+noindex/i.test(await readFile(f, 'utf8')); } catch {}
+    if (!noindex) issues.push(`page exists but missing from sitemap → ${url}`);
+  }
   for (const url of listed) if (!live.has(url)) issues.push(`sitemap lists a page that does not exist → ${url}`);
   return issues;
 }
@@ -153,10 +159,15 @@ async function main() {
     }
     const html = await readFile(file, 'utf8');
     const issues = [];
-    checkTitle(html, issues);
-    checkMetaDescription(html, issues);
+    // noindex pages (onboarding forms etc.) skip SEO checks: they are
+    // deliberately invisible to search. Structure and links still checked.
+    const noindex = /<meta[^>]+name="robots"[^>]+noindex/i.test(html);
+    if (!noindex) {
+      checkTitle(html, issues);
+      checkMetaDescription(html, issues);
+      checkJsonLd(html, issues);
+    }
     checkTagBalance(html, issues);
-    checkJsonLd(html, issues);
     checkInternalLinks(html, issues);
 
     if (issues.length) {
