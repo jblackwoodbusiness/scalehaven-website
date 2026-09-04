@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Website Onboarding | ScaleHaven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{--paper:#F6F3EA;--card:#FFFFFF;--ink:#1B2A4A;--ink2:#5C6478;--muted:#8B90A0;--line:#E5DFD0;--gold:#A8812F;--gold-soft:#F3EAD6;
+    --serif:'Cormorant Garamond',Georgia,serif;--sans:'Work Sans',-apple-system,'Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6}
+  .wrap{max-width:720px;margin:0 auto;padding:34px 24px 60px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:10px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:25px}
+  .brand span{color:var(--gold)}
+  h1{font-family:var(--serif);font-weight:500;font-size:31px;margin:18px 0 6px}
+  .lede{color:var(--ink2);margin:0 0 26px}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin:2px 0 4px}
+  .intro{font-size:13.5px;color:var(--ink2);margin:6px 0 4px}
+  .sub{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink);margin:22px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+  label{display:block;font-weight:500;margin:16px 0 6px}
+  .hint{font-size:12.5px;color:var(--muted);margin:-3px 0 7px}
+  input[type=text],textarea{width:100%;font:inherit;font-size:14.5px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 13px}
+  textarea{min-height:74px;resize:vertical}
+  textarea.tall{min-height:132px}
+  input::placeholder,textarea::placeholder{color:#A6AAB8}
+  input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  .row{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-bottom:8px}
+  .row3{display:grid;grid-template-columns:1.1fr 1.2fr 1fr;gap:10px;margin-bottom:8px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:520px){.row,.row3,.grid2,.grid3{grid-template-columns:1fr}.row,.row3{gap:6px;margin-bottom:16px;padding-left:12px;border-left:2px solid var(--gold-soft)}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-bottom:14px}
+  .member{padding:14px 16px 16px;border:1px dashed var(--line);border-radius:8px;margin-top:14px}
+  .member .eyebrow{color:var(--muted);letter-spacing:.06em;margin:0}
+  .member label{margin-top:10px}
+  .check{display:flex;align-items:flex-start;gap:12px;background:var(--gold-soft);border:1px solid #E0D2AC;border-radius:9px;padding:14px 16px;margin-top:18px;cursor:pointer}
+  .check input{width:20px;height:20px;flex:0 0 20px;margin:2px 0 0;accent-color:var(--gold);cursor:pointer}
+  .check input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .check span{font-weight:500;line-height:1.5}
+  button.submit{display:block;width:100%;font:inherit;font-size:16px;font-weight:600;color:#F6F3EA;background:var(--ink);border:0;border-radius:9px;padding:15px;cursor:pointer;margin-top:24px}
+  button.submit:hover{background:#24365C}
+  button.submit:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .status{margin-top:12px;font-size:13.5px;color:var(--ink2);text-align:center;min-height:20px}
+  .fallback{display:none;background:var(--gold-soft);border:1px solid #E0D2AC;border-radius:9px;padding:16px 18px;margin-top:16px}
+  .fallback b{display:block;margin-bottom:6px}
+  .fallback button{font:inherit;font-size:14px;font-weight:600;background:var(--ink);color:#F6F3EA;border:0;border-radius:7px;padding:9px 16px;cursor:pointer;margin-top:8px}
+  .thanks{display:none;text-align:center;padding:60px 20px}
+  footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="form-view">
+  <header><div class="brand">Scale<span>Haven</span></div></header>
+  <h1>Website onboarding</h1>
+  <p class="lede">About 15 minutes. Answer what you can and skip anything you're unsure about; we'll cover the rest on our call. Sections 1 to 4 are what we need before design starts. Anything visual (logo, photos, video, existing copy) goes in the shared Google Drive folder we send you. Your answers save as a draft on this device as you type.</p>
+
+  <form name="website-onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="ob-form">
+    <input type="hidden" name="form-name" value="website-onboarding">
+    <p class="hidden"><label>Leave this empty: <input name="bot-field"></label></p>
+
+    <div class="card">
+      <div class="eyebrow">1 · Business basics</div>
+      <div class="grid2">
+        <div><label for="f-name">Your name</label><input type="text" id="f-name" name="Contact name"></div>
+        <div><label for="f-email">Best email to reach you</label><input type="text" id="f-email" name="Contact email"></div>
+      </div>
+      <div class="grid2">
+        <div><label for="f-biz">Business name, exactly as it should appear on the site</label><input type="text" id="f-biz" name="Business name"></div>
+        <div><label for="f-legal">Legal entity name, if different</label><input type="text" id="f-legal" name="Legal entity name"></div>
+      </div>
+      <label for="f-address">Full address as it should appear on Google</label>
+      <p class="hint">Suite numbers included. More than one location? List each one.</p>
+      <textarea id="f-address" name="Address"></textarea>
+      <div class="grid2">
+        <div><label for="f-phone">Phone number for the website</label><input type="text" id="f-phone" name="Website phone"></div>
+        <div><label for="f-enq">Email address where enquiries should go</label><input type="text" id="f-enq" name="Enquiry email"></div>
+      </div>
+      <label for="f-hours">Hours of operation</label>
+      <textarea id="f-hours" name="Hours of operation"></textarea>
+      <label>Social handles</label>
+      <div class="grid3">
+        <input type="text" name="Instagram" placeholder="Instagram">
+        <input type="text" name="Facebook" placeholder="Facebook">
+        <input type="text" name="TikTok" placeholder="TikTok">
+      </div>
+      <label for="f-gbp">Do you have a Google Business Profile? Is it claimed and verified?</label>
+      <p class="hint">Paste the Google Maps link if you have it. "Not yet" is a fine answer.</p>
+      <input type="text" id="f-gbp" name="Google Business Profile">
+
+      <div class="sub">Domain and current website</div>
+      <div class="grid2">
+        <div><label for="f-domain">Domain you want the site on</label><input type="text" id="f-domain" name="Domain" placeholder="yourclinic.com"></div>
+        <div><label for="f-registrar">Where the domain was bought</label><input type="text" id="f-registrar" name="Domain registrar" placeholder="GoDaddy, Squarespace, Namecheap, not sure"></div>
+      </div>
+      <div class="grid2">
+        <div><label for="f-cursite">Current website URL, if any</label><input type="text" id="f-cursite" name="Current website URL"></div>
+        <div><label for="f-host">Where it's built and hosted</label><input type="text" id="f-host" name="Current platform and host" placeholder="Squarespace, Wix, WordPress, Vagaro"></div>
+      </div>
+      <label for="f-access">Do you have login access to the domain registrar and the current site?</label>
+      <p class="hint">Yes or no is enough. We never ask for passwords; we'll send simple instructions to add us as a collaborator when the time comes.</p>
+      <input type="text" id="f-access" name="Registrar and site access">
+      <label for="f-mail">Is your business email on this domain? Which provider?</label>
+      <p class="hint">Google Workspace, Microsoft 365, GoDaddy email. We protect it during the switch so nothing bounces on launch day.</p>
+      <input type="text" id="f-mail" name="Business email provider">
+      <label for="f-owner">Who owns the domain and current site accounts? Any hosting or agency contracts with renewal or end dates?</label>
+      <p class="hint">It's common for a previous agency or designer to still hold these. Better we know now.</p>
+      <textarea id="f-owner" name="Account ownership and contracts"></textarea>
+      <label for="f-keep">If you have a current site, what must carry over?</label>
+      <p class="hint">Pages you know bring in patients, blog posts, testimonials, before and afters already published, booking or chat widgets. We build redirects so nothing you've earned on Google is lost.</p>
+      <textarea id="f-keep" name="Carry over from current site"></textarea>
+      <label for="f-gsc">Can you grant us access to Google Search Console and Google Analytics?</label>
+      <p class="hint">Yes, no, or "not sure if we have them". We'll send the steps; it's a two-minute share from your Google account.</p>
+      <input type="text" id="f-gsc" name="Search Console and Analytics access">
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">2 · Your story</div>
+      <p class="intro">This becomes your About page, usually the second most visited page on a med spa website. Write it the way you'd say it out loud. Don't polish it, that's our job. More is better here; short answers are the one thing we can't work with.</p>
+      <label for="f-why">Why did you start this business?</label>
+      <textarea class="tall" id="f-why" name="Why you started" placeholder="The moment you decided to open. What you kept seeing that was missing. What you were doing before and why you walked away from it. Any personal experience with aesthetics that shaped how you practice."></textarea>
+      <label for="f-bg">What is your background and training?</label>
+      <textarea class="tall" id="f-bg" name="Background and training" placeholder="Nursing, medicine, aesthetics, business. Where you trained, how many years you've been doing this, certifications you're proud of, the mentors or clinics that shaped your technique."></textarea>
+      <label for="f-diff">What makes you different from other med spas nearby?</label>
+      <textarea class="tall" id="f-diff" name="What makes you different" placeholder="The things patients tell you they can't get anywhere else. How your consultations actually run. Treatments you refuse to do and why. Devices, technique, time spent, honesty about what will and won't work."></textarea>
+      <label for="f-ideal">Who is your ideal patient? Describe her.</label>
+      <textarea class="tall" id="f-ideal" name="Ideal patient" placeholder="Age range, life stage, what brought her in, what she's self-conscious about, what she's tried before, what a great result means to her. Picture one real patient you loved treating."></textarea>
+      <label for="f-feel">What do you want someone to feel when they walk in?</label>
+      <textarea class="tall" id="f-feel" name="Feeling on arrival" placeholder="The first thirty seconds: what she sees, hears, smells. Calm, clinical, luxurious, warm, like a friend's home. How the team greets her. What you want her to say to a friend afterwards."></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">3 · Your team</div>
+      <p class="intro">Provider faces are what separate a converting med spa site from a brochure. Include yourself. Headshots go in the Team Photos folder on the shared Drive.</p>
+
+      <div class="member">
+        <div class="eyebrow">Team member 1</div>
+        <div class="grid2">
+          <div><label for="f-t1n">Name and credentials</label><input type="text" id="f-t1n" name="Team 1 name and credentials" placeholder="Dr. Sarah Chen, MD"></div>
+          <div><label for="f-t1r">Role or title</label><input type="text" id="f-t1r" name="Team 1 role" placeholder="Founder and Medical Director"></div>
+        </div>
+        <label for="f-t1b">Two or three sentences on their background, and the treatments they perform</label>
+        <textarea id="f-t1b" name="Team 1 background and treatments"></textarea>
+      </div>
+      <div class="member">
+        <div class="eyebrow">Team member 2</div>
+        <div class="grid2">
+          <div><label for="f-t2n">Name and credentials</label><input type="text" id="f-t2n" name="Team 2 name and credentials"></div>
+          <div><label for="f-t2r">Role or title</label><input type="text" id="f-t2r" name="Team 2 role"></div>
+        </div>
+        <label for="f-t2b">Background and the treatments they perform</label>
+        <textarea id="f-t2b" name="Team 2 background and treatments"></textarea>
+      </div>
+      <div class="member">
+        <div class="eyebrow">Team member 3 (optional)</div>
+        <div class="grid2">
+          <div><label for="f-t3n">Name and credentials</label><input type="text" id="f-t3n" name="Team 3 name and credentials"></div>
+          <div><label for="f-t3r">Role or title</label><input type="text" id="f-t3r" name="Team 3 role"></div>
+        </div>
+        <label for="f-t3b">Background and the treatments they perform</label>
+        <textarea id="f-t3b" name="Team 3 background and treatments"></textarea>
+      </div>
+      <div class="member">
+        <div class="eyebrow">Team member 4 (optional)</div>
+        <div class="grid2">
+          <div><label for="f-t4n">Name and credentials</label><input type="text" id="f-t4n" name="Team 4 name and credentials"></div>
+          <div><label for="f-t4r">Role or title</label><input type="text" id="f-t4r" name="Team 4 role"></div>
+        </div>
+        <label for="f-t4b">Background and the treatments they perform</label>
+        <textarea id="f-t4b" name="Team 4 background and treatments"></textarea>
+      </div>
+
+      <label for="f-more-team">More than four people?</label>
+      <p class="hint">List the rest here in the same format, or drop a document in the shared Drive folder.</p>
+      <textarea id="f-more-team" name="Additional team members"></textarea>
+      <label for="f-meddir">Who is your medical director, and should they appear on the site?</label>
+      <textarea id="f-meddir" name="Medical director"></textarea>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">4 · Treatments</div>
+      <p class="intro">The most important section. Every treatment becomes its own page built to rank on Google, so the more detail the better.</p>
+      <label>Every treatment you'll offer at launch</label>
+      <p class="hint">Three quick notes per treatment. Example: "Morpheus8 (RF microneedling)" · "Skin tightening, acne scars, jawline definition" · "$800 per session, 60 min, sold as a 3-session package, price public". Tell us if a price should stay off the site. Extra rows are optional.</p>
+      <div class="row3"><input type="text" name="Treatment 1" placeholder="Treatment + brand or device"><input type="text" name="Treatment 1 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 1 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 2" placeholder="Treatment + brand or device"><input type="text" name="Treatment 2 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 2 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 3" placeholder="Treatment + brand or device"><input type="text" name="Treatment 3 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 3 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 4" placeholder="Treatment + brand or device"><input type="text" name="Treatment 4 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 4 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 5" placeholder="Treatment (optional)"><input type="text" name="Treatment 5 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 5 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 6" placeholder="Treatment (optional)"><input type="text" name="Treatment 6 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 6 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 7" placeholder="Treatment (optional)"><input type="text" name="Treatment 7 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 7 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 8" placeholder="Treatment (optional)"><input type="text" name="Treatment 8 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 8 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 9" placeholder="Treatment (optional)"><input type="text" name="Treatment 9 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 9 price and format" placeholder="Price, session length, single or package"></div>
+      <div class="row3"><input type="text" name="Treatment 10" placeholder="Treatment (optional)"><input type="text" name="Treatment 10 treats" placeholder="What it treats, plainly"><input type="text" name="Treatment 10 price and format" placeholder="Price, session length, single or package"></div>
+      <label for="f-more-tx">More than ten treatments?</label>
+      <textarea id="f-more-tx" name="Additional treatments" placeholder="Same three notes per treatment, one per line."></textarea>
+      <label for="f-priority">Which three to five treatments are your priority: most profitable, or most wanted?</label>
+      <p class="hint">These get the strongest pages, the most internal links, and the first blog posts.</p>
+      <textarea id="f-priority" name="Priority treatments"></textarea>
+      <label for="f-later">Any treatments planned for later that we should build the structure for now?</label>
+      <textarea id="f-later" name="Treatments planned later"></textarea>
+      <label for="f-memberships">Do you offer memberships or packages? Describe them and their pricing.</label>
+      <textarea id="f-memberships" name="Memberships and packages"></textarea>
+      <label for="f-financing">Do you offer financing? Which provider?</label>
+      <input type="text" id="f-financing" name="Financing provider" placeholder="Cherry, PatientFi, Alphaeon, CareCredit, none">
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">5 · Booking and systems</div>
+      <label for="f-booking">Which booking platform do you use?</label>
+      <input type="text" id="f-booking" name="Booking platform" placeholder="Boulevard, Zenoti, Mindbody, Vagaro, OptiMantra, Jane, other">
+      <label for="f-flow">Should visitors book treatments directly, or book a consultation first?</label>
+      <p class="hint">It can differ by treatment. Example: "Facials book direct, injectables and laser need a consult."</p>
+      <textarea id="f-flow" name="Booking flow"></textarea>
+      <label for="f-route">Where should website enquiries be sent?</label>
+      <input type="text" id="f-route" name="Enquiry routing" placeholder="Email, CRM, both, or a specific person">
+      <label for="f-software">Any other software the site needs to connect to?</label>
+      <p class="hint">CRM, email marketing, text reminders, financing widgets, Zapier, gift card systems.</p>
+      <textarea id="f-software" name="Other software"></textarea>
+      <label for="f-tracking">Do you currently have Google Analytics, a Meta Pixel, or Google Tag Manager on your site?</label>
+      <p class="hint">"Not sure" is a fine answer. We'll check and carry over anything that's there.</p>
+      <input type="text" id="f-tracking" name="Existing tracking">
+      <label for="f-ads">Are any ads running right now that send people to your current site?</label>
+      <p class="hint">Google, Meta, or anything else. We make sure no landing page breaks mid-campaign.</p>
+      <input type="text" id="f-ads" name="Ads currently running">
+      <label for="f-shop">Do you sell gift cards, products, or memberships online?</label>
+      <input type="text" id="f-shop" name="Online sales" placeholder="Yes: gift cards through Boulevard. Or: not yet, but we want to.">
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">6 · Assets</div>
+      <p class="intro">Everything visual goes in the shared Drive folder. It has folders ready: Logo, Team Photos, Space Photos, Before &amp; After, Video, Existing Copy. This section just tells us what to expect.</p>
+      <label for="f-folder">Link to your shared folder</label>
+      <p class="hint">If we've already sent you a folder, paste its link here. Otherwise link any Google Drive or Dropbox folder with existing photos, copy, brochures, or menus, and we'll take it from there.</p>
+      <input type="text" id="f-folder" name="Shared folder link">
+      <label for="f-logo">Logo files you have</label>
+      <p class="hint">Vector preferred (AI, EPS, or SVG). PNG only if that's all you have. No logo yet? Tell us whether one is being designed or you'd like us to handle it.</p>
+      <input type="text" id="f-logo" name="Logo files">
+      <label for="f-brand">Brand colours and fonts, if defined</label>
+      <p class="hint">Hex codes and font names if you have them. "It's in the Drive folder" works too.</p>
+      <input type="text" id="f-brand" name="Brand colours and fonts">
+      <label for="f-photos">What photography and video exists today?</label>
+      <p class="hint">Photos of your space (before or after any remodel), photos or video of you and the team, before and after images. Tell us what exists and what still needs to be shot.</p>
+      <textarea id="f-photos" name="Photography and video status"></textarea>
+      <label for="f-reviews">Reviews and testimonials we can feature</label>
+      <p class="hint">Where they live (Google, RealSelf, Yelp), your rough rating and count, and paste any favourites.</p>
+      <textarea id="f-reviews" name="Reviews and testimonials"></textarea>
+      <label for="f-copy">Existing website copy, brochures, or treatment menus?</label>
+      <textarea id="f-copy" name="Existing copy"></textarea>
+
+      <input type="hidden" name="Before and after consent" id="f-consent-value" value="Not confirmed">
+      <label class="check" for="f-consent">
+        <input type="checkbox" id="f-consent">
+        <span>I confirm that every before and after image I supply is covered by signed patient consent for marketing use.</span>
+      </label>
+      <p class="hint" style="margin-top:8px">We cannot publish before and after photos without this. If you're not sure yet, leave it unchecked. We'll build the gallery ready to fill once consent is confirmed.</p>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">7 · Design direction</div>
+      <label>Three websites you like, with a sentence on what you like about each</label>
+      <p class="hint">They don't have to be med spas. Hotels, skincare brands, restaurants all count.</p>
+      <div class="row"><input type="text" name="Inspiration 1 URL" placeholder="URL"><input type="text" name="Inspiration 1 why" placeholder="What you like about it"></div>
+      <div class="row"><input type="text" name="Inspiration 2 URL" placeholder="URL"><input type="text" name="Inspiration 2 why" placeholder="What you like about it"></div>
+      <div class="row"><input type="text" name="Inspiration 3 URL" placeholder="URL"><input type="text" name="Inspiration 3 why" placeholder="What you like about it"></div>
+      <label for="f-dislike">Anything you've seen that you dislike?</label>
+      <p class="hint">Sites, styles, or specific things about your current site that have to go.</p>
+      <textarea id="f-dislike" name="Dislikes"></textarea>
+      <label for="f-words">Three words describing how the site should feel</label>
+      <input type="text" id="f-words" name="Three words" placeholder="Calm, clinical, warm">
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">8 · Practical</div>
+      <div class="grid2">
+        <div><label for="f-launch">Target launch date</label><input type="text" id="f-launch" name="Target launch date"></div>
+        <div><label for="f-approver">Who approves the final site, other than you?</label><input type="text" id="f-approver" name="Final approver"></div>
+      </div>
+      <p class="hint" style="margin-top:6px">Is anything tied to the launch date, like a grand opening or a campaign? Add it in the notes below.</p>
+      <label for="f-policies">Policies and required wording</label>
+      <p class="hint">Your cancellation and deposit policy, whether you already have a privacy policy, and any disclaimer or licensing wording your state board or provincial college requires on the site.</p>
+      <textarea id="f-policies" name="Policies and required wording"></textarea>
+      <label for="f-comms">How do you prefer we communicate, and how quickly do you usually respond?</label>
+      <input type="text" id="f-comms" name="Communication preference" placeholder="Text for quick things, email for approvals, same day">
+      <label for="f-notes">Anything else we should know</label>
+      <textarea id="f-notes" name="Anything else"></textarea>
+    </div>
+
+    <button class="submit" type="submit" id="submit-btn">Submit to ScaleHaven</button>
+    <div class="status" id="status" role="status"></div>
+  </form>
+
+  <div class="fallback" id="fallback">
+    <b>One more step to send it over</b>
+    Your answers are safe. Click below to copy them, then paste into an email or text to John.
+    <br><button type="button" id="copy-btn">Copy my answers</button>
+    <span id="copied" style="margin-left:10px;font-size:13px"></span>
+  </div>
+
+  <footer>Questions anytime: john@scalehaven.io · ScaleHaven</footer>
+</div>
+
+<div class="wrap thanks" id="thanks-view">
+  <header style="text-align:left"><div class="brand">Scale<span>Haven</span></div></header>
+  <h1>Got it. Thank you!</h1>
+  <p class="lede" style="margin-top:8px">Your answers are in. Next step: drop your logo, photos, and any existing copy into the shared Drive folder. We'll go through everything on our call, and the build is already moving.</p>
+</div>
+
+<script>
+(function(){
+  var LSKEY="sh-onboarding-website";
+  var form=document.getElementById('ob-form');
+  var fields=Array.prototype.slice.call(form.querySelectorAll('input[type=text],textarea'));
+  var consent=document.getElementById('f-consent');
+  var consentValue=document.getElementById('f-consent-value');
+  var CONSENT_YES="Confirmed: signed patient consent covers marketing use of every before and after image supplied";
+  var CONSENT_NO="Not confirmed";
+
+  function syncConsent(){consentValue.value=consent.checked?CONSENT_YES:CONSENT_NO;}
+
+  try{var d=JSON.parse(localStorage.getItem(LSKEY)||"{}");fields.forEach(function(f){if(d[f.name])f.value=d[f.name];});if(d._consent)consent.checked=true;}catch(e){}
+  syncConsent();
+  function saveDraft(){try{var o={};fields.forEach(function(f){o[f.name]=f.value;});o._consent=consent.checked;localStorage.setItem(LSKEY,JSON.stringify(o));}catch(e){}}
+  fields.forEach(function(f){f.addEventListener('input',saveDraft)});
+  consent.addEventListener('change',function(){syncConsent();saveDraft();});
+
+  function answersText(){var lines=[];fields.forEach(function(f){var v=f.value.trim();if(v)lines.push(f.name+": "+v);});if(lines.length)lines.push("Before and after consent: "+consentValue.value);return lines.join("\n");}
+
+  document.getElementById('copy-btn').addEventListener('click',function(){
+    var t=answersText();
+    var done=function(){document.getElementById('copied').textContent="Copied!";};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){legacyCopy(t);done();});}
+    else{legacyCopy(t);done();}
+  });
+  function legacyCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!answersText()){document.getElementById('status').textContent="Nothing filled in yet. Add a few answers first.";return;}
+    syncConsent();
+    var btn=document.getElementById('submit-btn');btn.disabled=true;
+    document.getElementById('status').textContent="Sending...";
+    var data=new URLSearchParams(new FormData(form)).toString();
+    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:data})
+      .then(function(res){
+        if(res.ok){
+          document.getElementById('form-view').style.display='none';
+          document.getElementById('thanks-view').style.display='block';
+          try{localStorage.removeItem(LSKEY);}catch(e){}
+        }else{fail();}
+      })
+      .catch(fail);
+    function fail(){
+      btn.disabled=false;
+      document.getElementById('status').textContent="";
+      var fb=document.getElementById('fallback');fb.style.display='block';fb.scrollIntoView({behavior:'smooth'});
+    }
+  });
+})();
+</script>
+</body>
+</html>
