@@ -5,8 +5,24 @@ window.shTrack = function (name, params) {
 };
 document.addEventListener('click', function (e) {
   var a = e.target && e.target.closest ? e.target.closest('a[href*="calendly.com"]') : null;
-  if (a) window.shTrack('calendly_click', { link_url: a.href, page_path: location.pathname });
+  if (!a) return;
+  var loc = a.closest('nav') ? 'nav' : a.closest('footer') ? 'footer' : a.closest('.sh-popup') ? 'popup' : a.closest('.mobile-menu') ? 'mobile_menu' : 'body';
+  var sec = a.closest('section'); if (loc === 'body' && sec && sec.id) loc = 'section_' + sec.id;
+  window.shTrack('calendly_click', {
+    link_url: a.href, page_path: location.pathname, link_location: loc,
+    link_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60)
+  });
 });
+
+/* First interaction with the two lead tools (funnel top for lead_form_submit) */
+(function () {
+  var fired = {};
+  function once(name) { if (fired[name]) return; fired[name] = true; window.shTrack(name, { page_path: location.pathname }); }
+  var quiz = document.getElementById('quizView');
+  if (quiz) quiz.addEventListener('click', function (e) { if (e.target.closest('input, button, label, select')) once('scorecard_start'); }, true);
+  var roi = document.querySelector('.roi-input, .roi-range');
+  if (roi) document.addEventListener('input', function (e) { if (e.target.closest('.roi-input, .roi-range')) once('roi_calc_start'); }, true);
+})();
 
 /* ════════════════════════════════════════════════════════════
    ScaleHaven — Shared JavaScript
@@ -98,12 +114,13 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
     }
     function onEsc(e) { if (e.key === 'Escape') dismiss(); }
 
-    o.querySelector('.sh-popup-close').addEventListener('click', dismiss);
-    o.querySelector('.sh-popup-dismiss').addEventListener('click', dismiss);
-    o.querySelector('.btn-gold').addEventListener('click', remember); // don't reshow after they click through
+    o.querySelector('.sh-popup-close').addEventListener('click', function () { window.shTrack('popup_dismissed', { how: 'close', page_path: location.pathname }); dismiss(); });
+    o.querySelector('.sh-popup-dismiss').addEventListener('click', function () { window.shTrack('popup_dismissed', { how: 'no_thanks', page_path: location.pathname }); dismiss(); });
+    o.querySelector('.btn-gold').addEventListener('click', function () { window.shTrack('popup_cta_click', { page_path: location.pathname }); remember(); }); // don't reshow after they click through
     o.addEventListener('click', function (e) { if (e.target === o) dismiss(); });
     document.addEventListener('keydown', onEsc);
 
+    window.shTrack('popup_shown', { page_path: location.pathname });
     requestAnimationFrame(function () { o.classList.add('show'); });
   }
 
