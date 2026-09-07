@@ -37,14 +37,18 @@ const sweeps = new Set(
 
 const fileFor = (path) => (path === "/" ? "index.html" : `${path.replace(/^\/|\/$/g, "")}/index.html`);
 
-/** Most recent non-sweep commit date for a file, falling back to its newest commit. */
+/** Most recent non-sweep commit date for a file. If every commit that touched the
+ *  file was a sweep, fall back to its OLDEST commit (creation date), not its newest:
+ *  otherwise each sitewide sweep re-stamps these pages with today's date, which is
+ *  exactly the mass-reset signal this script exists to avoid (seen Sep 7 2026 with
+ *  the GA4 hostname-guard sweep). */
 function lastSignificant(file) {
   const lines = sh(`git log --format="%h %ad" --date=short -- "${file}"`).split("\n").filter(Boolean);
   for (const l of lines) {
     const [h, d] = l.split(" ");
     if (!sweeps.has(h)) return d;
   }
-  return lines[0]?.split(" ")[1] ?? null;
+  return lines[lines.length - 1]?.split(" ")[1] ?? null;
 }
 
 const xml = readFileSync("sitemap.xml", "utf8");
