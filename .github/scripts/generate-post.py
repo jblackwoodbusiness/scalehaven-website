@@ -340,7 +340,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260814" defer></script>
+  <script src="/js/main.js?v=20260907" defer></script>
 
 
 </body>
