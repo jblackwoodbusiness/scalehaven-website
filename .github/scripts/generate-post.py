@@ -43,13 +43,17 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260815" />
   <link rel="stylesheet" href="/styles/main.css?v=20260815" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESH81N8XSV"></script>
+  <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ESH81N8XSV');
+    function gtag(){{dataLayer.push(arguments);}}
+    if (/^(www\\.)?scalehaven\\.io$/.test(location.hostname)) {{
+      var shGa = document.createElement('script'); shGa.async = true;
+      shGa.src = 'https://www.googletagmanager.com/gtag/js?id=G-ESH81N8XSV';
+      document.head.appendChild(shGa);
+      gtag('js', new Date());
+      gtag('config', 'G-ESH81N8XSV');
+    }}
   </script>
 
   <script type="application/ld+json">
@@ -83,7 +87,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_horizontal.svg" alt="ScaleHaven — Med Spa & Aesthetic Clinic Marketing" width="139" height="42" style="height:42px; width:auto;" /></a>
+      <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_horizontal.svg" alt="ScaleHaven | Med Spa & Aesthetic Clinic Marketing" width="139" height="42" style="height:42px; width:auto;" /></a>
       <div class="nav-links">
         <div class="nav-drop">
           <button type="button" class="nav-link nav-drop-toggle" aria-haspopup="true">Services <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -167,13 +171,13 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
         <div style="text-align:center; margin-bottom:1.75rem;">
           <span style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);">Our Services</span>
           <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; font-weight:600; color:var(--navy); margin:0.625rem 0 0.5rem; letter-spacing:-0.02em;">Done-for-You Growth for <em style="font-style:italic; color:var(--gold);">Med Spas &amp; Aesthetic Clinics</em></h3>
-          <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); margin:0;">Pick the channel that fits your stage — we handle everything from creative to follow-up.</p>
+          <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); margin:0;">Pick the channel that fits your stage. We handle everything from creative to follow-up.</p>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.875rem;">
           <a href="/med-spa-lead-generation/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
             <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Lead Generation</div>
             <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">15+ Booked Patients/Mo</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Guaranteed — or we work free.</div>
+            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Guaranteed, or we work free.</div>
           </a>
           <a href="/med-spa-facebook-ads/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
             <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Meta Ads</div>
@@ -287,7 +291,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3rem; padding:3rem 0 2rem; border-bottom:1px solid rgba(192,149,64,0.15); margin-bottom:2rem;" class="footer-grid">
         <div>
           <a href="/" aria-label="ScaleHaven"><img src="/brand_assets/scalehaven_logo_horizontal_ondark.svg" alt="ScaleHaven" width="159" height="48" style="height:48px; width:auto; margin-bottom:1rem;" /></a>
-          <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.7; max-width:280px;">Financially qualified patients for med spas &amp; aesthetic clinics — done-for-you ads, SEO, and lead generation. 15+ booked consultations in month one, guaranteed.</p>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.7; max-width:280px;">Financially qualified patients for med spas &amp; aesthetic clinics: done-for-you ads, SEO, and lead generation. 15+ booked consultations in month one, guaranteed.</p>
           <div style="display:flex; gap:0.75rem; margin-top:1.25rem;">
             <a href="https://www.instagram.com/scalehaven.io/" target="_blank" rel="noopener noreferrer" aria-label="ScaleHaven on Instagram" style="display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border:1px solid rgba(192,149,64,0.28); border-radius:50%; color:rgba(255,255,255,0.6); transition:color 0.2s ease,border-color 0.2s ease;" onmouseover="this.style.color='#C09540';this.style.borderColor='#C09540';" onmouseout="this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(192,149,64,0.28)';">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
@@ -373,7 +377,7 @@ def generate(data: dict) -> str:
         eyebrow=data["eyebrow"],
         h1_html=data["h1_html"],
         body_html=data["body_html"],
-        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. Our founder grew a cosmetic clinic into one of the largest in its region — and sold it to a private equity firm. We run the ads, SEO, and lead systems that deliver financially qualified patients — and guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
+        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. Our founder grew a cosmetic clinic into one of the largest in its region, then sold it to a private equity firm. We run the ads, SEO, and lead systems that deliver financially qualified patients, and we guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
         related_html="\n\n".join(related),
         cta_h2=data.get("cta_h2", 'Ready to <em>Get Started?</em>'),
         cta_p=data.get("cta_p", "Book a free 30-minute call and we'll show you exactly how we'd fill your calendar."),
