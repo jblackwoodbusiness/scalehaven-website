@@ -823,3 +823,30 @@ nav {
 /* On success: hide the inputs, show the message */
 .sh-leadform-done .sh-leadform-fields { display: none; }
 .sh-leadform-done .sh-leadform-success { display: block; }
+
+
+/* ── RESPONSIVE DATA TABLE ───────────────────────────────
+   Wide comparison tables scroll sideways on phones, which reads badly.
+   Under 640px each row becomes a stacked block, using the th text
+   carried on each cell as a data-label. Add class="sh-table" and
+   data-label="..." on every td. */
+@media (max-width: 640px) {
+  .sh-table { min-width: 0 !important; }
+  .sh-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .sh-table, .sh-table tbody, .sh-table tr, .sh-table td { display: block; width: 100%; }
+  .sh-table tr { padding: 1.125rem 0; border-bottom: 1px solid var(--border); }
+  .sh-table tr:last-child { border-bottom: 0; }
+  .sh-table td { border: 0 !important; padding: 0.3rem 0 !important; }
+  .sh-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.15rem;
+  }
+  .sh-table td:empty { display: none; }
+}
