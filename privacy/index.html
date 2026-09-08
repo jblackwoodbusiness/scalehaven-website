@@ -1,34 +1,23 @@
-#!/usr/bin/env python3
-"""
-generate-post.py — Generates a queue-ready blog post HTML file from a content dict.
-Usage: Called programmatically or via stdin JSON.
-"""
-
-import json, sys, textwrap
-from pathlib import Path
-
-TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | ScaleHaven</title>
-  <meta name="description" content="{excerpt}" />
+  <title>Privacy Policy | ScaleHaven</title>
+  <meta name="description" content="How ScaleHaven collects, uses, and protects information on scalehaven.io: analytics, advertising pixels, forms, the tools we use, and your privacy choices." />
   <meta name="robots" content="index, follow" />
-  <meta name="author" content="John Blackwood, ScaleHaven" />
-  <link rel="canonical" href="https://scalehaven.io/blog/{slug}/" />
+  <link rel="canonical" href="https://scalehaven.io/privacy/" />
 
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{title} | ScaleHaven" />
-  <meta property="og:description" content="{excerpt}" />
-  <meta property="og:url" content="https://scalehaven.io/blog/{slug}/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy Policy | ScaleHaven" />
+  <meta property="og:description" content="How ScaleHaven collects, uses, and protects information on scalehaven.io." />
+  <meta property="og:url" content="https://scalehaven.io/privacy/" />
   <meta property="og:site_name" content="ScaleHaven" />
   <meta property="og:image" content="https://scalehaven.io/brand_assets/scalehaven_social.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{title} | ScaleHaven" />
-  <meta name="twitter:description" content="{twitter_desc}" />
+  <meta name="twitter:title" content="Privacy Policy | ScaleHaven" />
+  <meta name="twitter:description" content="How ScaleHaven collects, uses, and protects information on scalehaven.io." />
   <meta name="twitter:image" content="https://scalehaven.io/brand_assets/scalehaven_social.png" />
 
   <link rel="icon" type="image/svg+xml" href="/brand_assets/scalehaven_favicon.svg" />
@@ -38,66 +27,59 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   <link rel="apple-touch-icon" href="/brand_assets/scalehaven_favicon_256.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
-  <link rel="preload" as="style" href="/styles/main.css?v=20260908" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" />
   <link rel="stylesheet" href="/styles/main.css?v=20260908" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    if (/^(www\\.)?scalehaven\\.io$/.test(location.hostname)) {{
+    function gtag(){dataLayer.push(arguments);}
+    if (/^(www\.)?scalehaven\.io$/.test(location.hostname)) {
       var shGa = document.createElement('script'); shGa.async = true;
       shGa.src = 'https://www.googletagmanager.com/gtag/js?id=G-ESH81N8XSV';
       document.head.appendChild(shGa);
       gtag('js', new Date());
       gtag('config', 'G-ESH81N8XSV');
-    }}
+    }
   </script>
 
   <!-- Meta Pixel: production hostnames only. fbq() is always defined so event calls never throw on Netlify previews or localhost, but nothing loads or fires there. -->
   <script>
-    (function (f, b, e, v) {{
+    (function (f, b, e, v) {
       if (f.fbq) return;
-      var n = f.fbq = function () {{ n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }};
+      var n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n;
       n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
-      if (!/^(www\\.)?scalehaven\\.io$/.test(location.hostname)) return;
+      if (!/^(www\.)?scalehaven\.io$/.test(location.hostname)) return;
       var t = b.createElement(e); t.async = true; t.src = v;
       var s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
       n('init', '1996255947750455');
       n('track', 'PageView');
-    }})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
   </script>
 
   <script type="application/ld+json">
-  {{
+  {
     "@context": "https://schema.org",
     "@graph": [
-      {{
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scalehaven.io/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://scalehaven.io/blog/" }},
-          {{ "@type": "ListItem", "position": 3, "name": "{breadcrumb_name}", "item": "https://scalehaven.io/blog/{slug}/" }}
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scalehaven.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://scalehaven.io/privacy/" }
         ]
-      }},
-      {{
-        "@type": "BlogPosting",
-        "headline": "{title}",
-        "description": "{excerpt}",
-        "author": {{ "@type": "Person", "name": "John Blackwood", "jobTitle": "Founder", "url": "https://scalehaven.io/about/", "worksFor": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" }} }},
-        "publisher": {{ "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io", "logo": {{ "@type": "ImageObject", "url": "https://scalehaven.io/brand_assets/scalehaven_logo.png" }} }},
-        "datePublished": "{{{{TODAY}}}}",
-        "dateModified": "{{{{TODAY}}}}",
-        "mainEntityOfPage": {{ "@type": "WebPage", "@id": "https://scalehaven.io/blog/{slug}/" }}
-      }}
+      },
+      {
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "url": "https://scalehaven.io/privacy/",
+        "description": "How ScaleHaven collects, uses, and protects information on scalehaven.io.",
+        "publisher": { "@type": "Organization", "name": "ScaleHaven", "url": "https://scalehaven.io" }
+      }
     ]
-  }}
+  }
   </script>
 </head>
-<body class="post">
+<body>
 
   <!-- NAV -->
   <nav>
@@ -148,109 +130,159 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
     <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold" style="margin-top:1rem;">Book a Free Call</a>
   </div>
 
-
   <!-- HERO -->
   <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">{ghost_text}</div>
+    <div class="ghost-text" aria-hidden="true">PRIVACY</div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">{breadcrumb_name}</span>
+        <a href="/">Home</a><span>/</span><span class="current">Privacy Policy</span>
       </nav>
-      <div style="max-width:680px;">
-        <span class="eyebrow" style="color:rgba(192,149,64,0.85); margin-bottom:1rem;">{eyebrow}</span>
-        <div class="gold-rule" style="margin-bottom:1.5rem; background:linear-gradient(90deg,var(--gold),transparent); width:3rem;"></div>
-        <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4.5vw,3.75rem); font-weight:600; line-height:1.08; letter-spacing:-0.03em; color:#fff; margin-bottom:1.25rem;">
-          {h1_html}
+      <div style="max-width:720px;">
+        <span class="eyebrow" style="color:rgba(192,149,64,0.85); margin-bottom:1.25rem;">Legal</span>
+        <div class="gold-rule" style="margin-bottom:1.75rem; background:linear-gradient(90deg,var(--gold),transparent); width:3rem;"></div>
+        <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.75rem,5vw,4.5rem); font-weight:600; line-height:1.05; letter-spacing:-0.03em; color:#fff; margin-bottom:1.5rem;">
+          Privacy <em style="font-style:italic; color:var(--gold);">Policy</em>
         </h1>
-        <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); letter-spacing:0.04em;">By <a href="/about/" style="color:rgba(255,255,255,0.75); text-decoration:underline; text-underline-offset:3px;">John Blackwood</a>, Founder &middot; <time datetime="{{{{TODAY}}}}">{{{{TODAY_HUMAN}}}}</time> &middot; {read_time} min read</p>
+        <p style="font-size:1.0625rem; color:rgba(255,255,255,0.65); line-height:1.75; max-width:560px;">
+          What we collect on this website, why we collect it, who it goes to, and how to opt out. Written in plain English, because the alternative helps nobody.
+        </p>
       </div>
     </div>
   </section>
 
-
-  <!-- ARTICLE -->
+  <!-- POLICY -->
   <section style="background:var(--cream); padding:5rem 0 4rem;">
     <div class="container">
-      <article class="article-body reveal">
-{body_html}
+      <article class="article-body reveal" style="max-width:760px; margin:0 auto;">
+
+        <p style="font-size:0.875rem; color:var(--text-muted);"><strong>Last updated:</strong> September 8, 2026</p>
+
+        <p>This policy explains how ScaleHaven handles information on <strong>scalehaven.io</strong>. It covers visitors to this website. If you are a ScaleHaven client, the handling of data inside your campaigns and your patients' information is governed by your client agreement, not by this page.</p>
+
+        <p>We are a marketing agency for med spas, aesthetic clinics, dermatology, and plastic surgery practices in the United States and Canada. We are not a healthcare provider, and this website does not collect patient health information.</p>
+
+        <h2>Information You Give Us</h2>
+
+        <p>You only give us information when you choose to. That happens when you:</p>
+
+        <ul>
+          <li>Fill in a contact or enquiry form (name, email, phone, business name, website, and whatever you write in the message)</li>
+          <li>Complete the marketing scorecard or the ROI calculator</li>
+          <li>Book a call through Calendly</li>
+          <li>Complete a client onboarding form</li>
+          <li>Email us directly</li>
+        </ul>
+
+        <p>We ask for the minimum we need to reply to you properly. You are never required to give us anything to read this site.</p>
+
+        <h2>Information Collected Automatically</h2>
+
+        <p>Like almost every website, we collect some technical information automatically: your IP address, browser and device type, the pages you visit, how you arrived (search, social, a link, or an ad), and roughly how long you stay. This is aggregate behaviour data, and we use it to understand which content is useful and which is not.</p>
+
+        <h2>Cookies and Tracking Tools</h2>
+
+        <p>We use three third-party tools on this site. Each one sets cookies or similar identifiers in your browser.</p>
+
+        <ul>
+          <li><strong>Google Analytics 4.</strong> Measures traffic, which pages get read, and which actions people take. Google processes this on our behalf. Their practices are described in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</li>
+          <li><strong>Meta Pixel.</strong> Lets us measure the performance of our advertising and show relevant ads to people who have visited this site. We have Automatic Advanced Matching enabled, which means that if you submit a form, your email address is converted into an irreversible hashed value in your own browser before being sent to Meta, so Meta can match it to an account without us transmitting the address itself. Meta's practices are described in <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta's privacy policy</a>.</li>
+          <li><strong>Microsoft Clarity.</strong> Records anonymised session activity and heatmaps so we can see where pages confuse people. Clarity masks text input by default. Microsoft's practices are described in the <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft privacy statement</a>.</li>
+        </ul>
+
+        <p>We do not sell your personal information, and we do not share it with data brokers.</p>
+
+        <h2>How We Use Information</h2>
+
+        <ul>
+          <li>To reply to your enquiry and, if it makes sense, to talk about working together</li>
+          <li>To deliver the scorecard or calculator results you asked for</li>
+          <li>To improve this website and the content on it</li>
+          <li>To measure our own advertising and show relevant ads to people who visited</li>
+          <li>To meet legal and accounting obligations</li>
+        </ul>
+
+        <p>We do not send marketing email to people who have not asked to hear from us, and every email we do send has an unsubscribe link.</p>
+
+        <h2>Who We Share It With</h2>
+
+        <p>We share information only with the service providers that run this business, and only so far as they need it to do their job:</p>
+
+        <ul>
+          <li><strong>Netlify</strong> hosts this website and processes form submissions</li>
+          <li><strong>Google</strong> provides analytics and advertising services</li>
+          <li><strong>Meta</strong> provides advertising services</li>
+          <li><strong>Microsoft</strong> provides session analytics through Clarity</li>
+          <li><strong>Calendly</strong> handles call scheduling</li>
+          <li><strong>Google Workspace</strong> handles our email</li>
+        </ul>
+
+        <p>We may also disclose information if the law requires it, or to protect our legal rights.</p>
+
+        <h2>Your Choices</h2>
+
+        <ul>
+          <li><strong>Cookies.</strong> Every major browser lets you block or delete cookies. Blocking them will not stop you using this site.</li>
+          <li><strong>Google Analytics.</strong> You can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics opt-out add-on</a>.</li>
+          <li><strong>Meta advertising.</strong> You can control what you see through your Meta ad preferences.</li>
+          <li><strong>Microsoft Clarity.</strong> Clarity honours the Global Privacy Control signal, and browsers that send it are excluded.</li>
+          <li><strong>Email.</strong> Unsubscribe from any message, or write to us and we will remove you.</li>
+        </ul>
+
+        <h2>Your Rights</h2>
+
+        <p>Depending on where you live, you may have the right to ask us what personal information we hold about you, to have it corrected, to have it deleted, to receive a copy of it, or to object to how we use it. Residents of California and several other US states have these rights under state privacy law. Residents of Canada have comparable rights under PIPEDA and provincial equivalents.</p>
+
+        <p>To exercise any of them, email <a href="mailto:john@scalehaven.io">john@scalehaven.io</a>. We will respond within the timeframe the applicable law requires, and we will not treat you differently for asking.</p>
+
+        <h2>How Long We Keep Things</h2>
+
+        <p>We keep enquiry and client records for as long as we have a working relationship and for a reasonable period afterwards, to meet accounting and legal obligations. Analytics data is retained for 14 months. If you ask us to delete your information and we have no legal reason to keep it, we will.</p>
+
+        <h2>Security</h2>
+
+        <p>This site is served over HTTPS, and the services we use are established providers with their own security programmes. No system is perfectly secure, so we do not claim otherwise, but we do not hold sensitive information on this website and we keep what we do hold to a minimum.</p>
+
+        <h2>Children</h2>
+
+        <p>This site is aimed at business owners and is not directed at anyone under 18. We do not knowingly collect information from children.</p>
+
+        <h2>Where Your Information Goes</h2>
+
+        <p>We operate in the United States and Canada, and our service providers are largely US-based. If you contact us from elsewhere, your information will be processed in those countries, which may have different privacy laws than your own.</p>
+
+        <h2>Changes to This Policy</h2>
+
+        <p>When we change how we handle information, we update this page and change the date at the top. Material changes will be obvious rather than buried.</p>
+
+        <h2>Contact</h2>
+
+        <p>Questions about this policy, or about anything we hold on you, go to <a href="mailto:john@scalehaven.io">john@scalehaven.io</a>. A person reads that inbox.</p>
+
       </article>
-
-      <div class="author-box reveal">
-        <h3>About ScaleHaven</h3>
-        <p>{author_bio}</p>
-        <a href="/about/">Meet the founder &rarr;</a>
-      </div>
-
-      <!-- OUR SERVICES (hub-and-spoke CTA) -->
-      <div class="reveal" style="margin-top:2.5rem; padding:2.5rem 2rem; background:#fff; border:1px solid var(--border); border-radius:4px; box-shadow:0 2px 8px rgba(26,39,69,0.04);">
-        <div style="text-align:center; margin-bottom:1.75rem;">
-          <span style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);">Our Services</span>
-          <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; font-weight:600; color:var(--navy); margin:0.625rem 0 0.5rem; letter-spacing:-0.02em;">Done-for-You Growth for <em style="font-style:italic; color:var(--gold);">Med Spas &amp; Aesthetic Clinics</em></h3>
-          <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); margin:0;">Pick the channel that fits your stage. We handle everything from creative to follow-up.</p>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.875rem;">
-          <a href="/med-spa-lead-generation/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Lead Generation</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">15+ Booked Patients/Mo</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Guaranteed, or we work free.</div>
-          </a>
-          <a href="/med-spa-facebook-ads/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Meta Ads</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">Facebook &amp; Instagram</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Highest-ROI channel for med spas.</div>
-          </a>
-          <a href="/med-spa-google-ads/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Google Ads</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">High-Intent Patients</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Capture "near me" searches.</div>
-          </a>
-          <a href="/med-spa-seo/" style="display:block; padding:1.25rem 1rem; background:var(--cream-light); border:1px solid var(--border); border-radius:4px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(192,149,64,0.12)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.6875rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">SEO &amp; Local</div>
-            <div style="font-family:'Cormorant Garamond',serif; color:var(--navy); font-size:1.0625rem; font-weight:600; margin-bottom:0.375rem;">Rank #1 Locally</div>
-            <div style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); line-height:1.5;">Long-term compounding traffic.</div>
-          </a>
-        </div>
-      </div>
     </div>
   </section>
-
-
-  <!-- RELATED POSTS -->
-  <section style="background:var(--cream-light); padding:5rem 0 6rem;">
-    <div class="container">
-      <div style="text-align:center; margin-bottom:3rem;">
-        <span class="eyebrow" style="margin-bottom:1rem;">Keep Reading</span>
-        <h2 class="section-h reveal">Related <em>Articles</em></h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1100px; margin:0 auto;" class="responsive-3col">
-{related_html}
-      </div>
-    </div>
-  </section>
-
 
   <!-- CTA -->
   <section class="section-cta">
     <div class="container">
       <div style="max-width:2.5rem; margin:0 auto 2rem;">
-        <img src="/brand_assets/scalehaven_icon.svg" alt="" width="40" height="40" style="width:100%;" />
+        <img src="/brand_assets/scalehaven_icon.svg" alt="" width="40" height="40" style="width:100%;" loading="lazy" />
       </div>
       <h2 class="cta-h reveal" style="margin-bottom:1.5rem;">
-        {cta_h2}
+        Talk to the <em>Operator, Not a Rep.</em>
       </h2>
       <p class="reveal reveal-d1" style="font-size:1.0625rem; color:var(--text-muted); line-height:1.75; max-width:520px; margin:0 auto 2.75rem;">
-        {cta_p}
+        Book a free 30-minute call with John. You'll get a straight read on your clinic's growth levers, and whether we're a fit. No pitch deck.
       </p>
       <div class="reveal reveal-d2" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-        <a href="{cta_link}" {cta_attrs} class="btn-gold" style="font-size:0.9375rem; padding:1.0625rem 2.5rem;">
-          {cta_btn}
+        <a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.9375rem; padding:1.0625rem 2.5rem;">
+          Book Your Free Call Today
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
-      <p class="reveal reveal-d3" style="font-size:0.75rem; color:var(--text-muted); margin-top:1.25rem; letter-spacing:0.06em;">{cta_sub}</p>
+      <p class="reveal reveal-d3" style="font-size:0.75rem; color:var(--text-muted); margin-top:1.25rem; letter-spacing:0.06em;">No obligation. No pitch deck. Just a real conversation.</p>
     </div>
   </section>
-
 
   <!-- FOOTER -->
   <!-- CONTACT LEAD FORM -->
@@ -332,7 +364,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
             <a href="/dermatology-marketing/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Dermatology Marketing</a>
             <a href="/plastic-surgery-marketing/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Plastic Surgery Marketing</a>
             <a href="/aesthetic-clinic-marketing/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Aesthetic Clinics</a>
-            <a href="/med-spa-marketing-near-me/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Local Med Spa Marketing</a>
+            <a href="/med-spa-marketing-near-me/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Local Clinic Marketing</a>
           </div>
         </div>
         <div>
@@ -342,7 +374,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
             <a href="/med-spa-marketing-scorecard/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Free Marketing Scorecard</a>
             <a href="/med-spa-roi-calculator/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">ROI Calculator</a>
             <a href="/about/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">About Us</a>
-            <a href="https://thecliniccompass.com/" target="_blank" rel="noopener" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">List Your Clinic &mdash; The Clinic Compass</a>
+            <a href="https://thecliniccompass.com/" target="_blank" rel="noopener nofollow" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">List Your Clinic on The Clinic Compass</a>
             <a href="mailto:john@scalehaven.io" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">john@scalehaven.io</a>
             <a href="/blog/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Blog</a>
           </div>
@@ -356,56 +388,5 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"--
   </footer>
 
   <script src="/js/main.js?v=20260908" defer></script>
-
-
 </body>
-</html>'''
-
-
-def related_card(href, tag, title, excerpt, delay=""):
-    cls = f"blog-card reveal{' ' + delay if delay else ''}"
-    return f'''        <a href="{href}" class="{cls}" style="position:relative;">
-          <div class="blog-card-body">
-            <span class="blog-card-tag">{tag}</span>
-            <h3 class="blog-card-title">{title}</h3>
-            <p class="blog-card-excerpt">{excerpt}</p>
-            <span class="read-more">Read &rarr;</span>
-          </div>
-        </a>'''
-
-
-def generate(data: dict) -> str:
-    related = []
-    for i, r in enumerate(data.get("related", [])):
-        delay = ["", "reveal-d1", "reveal-d2"][i] if i < 3 else ""
-        related.append(related_card(r["href"], r["tag"], r["title"], r["excerpt"], delay))
-
-    return TEMPLATE.format(
-        tag=data["tag"],
-        excerpt=data["excerpt"],
-        read_time=data["read_time"],
-        title=data["title"],
-        slug=data["slug"],
-        twitter_desc=data.get("twitter_desc", data["excerpt"][:120]),
-        breadcrumb_name=data["breadcrumb_name"],
-        ghost_text=data["ghost_text"],
-        eyebrow=data["eyebrow"],
-        h1_html=data["h1_html"],
-        body_html=data["body_html"],
-        author_bio=data.get("author_bio", "ScaleHaven is a done-for-you marketing agency for med spas and aesthetic clinics. Our founder grew a cosmetic clinic into one of the largest in its region, then sold it to a private equity firm. We run the ads, SEO, and lead systems that deliver financially qualified patients, and we guarantee 15+ booked consultations in month one. If we don't hit the target, we work for free until we do."),
-        related_html="\n\n".join(related),
-        cta_h2=data.get("cta_h2", 'Ready to <em>Get Started?</em>'),
-        cta_p=data.get("cta_p", "Book a free 30-minute call and we'll show you exactly how we'd fill your calendar."),
-        cta_link=data.get("cta_link", "https://calendly.com/john-scalehaven/30min"),
-        cta_attrs=data.get("cta_attrs", 'target="_blank" rel="noopener noreferrer"'),
-        cta_btn=data.get("cta_btn", "Book Your Free Call Today"),
-        cta_sub=data.get("cta_sub", "No obligation. No pitch deck. Just a real conversation."),
-    )
-
-
-if __name__ == "__main__":
-    data = json.load(sys.stdin)
-    out_path = Path(data.pop("_output"))
-    html = generate(data)
-    out_path.write_text(html, encoding="utf-8")
-    print(f"Generated: {out_path}")
+</html>
