@@ -46,6 +46,21 @@
     }
   </script>
 
+  <!-- Meta Pixel: production hostnames only. fbq() is always defined so event calls never throw on Netlify previews or localhost, but nothing loads or fires there. -->
+  <script>
+    (function (f, b, e, v) {
+      if (f.fbq) return;
+      var n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+      if (!/^(www\.)?scalehaven\.io$/.test(location.hostname)) return;
+      var t = b.createElement(e); t.async = true; t.src = v;
+      var s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      n('init', '1996255947750455');
+      n('track', 'PageView');
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -304,6 +319,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260907" defer></script>
+  <script src="/js/main.js?v=20260908" defer></script>
 </body>
 </html>

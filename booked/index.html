@@ -34,6 +34,21 @@
       gtag('config', 'G-ESH81N8XSV');
     }
   </script>
+
+  <!-- Meta Pixel: production hostnames only. fbq() is always defined so event calls never throw on Netlify previews or localhost, but nothing loads or fires there. -->
+  <script>
+    (function (f, b, e, v) {
+      if (f.fbq) return;
+      var n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+      if (!/^(www\.)?scalehaven\.io$/.test(location.hostname)) return;
+      var t = b.createElement(e); t.async = true; t.src = v;
+      var s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      n('init', '1996255947750455');
+      n('track', 'PageView');
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+  </script>
   <script>
     /* call_booked: fires once per booking on load.
        Calendly appends invitee_* and any utm_* params when
@@ -57,6 +72,7 @@
       var send = function () {
         Object.keys(params).forEach(function (k) { if (params[k] === undefined) delete params[k]; });
         gtag('event', 'call_booked', params);
+        try { if (typeof fbq === 'function') fbq('track', 'Schedule', { page_path: params.page_path, utm_source: params.utm_source }); } catch (e) {}
         try { sessionStorage.setItem(key, '1'); } catch (e) {}
       };
       var email = (q.get('invitee_email') || '').trim().toLowerCase();
@@ -261,6 +277,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260907" defer></script>
+  <script src="/js/main.js?v=20260908" defer></script>
 </body>
 </html>

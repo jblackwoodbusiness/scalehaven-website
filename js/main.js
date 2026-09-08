@@ -1,7 +1,21 @@
 
-/* ── GA4 event tracking ── */
+/* ── Event tracking: GA4 + Meta Pixel ──
+   Every shTrack call goes to GA4. Named events are mirrored to the Meta
+   Pixel so the ad account can build audiences and optimise. Both gtag()
+   and fbq() are defined on every host but only send from production. */
+var SH_FB_MAP = {
+  lead_form_submit: ['track', 'Lead'],
+  call_booked:      ['track', 'Schedule'],
+  calendly_click:   ['trackCustom', 'CalendlyClick'],
+  scorecard_start:  ['trackCustom', 'ScorecardStart'],
+  roi_calc_start:   ['trackCustom', 'RoiCalcStart']
+};
 window.shTrack = function (name, params) {
   try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {}
+  try {
+    var m = SH_FB_MAP[name];
+    if (m && typeof fbq === 'function') fbq(m[0], m[1], params || {});
+  } catch (e) {}
 };
 document.addEventListener('click', function (e) {
   var a = e.target && e.target.closest ? e.target.closest('a[href*="calendly.com"]') : null;
