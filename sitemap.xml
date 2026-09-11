@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Homepage -->
   <url>
@@ -80,13 +80,13 @@
   <!-- Blog -->
   <url>
     <loc>https://scalehaven.io/blog/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-get-more-med-spa-clients/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -123,13 +123,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-marketing-strategies/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-marketing-cost/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -165,7 +165,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/aesthetic-clinic-lead-generation/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -177,7 +177,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/cosmetic-clinic-lead-generation/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -213,13 +213,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/filler-clinic-marketing/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-get-more-patients-aesthetic-practice/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -333,7 +333,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-marketing-plan/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -345,7 +345,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/botox-marketing-ideas/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -393,7 +393,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-patient-acquisition/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -411,13 +411,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/why-isnt-my-med-spa-growing/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-compete-with-bigger-med-spas/</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -441,7 +441,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-build-a-7-figure-med-spa/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -501,7 +501,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-pricing/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -513,7 +513,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-consultant/</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -627,13 +627,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/medical-spa-marketing/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/best-med-spa-marketing-companies/</loc>
-    <lastmod>2026-08-27</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
