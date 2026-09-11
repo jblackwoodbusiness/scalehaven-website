@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Blog image pipeline for scalehaven.io: Pexels photo -> hero + card WebP.
 
-  python3 scripts/blog-images.py pick   <slug>[:theme] ... | --all   choose one photo per post, write hero + card WebP
+  python3 scripts/blog-images.py pick   <slug>[:theme[:id]] ... | --all   choose one photo per post (or a hand-picked Pexels id), write WebP
   python3 scripts/blog-images.py sheet  <out.png> <slug> ...         contact sheet for visual QA before inserting
   python3 scripts/blog-images.py reject <slug> ...                   ban the chosen photo so the next pick re-chooses
   python3 scripts/blog-images.py insert <slug> ...                   hero figure + og/twitter image + schema image on the post
@@ -79,7 +79,7 @@ THEMES = {
     "aesthetic-clinic-marketing-playbook": "meeting", "aesthetic-clinic-lead-generation": "search_laptop",
     "glp1-semaglutide-marketing-med-spas": "weight", "cosmetic-clinic-lead-generation": "consultation",
     "facebook-ads-for-med-spas": "phone_social", "morpheus8-marketing-guide": "laser_device",
-    "coolsculpting-marketing": "clinic_room", "instagram-ads-aesthetic-clinics": "content_camera",
+    "coolsculpting-marketing": "laser_device", "instagram-ads-aesthetic-clinics": "content_camera",
     "aesthetic-industry-statistics-2026": "charts", "filler-clinic-marketing": "syringe",
     "how-to-get-more-patients-aesthetic-practice": "medical_office", "how-to-market-a-skincare-clinic": "skincare",
     "botox-advertising": "phone_social", "best-med-spa-websites": "website",
@@ -88,20 +88,20 @@ THEMES = {
     "local-seo-for-med-spas": "map_phone", "med-spa-google-business-profile": "map_phone",
     "med-spa-near-me-searches": "map_phone", "med-spa-seo": "search_laptop",
     "med-spa-seo-cost": "money", "med-spa-seo-vs-paid-ads": "laptop_analytics",
-    "plastic-surgery-advertising": "laptop_analytics", "plastic-surgery-lead-generation": "consultation",
+    "plastic-surgery-advertising": "phone_social", "plastic-surgery-lead-generation": "consultation",
     "plastic-surgery-seo": "search_laptop", "med-spa-marketing-budget": "money",
     "med-spa-marketing-ideas": "planning", "med-spa-marketing-plan": "planning",
     "botox-marketing-ideas": "syringe", "digital-marketing-for-aesthetic-clinics": "laptop_analytics",
     "how-to-advertise-botox-legally": "insurance", "how-to-start-a-med-spa": "clinic_room",
-    "med-spa-business-plan": "planning", "med-spa-equipment": "laser_device",
+    "med-spa-business-plan": "planning", "med-spa-equipment": "medical_office",
     "new-med-spa-marketing-first-90-days": "calendar", "med-spa-patient-acquisition": "reception",
     "chemical-peel-marketing": "skincare", "google-ads-for-med-spas": "search_laptop",
     "why-isnt-my-med-spa-growing": "money", "how-to-compete-with-bigger-med-spas": "medical_office",
     "how-to-fill-aesthetic-nurse-calendar": "calendar", "med-spa-patient-retention": "reception",
     "best-crm-for-med-spas": "laptop_analytics", "how-to-build-a-7-figure-med-spa": "money",
     "aesthetic-clinic-marketing-solo-providers": "content_camera", "med-spa-revenue-ceiling-50k": "charts",
-    "med-spa-franchise": "clinic_room", "how-much-do-med-spa-owners-make": "planning",
-    "botox-party": "clinic_room", "med-spa-insurance": "insurance",
+    "med-spa-franchise": "meeting", "how-much-do-med-spa-owners-make": "planning",
+    "botox-party": "syringe", "med-spa-insurance": "insurance",
     "med-spa-medical-director": "medical_office", "med-spa-open-house-ideas": "event",
     "med-spa-pricing": "money", "med-spa-consultant": "meeting",
     "med-spa-name-ideas": "branding", "iv-therapy-marketing": "iv",
@@ -109,7 +109,7 @@ THEMES = {
     "laser-hair-removal-marketing": "laser_device", "med-spa-branding": "branding",
     "med-spa-ads": "phone_social", "wellness-clinic-marketing": "wellness",
     "med-spa-email-marketing": "email", "hipaa-compliant-med-spa-marketing": "insurance",
-    "emsculpt-marketing": "medical_office", "med-spa-visibility-system": "search_laptop",
+    "emsculpt-marketing": "wellness", "med-spa-visibility-system": "search_laptop",
     "esthetician-marketing-ideas": "skincare", "med-spa-membership-programs": "reception",
     "med-spa-staffing": "hiring", "healthcare-facebook-ads": "phone_social",
     "dermatology-seo": "derm", "med-spa-content-ideas": "content_camera",
@@ -127,11 +127,11 @@ EXCLUDE = re.compile(
     r"\b(before|after|surgery|surgical|operation|operating|blood|bloody|scar|scars|nude|naked|bikini|"
     r"lingerie|underwear|topless|shirtless|child|children|kid|kids|baby|toddler|cigarette|smoking|"
     r"tattoo|dental|dentist|teeth|tooth|x-ray|wound|injury|divorce|covid|vaccine|vaccines|veterinary|pandemic|"
-    r"argue|argues|arguing|tension|liposuction|wuhan)\b", re.I)
+    r"argue|argues|arguing|tension|liposuction|wuhan|mask|masks|trading|stock market)\b", re.I)
 INJECT = re.compile(r"inject|botox|filler", re.I)
 ON_PERSON = re.compile(r"\b(face|facial|lip|lips|forehead|cheek|woman|man|patient|person|girl|boy|model|client)\b", re.I)
 # A person shown mid-treatment implies they had the procedure: never use it.
-TREATED = re.compile(r"\b(receiving|undergoing|lying|lies|performing|performs|during|under lasers)\b", re.I)
+TREATED = re.compile(r"\b(receiving|receives|undergoing|lying|lies|performing|performs|during|under lasers|administering|administers|applies|applying|treating|treats|doing|injecting|getting)\b", re.I)
 LEAD_VERB = re.compile(r"^(explore|discover|capture|experience|enjoy|embrace|witness|admire|see|view)\s+", re.I)
 PROPER = {"botox": "Botox", "google": "Google", "instagram": "Instagram", "facebook": "Facebook",
           "seo": "SEO", "crm": "CRM", "glp": "GLP", "hydrafacial": "HydraFacial", "coolsculpting": "CoolSculpting",
@@ -251,13 +251,18 @@ def cmd_pick(args):
     items = [f"{s}:{t}" for s, t in THEMES.items()] if args == ["--all"] else args
     todo = []
     for item in items:
-        slug, _, theme = item.partition(":")
+        slug, _, rest = item.partition(":")
+        theme, _, want = rest.partition(":")
         theme = theme or THEMES.get(slug)
         if theme not in QUERIES:
             sys.exit(f"unknown theme for {slug}. Themes: {', '.join(QUERIES)}")
         if slug in m or not post_file(slug):
             continue
-        photo = next((p for p in load_pool(theme)["photos"] if usable(p, used)), None)
+        pool = load_pool(theme)["photos"]
+        if want:  # hand-picked from a candidate sheet: skip the auto filters, but never reuse a photo
+            photo = next((p for p in pool if str(p["id"]) == want and p["id"] not in used), None)
+        else:
+            photo = next((p for p in pool if usable(p, used)), None)
         if not photo:
             print(f"  ! {slug}: pool '{theme}' has no usable photo left")
             continue
@@ -363,7 +368,7 @@ def cmd_cards(args):
         return (mm.group(1) + f'\n          <img class="blog-card-img" src="/images/blog/{slug}-card.webp" '
                 f'width="800" height="450" alt="" loading="lazy" decoding="async" />')
 
-    s = re.sub(r'(<a href="/blog/([^"/]+)/?"[^>]*class="blog-card reveal"[^>]*>)(?!\s*<img class="blog-card-img")', add, s)
+    s = re.sub(r'(<a href="/blog/([^"/]+)/?"[^>]*class="blog-card reveal[^"]*"[^>]*>)(?!\s*<img class="blog-card-img")', add, s)
     idx.write_text(s)
     print(f"card images added: {added}")
 
