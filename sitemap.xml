@@ -251,9 +251,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/coolsculpting-marketing/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/coolsculpting-marketing-hero.webp</image:loc>
+      <image:title>Close-up of an aesthetic ultrasound machine and its handheld applicator, illustrating CoolSculpting marketing</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/instagram-ads-aesthetic-clinics/</loc>
@@ -695,9 +699,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/botox-party/</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/botox-party-hero.webp</image:loc>
+      <image:title>Close-up of medical vials and syringe on stainless tray in clinical setting, illustrating Botox parties</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-medical-director/</loc>
@@ -847,9 +855,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/emsculpt-marketing/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/emsculpt-marketing-hero.webp</image:loc>
+      <image:title>Serene spa setting with a lit candle, ceramic holder, and plush towels for relaxation, illustrating EMSculpt marketing</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-visibility-system/</loc>
@@ -955,9 +967,13 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/medical-practice-marketing/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/medical-practice-marketing-hero.webp</image:loc>
+      <image:title>A female doctor writes notes at her desk with a stethoscope around her neck, illustrating medical practice marketing</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/skincare-marketing/</loc>
