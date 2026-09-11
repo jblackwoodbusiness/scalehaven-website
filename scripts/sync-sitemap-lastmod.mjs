@@ -68,4 +68,29 @@ const out = xml.replace(
 
 for (const [p, o, n] of changes) console.log(`  ${o} -> ${n}  ${p}`);
 console.log(`\n${changes.length} lastmod value(s) ${dry ? "would be" : ""} updated.`);
-if (!dry && changes.length) writeFileSync("sitemap.xml", out);
+// ---- image entries --------------------------------------------------------
+// One <image:image> per blog post that has a hero image, titled with the hero's
+// alt text, so Google Images can tie each hero to its article (ported from the
+// ClinicCompass postbuild-seo.mjs image sitemap). Rebuilt from the live page
+// HTML on every run, so it is idempotent and follows alt-text edits.
+const escXml = (v) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const unescHtml = (v) => v.replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+let images = 0;
+let finalXml = out.includes("xmlns:image=")
+  ? out
+  : out.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">');
+finalXml = finalXml.replace(/<url>([\s\S]*?)<\/url>/g, (block, inner) => {
+  const cleaned = inner.replace(/\s*<image:image>[\s\S]*?<\/image:image>/g, "");
+  const loc = /<loc>https:\/\/scalehaven\.io(\/blog\/[^<]+\/)<\/loc>/.exec(cleaned);
+  const file = loc && fileFor(loc[1]);
+  const page = file && existsSync(file) ? readFileSync(file, "utf8") : "";
+  const tag = /<img\b[^>]*src="(\/images\/blog\/[^"]+-hero\.webp)"[^>]*>/.exec(page);
+  if (!tag) return `<url>${cleaned}</url>`;
+  const alt = unescHtml((/\balt="([^"]*)"/.exec(tag[0]) || [])[1] || "");
+  images++;
+  return `<url>${cleaned.replace(/\s*$/, "")}\n    <image:image>\n      <image:loc>https://scalehaven.io${tag[1]}</image:loc>\n` +
+    (alt ? `      <image:title>${escXml(alt)}</image:title>\n` : "") + `    </image:image>\n  </url>`;
+});
+console.log(`${images} blog hero image(s) listed in sitemap.xml.`);
+if (!dry && finalXml !== xml) writeFileSync("sitemap.xml", finalXml);
