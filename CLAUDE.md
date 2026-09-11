@@ -117,3 +117,5 @@ Our schema + cluster structure already help; keep direct, clearly-structured ans
 - Queue: `blog/_queue/NNN-slug.html` — lowest number publishes next (Tue/Thu/Sat, 3×/week).
 - New posts via `.github/scripts/generate-post.py` (carries nav, footer, schema, hub CTA).
 - To prioritize a cluster, number its posts low so they publish first.
+- **Every post gets images before it is queued:** `python3 scripts/blog-images.py pick <slug>:<theme>`, then `sheet out.png <slug>` and look at it (no before/after, no injection on a person), then `insert <slug>`. The publisher adds the /blog/ card image automatically. Pexels key is `PEXELS_API_KEY` in `.env`.
+- **Topic tags:** the META line carries `cats="primary secondary"` (max 3) from: `meta-ads google-ads seo web-design lead-gen strategy treatments plastic-surgery dermatology business data`. They drive the /blog/ topic filter; `tag` should be the primary topic's label.

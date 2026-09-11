@@ -95,6 +95,23 @@
     ]
   }
   </script>
+  <style>
+    /* Topic filter + card images, /blog/ only */
+    .blog-filter { display:flex; flex-wrap:wrap; justify-content:center; gap:0.625rem; max-width:1000px; margin:0 auto 1.25rem; }
+    .blog-filter-chip { display:inline-flex; align-items:center; gap:0.45rem; font-family:'Work Sans',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--navy); background:var(--cream-light); border:1px solid var(--border); border-radius:999px; padding:0.625rem 1.05rem; cursor:pointer; transition:background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s cubic-bezier(0.16,1,0.3,1); }
+    .blog-filter-chip:hover { border-color:var(--gold); }
+    .blog-filter-chip:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+    .blog-filter-chip:active { transform:translateY(1px); }
+    .blog-filter-chip.is-active { background:var(--navy); border-color:var(--navy); color:#fff; }
+    .blog-filter-count { font-size:0.6875rem; font-weight:500; opacity:0.6; }
+    .blog-filter-status { text-align:center; font-family:'Work Sans',sans-serif; font-size:0.875rem; color:var(--text-muted); margin:0 0 2.75rem; min-height:1.3em; }
+    .blog-grid .blog-card[hidden], .blog-filter-chip[hidden] { display:none !important; }
+    .blog-grid .blog-card-img { display:block; width:calc(100% + 5rem); max-width:none; height:auto; aspect-ratio:16/9; object-fit:cover; margin:-2.5rem -2.5rem 1.75rem; background:var(--cream-dark); }
+    @media (max-width: 640px) {
+      .blog-filter { gap:0.5rem; }
+      .blog-filter-chip { font-size:0.6875rem; padding:0.55rem 0.85rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -172,11 +189,27 @@
   <!-- BLOG POSTS GRID -->
   <section style="background:var(--cream); padding:6rem 0 8rem;">
     <div class="container">
+      <div class="blog-filter" role="group" aria-label="Filter articles by topic">
+        <button type="button" class="blog-filter-chip is-active" data-filter="all" aria-pressed="true">All topics <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="meta-ads" aria-pressed="false">Facebook &amp; Instagram Ads <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="google-ads" aria-pressed="false">Google Ads <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="seo" aria-pressed="false">SEO &amp; Local Search <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="web-design" aria-pressed="false">Websites &amp; Branding <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="lead-gen" aria-pressed="false">Lead Generation <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="strategy" aria-pressed="false">Marketing Strategy <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="treatments" aria-pressed="false">Treatment Marketing <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="plastic-surgery" aria-pressed="false">Plastic Surgery <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="dermatology" aria-pressed="false">Dermatology &amp; Skin <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="business" aria-pressed="false">Running a Clinic <span class="blog-filter-count"></span></button>
+        <button type="button" class="blog-filter-chip" data-filter="data" aria-pressed="false">Industry Data <span class="blog-filter-count"></span></button>
+      </div>
+      <p class="blog-filter-status" aria-live="polite"></p>
+
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;" class="blog-grid responsive-3col">
 
-        <a href="/blog/beauty-clinic-names" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/beauty-clinic-names" class="blog-card reveal" data-cats="web-design business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Business</span>
+            <span class="blog-card-tag">Websites &amp; Branding</span>
             <h2 class="blog-card-title">Beauty Clinic Names: 150 Ideas That Book Clients</h2>
             <p class="blog-card-excerpt">150 beauty clinic name ideas organized by style, plus the naming rules that matter: domains, trademarks, SEO, and names that age well as you grow.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -186,9 +219,9 @@
           </div>
         </a>
 
-        <a href="/blog/skincare-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/skincare-marketing" class="blog-card reveal" data-cats="dermatology treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Skincare</span>
+            <span class="blog-card-tag">Dermatology &amp; Skin</span>
             <h2 class="blog-card-title">Skincare Marketing: How Clinics Win Clients in 2026</h2>
             <p class="blog-card-excerpt">Skincare marketing for clinics and med spas: the content, offers, and paid channels that turn skincare browsers into booked treatments and retail revenue.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -198,9 +231,9 @@
           </div>
         </a>
 
-        <a href="/blog/medical-practice-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/medical-practice-marketing" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Growth</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Medical Practice Marketing: The 2026 Playbook</h2>
             <p class="blog-card-excerpt">Medical practice marketing explained: the channels that actually bring in patients, digital and social strategy, realistic budgets, and what to build first.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -210,9 +243,9 @@
           </div>
         </a>
 
-        <a href="/blog/botox-promotion-ideas" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/botox-promotion-ideas" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Treatments</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Botox Promotion Ideas: Offers That Fill Schedules</h2>
             <p class="blog-card-excerpt">Botox promotion ideas that actually book appointments: named offers, event promos, loyalty tie-ins, and the discounting trap that attracts the wrong patients.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -222,9 +255,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-get-more-patients" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-get-more-patients" class="blog-card reveal" data-cats="lead-gen strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Growth</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Get More Patients: 12 Proven Ways for 2026</h2>
             <p class="blog-card-excerpt">How to get more patients in 2026: 12 proven strategies that work for med spas, dermatology, plastic surgery, dental, and any private practice.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -234,9 +267,9 @@
           </div>
         </a>
 
-        <a href="/blog/best-med-spa-marketing-companies" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/best-med-spa-marketing-companies" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Agencies</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Best Med Spa Marketing Companies in 2026 (Ranked)</h2>
             <p class="blog-card-excerpt">The best med spa marketing companies in 2026, compared honestly: specialties, pricing models, guarantees, and how to choose the right fit for your clinic.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -246,9 +279,9 @@
           </div>
         </a>
 
-        <a href="/blog/medical-spa-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/medical-spa-marketing" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Strategy</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Medical Spa Marketing: The Complete 2026 Guide</h2>
             <p class="blog-card-excerpt">Medical spa marketing explained for 2026: the channels that book patients, real campaign numbers, budget benchmarks, and the system that ties it together.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -258,9 +291,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-content-ideas" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-content-ideas" class="blog-card reveal" data-cats="strategy meta-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Content</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Content Ideas: 30 Posts Patients Watch</h2>
             <p class="blog-card-excerpt">30 med spa content ideas for Instagram and TikTok: on-camera reels, treatment videos, and hooks that turn viewers into booked patients.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -270,9 +303,9 @@
           </div>
         </a>
 
-        <a href="/blog/dermatology-seo" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/dermatology-seo" class="blog-card reveal" data-cats="dermatology seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">Dermatology &amp; Skin</span>
             <h2 class="blog-card-title">Dermatology SEO: How to Rank for Patient Searches</h2>
             <p class="blog-card-excerpt">Dermatology SEO explained: how dermatologists rank for cosmetic treatment searches, win the local pack, build review velocity, and fill the schedule.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -282,9 +315,9 @@
           </div>
         </a>
 
-        <a href="/blog/healthcare-facebook-ads" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/healthcare-facebook-ads" class="blog-card reveal" data-cats="meta-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Meta Ads</span>
+            <span class="blog-card-tag">Facebook &amp; Instagram Ads</span>
             <h2 class="blog-card-title">Facebook Ads for Healthcare: Rules & What Works in 2026</h2>
             <p class="blog-card-excerpt">Facebook ads for healthcare practices in 2026: what Meta's health policies actually allow, the creative that converts patients, and real CPL benchmarks.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -294,9 +327,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-staffing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-staffing" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Operations</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Staffing: How to Hire Injectors Who Stay</h2>
             <p class="blog-card-excerpt">Med spa staffing guide: which roles to hire first, injector pay structures, medical director requirements, and how to keep top talent from walking.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -306,9 +339,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-membership-programs" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-membership-programs" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Retention</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Membership, Loyalty & Referral Programs</h2>
             <p class="blog-card-excerpt">How to build med spa membership, loyalty, and referral programs that lock in recurring revenue: models, pricing math, and launch playbooks that work.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -318,9 +351,9 @@
           </div>
         </a>
 
-        <a href="/blog/esthetician-marketing-ideas" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/esthetician-marketing-ideas" class="blog-card reveal" data-cats="dermatology strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Ideas</span>
+            <span class="blog-card-tag">Dermatology &amp; Skin</span>
             <h2 class="blog-card-title">Esthetician Marketing Ideas: 15 Ways to Stay Booked</h2>
             <p class="blog-card-excerpt">15 esthetician marketing ideas that keep a solo book full: Instagram content, Google Business Profile, referrals, rebooking scripts, and smart paid ads.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -330,9 +363,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-visibility-system" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-visibility-system" class="blog-card reveal" data-cats="strategy seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Strategy</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">The Med Spa Visibility System: How Patients Find You</h2>
             <p class="blog-card-excerpt">The four-pillar system I use to make med spas visible everywhere patients look: web design, SEO, Google Ads, and Meta ads. From the founder of ScaleHaven.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -342,9 +375,9 @@
           </div>
         </a>
 
-        <a href="/blog/emsculpt-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/emsculpt-marketing" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Treatments</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">EMSculpt Marketing: How to Fill Body Contouring Slots</h2>
             <p class="blog-card-excerpt">EMSculpt marketing that books consults — named offers, Meta Ads creative that shows the machine working, package pricing, and local plays for 2026.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -354,9 +387,9 @@
           </div>
         </a>
 
-        <a href="/blog/hipaa-compliant-med-spa-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/hipaa-compliant-med-spa-marketing" class="blog-card reveal" data-cats="strategy business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Compliance</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">HIPAA-Compliant Med Spa Marketing: The 2026 Rules</h2>
             <p class="blog-card-excerpt">What HIPAA actually allows in med spa marketing — before/after photos, reviews, email, ads, and tracking pixels — explained in plain English for 2026.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -366,9 +399,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-email-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-email-marketing" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Email & SMS</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Email Marketing: The Money Is in the List</h2>
             <p class="blog-card-excerpt">Med spa email marketing in 2026 — the 5 automated sequences that drive rebookings, the campaigns worth sending, and the metrics that actually matter.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -378,9 +411,9 @@
           </div>
         </a>
 
-        <a href="/blog/wellness-clinic-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/wellness-clinic-marketing" class="blog-card reveal" data-cats="treatments strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Wellness</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Wellness Clinic Marketing: The 2026 Growth Guide</h2>
             <p class="blog-card-excerpt">Wellness clinic marketing in 2026 — positioning across services, membership models, compliant advertising, and the acquisition channels that book clients.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -390,9 +423,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-ads" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-ads" class="blog-card reveal" data-cats="meta-ads google-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Meta Ads</span>
+            <span class="blog-card-tag">Facebook &amp; Instagram Ads</span>
             <h2 class="blog-card-title">Med Spa Ads: What Actually Works (Examples + Costs)</h2>
             <p class="blog-card-excerpt">Med spa ads that book patients in 2026 — real campaigns with $3.83 CPLs, the offer-plus-creative formula, video ad examples, and what to run with no content.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -402,9 +435,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-branding" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-branding" class="blog-card reveal" data-cats="web-design" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Branding</span>
+            <span class="blog-card-tag">Websites &amp; Branding</span>
             <h2 class="blog-card-title">Med Spa Branding: Build a Brand That Books Patients</h2>
             <p class="blog-card-excerpt">Med spa branding in 2026 — positioning, naming, visual identity, and the brand decisions that actually drive bookings (and the ones that are just decoration).</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -414,9 +447,9 @@
           </div>
         </a>
 
-        <a href="/blog/laser-hair-removal-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/laser-hair-removal-marketing" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Treatments</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Laser Hair Removal Marketing That Books Packages</h2>
             <p class="blog-card-excerpt">Laser hair removal marketing in 2026 — package-first offers, seasonal timing, Meta Ads strategy, and the follow-up that sells 6-session plans, not single zaps.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -426,9 +459,9 @@
           </div>
         </a>
 
-        <a href="/blog/weight-loss-clinic-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/weight-loss-clinic-marketing" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Weight Loss</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Weight Loss Clinic Marketing: The 2026 Playbook</h2>
             <p class="blog-card-excerpt">Weight loss clinic marketing in 2026 — compliant semaglutide and GLP-1 advertising, program-based offers, and the follow-up systems that enroll patients.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -438,9 +471,9 @@
           </div>
         </a>
 
-        <a href="/blog/hydrafacial-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/hydrafacial-marketing" class="blog-card reveal" data-cats="treatments dermatology" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Treatments</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">HydraFacial Marketing: Fill Your Facial Schedule</h2>
             <p class="blog-card-excerpt">HydraFacial marketing that books appointments — the offers, membership model, Meta Ads creative, and upgrade paths that turn facials into loyal patients.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -450,9 +483,9 @@
           </div>
         </a>
 
-        <a href="/blog/iv-therapy-marketing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/iv-therapy-marketing" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Treatments</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">IV Therapy Marketing: How to Fill Your Drip Lounge</h2>
             <p class="blog-card-excerpt">IV therapy marketing that books clients in 2026 — the offers, Meta Ads strategy, memberships, and local plays that fill drip lounges and wellness bars.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -462,9 +495,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-name-ideas" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-name-ideas" class="blog-card reveal" data-cats="web-design business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Websites &amp; Branding</span>
             <h2 class="blog-card-title">Med Spa Name Ideas: 75+ Names & How to Pick One</h2>
             <p class="blog-card-excerpt">75+ med spa name ideas by style — luxury, modern, medical, and location-based — plus the naming rules that protect your SEO, trademark, and brand.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -474,9 +507,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-consultant" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-consultant" class="blog-card reveal" data-cats="business strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Growth</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Consultant: What They Do & When to Hire One</h2>
             <p class="blog-card-excerpt">What a med spa consultant actually does, what they cost, and when to hire one vs a done-for-you marketing partner — an honest guide for clinic owners.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -486,9 +519,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-open-house-ideas" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-open-house-ideas" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Events</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Open House Ideas That Book Patients</h2>
             <p class="blog-card-excerpt">Med spa open house and grand opening ideas for 2026 — the event formats, offers, and follow-up systems that turn attendees into booked patients.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -498,9 +531,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-pricing" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-pricing" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Pricing Strategy</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Pricing: How to Price Treatments Profitably</h2>
             <p class="blog-card-excerpt">Med spa pricing strategy for 2026 — unit vs area pricing, packages, memberships, and the psychology that protects margins instead of racing to the bottom.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -510,9 +543,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-insurance" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-insurance" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Insurance: The Coverage You Actually Need</h2>
             <p class="blog-card-excerpt">Med spa insurance explained — malpractice, general liability, and the coverage gaps that sink clinics, with realistic 2026 cost ranges by policy type.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -522,9 +555,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-medical-director" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-medical-director" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Medical Director: Rules, Costs & How to Hire</h2>
             <p class="blog-card-excerpt">What a med spa medical director actually does, what one costs in 2026, state requirement basics, and how to structure the relationship properly.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -534,9 +567,9 @@
           </div>
         </a>
 
-        <a href="/blog/botox-party" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/botox-party" class="blog-card reveal" data-cats="treatments strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Events</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Botox Parties: The Legal Rules & How Clinics Do It</h2>
             <p class="blog-card-excerpt">Are Botox parties legal? The compliance rules by setting, why most states restrict them, and the safe event formats clinics use to book patients instead.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -546,9 +579,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-much-do-med-spa-owners-make" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-much-do-med-spa-owners-make" class="blog-card reveal" data-cats="business data" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Economics</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">How Much Do Med Spa Owners Make? (Real 2026 Numbers)</h2>
             <p class="blog-card-excerpt">How much med spa owners actually make in 2026 — real income ranges by clinic size, profit margins, what separates $60K owners from $500K owners.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -558,9 +591,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-franchise/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-franchise/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Franchise vs Independent: The Honest Math</h2>
             <p class="blog-card-excerpt">Is a med spa franchise worth it in 2026? Real franchise costs and royalties vs going independent — and which path actually builds more equity.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -570,9 +603,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-revenue-ceiling-50k/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-revenue-ceiling-50k/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Growth</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Why Med Spas Hit a $50K/Month Ceiling (& How to Break It)</h2>
             <p class="blog-card-excerpt">Why most med spas plateau at $50K/month — the 5 structural ceilings every stuck clinic hits, how to diagnose which one is yours, and the system to break through each.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -582,9 +615,9 @@
           </div>
         </a>
 
-        <a href="/blog/aesthetic-clinic-marketing-solo-providers/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/aesthetic-clinic-marketing-solo-providers/" class="blog-card reveal" data-cats="strategy business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Aesthetic</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Aesthetic Clinic Marketing for Solo Providers</h2>
             <p class="blog-card-excerpt">A practical marketing guide for solo aesthetic providers — RN injectors, NPs, MDs, and advanced estheticians running solo practices. Economics, niche, pricing, channels, and the path from solo to small clinic.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -594,9 +627,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-build-a-7-figure-med-spa/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-build-a-7-figure-med-spa/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Industry Data</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">How to Build a 7-Figure Med Spa: The Real Math</h2>
             <p class="blog-card-excerpt">The real math, treatment mix, retention metrics, and operational benchmarks behind med spas that generate $1M+ per year. Sourced from AmSpa, ASAPS, IBISWorld, Grand View Research, and Mordor Intelligence.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -606,9 +639,9 @@
           </div>
         </a>
 
-        <a href="/blog/best-crm-for-med-spas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/best-crm-for-med-spas/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Tools</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Best CRM & Tech Stack for Med Spas in 2026</h2>
             <p class="blog-card-excerpt">The best CRM and tech stack for med spas in 2026 — Aesthetic Record, Boulevard, Mangomint, GoHighLevel, HubSpot, Twilio, Birdeye and more. Real pricing, who each tool is for, and what a complete stack looks like by clinic size.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -618,9 +651,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-patient-retention/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-patient-retention/" class="blog-card reveal" data-cats="business strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Retention</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">How to Get Med Spa Patients to Rebook & Stay Loyal</h2>
             <p class="blog-card-excerpt">Med spa rebooking averages 40-50% (vs 90% in dentistry). Here's the full retention playbook — checkout rebooks, lifecycle email, SMS reactivation, memberships, referrals, and the LTV math behind it all.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -630,9 +663,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-fill-aesthetic-nurse-calendar/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-fill-aesthetic-nurse-calendar/" class="blog-card reveal" data-cats="lead-gen business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Aesthetic Nurse</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Fill Your Aesthetic Nurse Calendar (Solo Injectors)</h2>
             <p class="blog-card-excerpt">The honest playbook for solo aesthetic nurses in 2026 — personal brand, Instagram-led acquisition, real CPL numbers ($8-18/lead), package strategy, and when to hire help.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -642,9 +675,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-compete-with-bigger-med-spas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-compete-with-bigger-med-spas/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Strategy</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">How to Compete With Bigger Med Spas in Your Area</h2>
             <p class="blog-card-excerpt">How small and independent med spas beat big chains in 2026 — niche down, premium positioning, 5-minute follow-up, local SEO, owner-led brand, reviews, memberships, and strategic partnerships.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -654,9 +687,9 @@
           </div>
         </a>
 
-        <a href="/blog/why-isnt-my-med-spa-growing/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/why-isnt-my-med-spa-growing/" class="blog-card reveal" data-cats="business strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Diagnostics</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Why Isn't My Med Spa Growing? 10 Reasons & Fixes</h2>
             <p class="blog-card-excerpt">Why isn't your med spa growing? 10 specific reasons growth stalls — from slow follow-up to wrong treatment mix — plus the concrete fix for each.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -666,7 +699,7 @@
           </div>
         </a>
 
-        <a href="/blog/google-ads-for-med-spas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/google-ads-for-med-spas/" class="blog-card reveal" data-cats="google-ads" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Google Ads</span>
             <h2 class="blog-card-title">Google Ads for Med Spas: Cost, Strategy & Real Results</h2>
@@ -678,9 +711,9 @@
           </div>
         </a>
 
-        <a href="/blog/chemical-peel-marketing/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/chemical-peel-marketing/" class="blog-card reveal" data-cats="treatments dermatology" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Skincare Marketing</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Chemical Peel Marketing: Fill Your Skin Patient Schedule</h2>
             <p class="blog-card-excerpt">How to market chemical peels in 2026 — patient psychology, Meta Ads strategy for light, medium, and deep peels, seasonal timing, CPL benchmarks, and the package model that fills your skin schedule.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -690,9 +723,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-patient-acquisition/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-patient-acquisition/" class="blog-card reveal" data-cats="lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Patient Acquisition</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">Med Spa Patient Acquisition: The 2026 Strategy Guide</h2>
             <p class="blog-card-excerpt">The complete 2026 strategy guide to med spa patient acquisition — the 4-stage funnel, real CAC and LTV math, channel comparisons, and a 30-60-90 day plan.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -702,9 +735,9 @@
           </div>
         </a>
 
-        <a href="/blog/new-med-spa-marketing-first-90-days/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/new-med-spa-marketing-first-90-days/" class="blog-card reveal" data-cats="strategy business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Med Spa Marketing</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">New Med Spa Marketing: The First 90 Days Playbook</h2>
             <p class="blog-card-excerpt">The first 90 days of a new med spa, week-by-week. Pre-launch setup, Meta Ads, reviews, partnerships, real budgets ($1,500-3,000/mo), and realistic patient volume (10-30 month one, 30-60 by month three).</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -714,9 +747,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-equipment/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-equipment/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">Med Spa Equipment: The 2026 Essentials Guide</h2>
             <p class="blog-card-excerpt">The essential med spa equipment for 2026 — what to buy first, what to lease, real cost ranges, and how to sequence purchases so devices pay for themselves.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -726,9 +759,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-start-a-med-spa/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-start-a-med-spa/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">How to Start a Med Spa in 2026 (Step-by-Step)</h2>
             <p class="blog-card-excerpt">How to start a med spa in 2026 — the 9 steps to open: costs, licensing, medical director rules, equipment, staffing, and booking patients from day one.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -738,9 +771,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-business-plan/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-business-plan/" class="blog-card reveal" data-cats="business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Starting a Med Spa</span>
+            <span class="blog-card-tag">Running a Clinic</span>
             <h2 class="blog-card-title">How to Write a Med Spa Business Plan (2026 Guide)</h2>
             <p class="blog-card-excerpt">How to write a med spa business plan in 2026 — every section explained, with real startup costs, margins, and the marketing plan most owners forget.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -750,9 +783,9 @@
           </div>
         </a>
 
-        <a href="/blog/digital-marketing-for-aesthetic-clinics/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/digital-marketing-for-aesthetic-clinics/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Aesthetic</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Digital Marketing for Aesthetic Clinics (2026)</h2>
             <p class="blog-card-excerpt">Digital marketing for aesthetic clinics in 2026 — the channels that book patients, a simple plan to run them, and where medical aesthetics marketing pays off.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -762,9 +795,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-advertise-botox-legally/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-advertise-botox-legally/" class="blog-card reveal" data-cats="treatments meta-ads google-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Botox</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">How to Advertise Botox Legally in 2026</h2>
             <p class="blog-card-excerpt">How to advertise Botox legally in 2026 — the FDA drug-name rules, FTC disclosure requirements, and Meta's restricted-content policies, explained for clinics.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -774,9 +807,9 @@
           </div>
         </a>
 
-        <a href="/blog/botox-marketing-ideas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/botox-marketing-ideas/" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Botox</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Botox Marketing Ideas: 21 That Fill Your Chairs</h2>
             <p class="blog-card-excerpt">21 Botox marketing and promotion ideas that fill injectable chairs in 2026 — ads, offers, retention, and referrals that attract patients, not discount hunters.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -786,9 +819,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-marketing-budget/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-marketing-budget/" class="blog-card reveal" data-cats="strategy business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Pricing</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Marketing Budget: How Much Should You Spend?</h2>
             <p class="blog-card-excerpt">How much should a med spa spend on marketing in 2026? The 7-10% of revenue rule, budget breakdowns by clinic size, allocation by channel, minimum viable spend, and when to scale.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -798,9 +831,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-marketing-plan/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-marketing-plan/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Marketing Plan</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">How to Build a Med Spa Marketing Plan (2026)</h2>
             <p class="blog-card-excerpt">How to build a med spa marketing plan in 2026 — a step-by-step template covering goals, budget, channels, the funnel, and a 90-day execution roadmap.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -810,9 +843,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-marketing-ideas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-marketing-ideas/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Marketing Ideas</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Marketing Ideas: 27 That Book Patients</h2>
             <p class="blog-card-excerpt">27 med spa marketing ideas that actually book patients in 2026 — ad, promotion, retention, and local ideas ranked by effort and payoff, not fluff.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -822,9 +855,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-get-more-med-spa-patients/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-get-more-med-spa-patients/" class="blog-card reveal" data-cats="lead-gen strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Patient Acquisition</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Get More Med Spa Patients: 10 Proven Methods</h2>
             <p class="blog-card-excerpt">How to get more med spa patients in 2026 — 10 proven acquisition methods including Meta Ads, Google Ads, SEO, reviews, referral programs, and automated follow-up with real CPL benchmarks.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -834,9 +867,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-get-more-google-reviews-med-spa/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-get-more-google-reviews-med-spa/" class="blog-card reveal" data-cats="seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Reviews</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">How to Get More Google Reviews for Your Med Spa</h2>
             <p class="blog-card-excerpt">How to get more Google reviews for your med spa without begging — the math, timing, scripts, SMS automation, tool comparisons, and the negative review playbook that turns 1-stars into wins.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -846,9 +879,9 @@
           </div>
         </a>
 
-        <a href="/blog/best-med-spa-websites/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/best-med-spa-websites/" class="blog-card reveal" data-cats="web-design" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Web Design</span>
+            <span class="blog-card-tag">Websites &amp; Branding</span>
             <h2 class="blog-card-title">Best Med Spa Websites: What Top Clinics Do Right</h2>
             <p class="blog-card-excerpt">What the best med spa websites have in common in 2026 — the 7 patterns that make clinic sites rank and convert, with a checklist to grade your own.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -858,9 +891,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-get-more-plastic-surgery-consultations/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-get-more-plastic-surgery-consultations/" class="blog-card reveal" data-cats="plastic-surgery lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Consults</span>
+            <span class="blog-card-tag">Plastic Surgery</span>
             <h2 class="blog-card-title">How to Get More Plastic Surgery Consultations</h2>
             <p class="blog-card-excerpt">How to get more plastic surgery consultations — speed-to-lead, consult fees, show-rate systems, and the coordinator playbook that converts.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -870,9 +903,9 @@
           </div>
         </a>
 
-        <a href="/blog/plastic-surgery-lead-generation/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/plastic-surgery-lead-generation/" class="blog-card reveal" data-cats="plastic-surgery lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Lead Gen</span>
+            <span class="blog-card-tag">Plastic Surgery</span>
             <h2 class="blog-card-title">Plastic Surgery Lead Generation: What Works in 2026</h2>
             <p class="blog-card-excerpt">Plastic surgery lead generation in 2026 — the channels ranked, the funnel math from lead to surgery, and the follow-up system that books consults.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -882,9 +915,9 @@
           </div>
         </a>
 
-        <a href="/blog/plastic-surgery-seo/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/plastic-surgery-seo/" class="blog-card reveal" data-cats="plastic-surgery seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">Plastic Surgery</span>
             <h2 class="blog-card-title">Plastic Surgery SEO: How Practices Rank #1 in 2026</h2>
             <p class="blog-card-excerpt">Plastic surgery SEO that fills consult calendars — procedure page architecture, local map-pack strategy, E-E-A-T, and content patients actually search.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -894,9 +927,9 @@
           </div>
         </a>
 
-        <a href="/blog/plastic-surgery-advertising/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/plastic-surgery-advertising/" class="blog-card reveal" data-cats="plastic-surgery meta-ads google-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Paid Ads</span>
+            <span class="blog-card-tag">Plastic Surgery</span>
             <h2 class="blog-card-title">Plastic Surgery Advertising: The 2026 Paid Ads Playbook</h2>
             <p class="blog-card-excerpt">Plastic surgery advertising that books consults — Meta and Google strategy, real cost-per-lead numbers, compliant creative, and follow-up that converts.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -906,7 +939,7 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-market-a-plastic-surgery-practice/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-market-a-plastic-surgery-practice/" class="blog-card reveal" data-cats="plastic-surgery strategy" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Plastic Surgery</span>
             <h2 class="blog-card-title">How to Market a Plastic Surgery Practice in 2026</h2>
@@ -918,9 +951,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-seo-vs-paid-ads/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-seo-vs-paid-ads/" class="blog-card reveal" data-cats="seo google-ads meta-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">Med Spa SEO vs Paid Ads: Where Should You Invest?</h2>
             <p class="blog-card-excerpt">Should your med spa invest in SEO or paid ads? An honest comparison of timeline, cost, and intent — plus why the smartest clinics run both, and exactly how to split your budget by stage.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -930,9 +963,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-seo-cost/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-seo-cost/" class="blog-card reveal" data-cats="seo business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">Med Spa SEO Cost: What It Actually Costs in 2026</h2>
             <p class="blog-card-excerpt">What does med spa SEO actually cost in 2026? Real pricing for DIY, freelancers, and agencies — plus the LTV math on why ranking #1 is worth far more than the fee.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -942,9 +975,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-near-me-searches/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-near-me-searches/" class="blog-card reveal" data-cats="seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">How to Win “Med Spa Near Me” Searches in 2026</h2>
             <p class="blog-card-excerpt">How to rank for “med spa near me” and “[treatment] near me” searches — the highest-intent, ready-to-book queries in aesthetics. A complete local SEO playbook.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -954,9 +987,9 @@
           </div>
         </a>
 
-        <a href="/blog/local-seo-for-med-spas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/local-seo-for-med-spas/" class="blog-card reveal" data-cats="seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">Local SEO for Med Spas: How to Rank in the Map Pack</h2>
             <p class="blog-card-excerpt">A step-by-step guide to local SEO for med spas — how the Google Map Pack works, the three local ranking factors, and how to land in the top 3 for med spa near me searches.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -966,9 +999,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-google-business-profile/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-google-business-profile/" class="blog-card reveal" data-cats="seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">Med Spa Google Business Profile: Optimization Guide 2026</h2>
             <p class="blog-card-excerpt">Your Google Business Profile is the #1 local ranking lever for med spas. Here's how to claim, optimize, and maintain a GBP that wins the map pack in 2026.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -978,9 +1011,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-seo/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-seo/" class="blog-card reveal" data-cats="seo" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-tag">SEO &amp; Local Search</span>
             <h2 class="blog-card-title">Med Spa SEO: How to Rank #1 for Local Patient Searches</h2>
             <p class="blog-card-excerpt">The complete med spa SEO playbook for 2026 — Google Business Profile, local citations, treatment pages, reviews, and pricing breakdown.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -990,9 +1023,9 @@
           </div>
         </a>
 
-        <a href="/blog/botox-advertising/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/botox-advertising/" class="blog-card reveal" data-cats="treatments meta-ads google-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Botox Marketing</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Botox Advertising: How to Run Profitable Botox Ads in 2026</h2>
             <p class="blog-card-excerpt">How to run profitable Botox ads in 2026 — Meta Ads strategy, creative formats that convert, real CPL benchmarks, targeting, and FDA-compliant copy that books consultations.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1002,9 +1035,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-market-a-skincare-clinic/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-market-a-skincare-clinic/" class="blog-card reveal" data-cats="dermatology strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Skincare Marketing</span>
+            <span class="blog-card-tag">Dermatology &amp; Skin</span>
             <h2 class="blog-card-title">How to Market a Skincare Clinic in a Crowded Market</h2>
             <p class="blog-card-excerpt">A complete marketing playbook for skincare clinics — Meta Ads, SEO, memberships, reviews, and social media strategies that fill your treatment rooms.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1014,9 +1047,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-get-more-patients-aesthetic-practice/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-get-more-patients-aesthetic-practice/" class="blog-card reveal" data-cats="lead-gen strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Patient Acquisition</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Get More Patients for Your Aesthetic Practice: 10 Proven Methods</h2>
             <p class="blog-card-excerpt">10 proven methods to get more patients for your aesthetic clinic, med spa, or cosmetic practice — with real benchmarks and actionable steps.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1026,7 +1059,7 @@
           </div>
         </a>
 
-        <a href="/blog/filler-clinic-marketing/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/filler-clinic-marketing/" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Filler Marketing: How to Attract High-Value Dermal Filler Patients</h2>
@@ -1038,7 +1071,7 @@
           </div>
         </a>
 
-        <a href="/blog/aesthetic-industry-statistics-2026/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/aesthetic-industry-statistics-2026/" class="blog-card reveal" data-cats="data" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Industry Data</span>
             <h2 class="blog-card-title">63 Aesthetic Industry Statistics Every Clinic Owner Should Know (2026)</h2>
@@ -1050,9 +1083,9 @@
           </div>
         </a>
 
-        <a href="/blog/instagram-ads-aesthetic-clinics/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/instagram-ads-aesthetic-clinics/" class="blog-card reveal" data-cats="meta-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Meta Ads</span>
+            <span class="blog-card-tag">Facebook &amp; Instagram Ads</span>
             <h2 class="blog-card-title">Instagram Ads for Aesthetic Clinics That Actually Convert</h2>
             <p class="blog-card-excerpt">How to run Instagram ads for aesthetic clinics that book real consultations — Reels vs Stories vs Feed, creative best practices, targeting, and budget allocation.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1062,7 +1095,7 @@
           </div>
         </a>
 
-        <a href="/blog/coolsculpting-marketing/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/coolsculpting-marketing/" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">CoolSculpting Marketing: The Complete Patient Acquisition Guide</h2>
@@ -1074,7 +1107,7 @@
           </div>
         </a>
 
-        <a href="/blog/morpheus8-marketing-guide/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/morpheus8-marketing-guide/" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Morpheus8 Marketing: How to Fill Your RF Microneedling Calendar</h2>
@@ -1086,9 +1119,9 @@
           </div>
         </a>
 
-        <a href="/blog/facebook-ads-for-med-spas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/facebook-ads-for-med-spas/" class="blog-card reveal" data-cats="meta-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Meta Ads</span>
+            <span class="blog-card-tag">Facebook &amp; Instagram Ads</span>
             <h2 class="blog-card-title">Facebook Ads for Med Spas: The Complete 2026 Guide</h2>
             <p class="blog-card-excerpt">Everything med spas need to know about Facebook and Instagram ads in 2026 — campaign structure, targeting, creative, budgets, and real CPL benchmarks by treatment.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1098,9 +1131,9 @@
           </div>
         </a>
 
-        <a href="/blog/cosmetic-clinic-lead-generation/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/cosmetic-clinic-lead-generation/" class="blog-card reveal" data-cats="lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Lead Gen</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">Cosmetic Clinic Lead Generation: 7 Tactics That Work in 2026</h2>
             <p class="blog-card-excerpt">7 proven cosmetic clinic lead generation tactics — from Meta Ads and Google PPC to referral programs and automated follow-up — that fill your consultation calendar in 2026.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1110,9 +1143,9 @@
           </div>
         </a>
 
-        <a href="/blog/glp1-semaglutide-marketing-med-spas/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/glp1-semaglutide-marketing-med-spas/" class="blog-card reveal" data-cats="treatments" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">GLP-1 Marketing</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">GLP-1 and Semaglutide Marketing for Med Spas: How to Sell the Hottest Treatment of 2026</h2>
             <p class="blog-card-excerpt">GLP-1 weight loss programs are the fastest-growing revenue line in med spas. Here's how to position, price, and market semaglutide and tirzepatide treatments using Meta Ads.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1122,9 +1155,9 @@
           </div>
         </a>
 
-        <a href="/blog/aesthetic-clinic-lead-generation/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/aesthetic-clinic-lead-generation/" class="blog-card reveal" data-cats="lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Lead Gen</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Generate Leads for Aesthetic Clinics on Autopilot</h2>
             <p class="blog-card-excerpt">The complete system for generating aesthetic clinic leads consistently — Meta Ads, Google Ads, SEO, referral programs, and the automated follow-up that turns it all into booked consultations.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1134,9 +1167,9 @@
           </div>
         </a>
 
-        <a href="/blog/aesthetic-clinic-marketing-playbook/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/aesthetic-clinic-marketing-playbook/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Aesthetic Clinics</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Aesthetic Clinic Marketing: The 2026 Playbook</h2>
             <p class="blog-card-excerpt">How aesthetic clinics, cosmetic clinics, and skincare practices fill their schedules in 2026 — positioning, paid ads, retention systems, and real acquisition math.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1146,9 +1179,9 @@
           </div>
         </a>
 
-        <a href="/blog/botox-marketing-guide/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/botox-marketing-guide/" class="blog-card reveal" data-cats="treatments meta-ads" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Botox Marketing</span>
+            <span class="blog-card-tag">Treatment Marketing</span>
             <h2 class="blog-card-title">Botox Marketing: The Complete Guide for Clinics in 2026</h2>
             <p class="blog-card-excerpt">How clinics, med spas, and aesthetic practices fill their Botox schedules in 2026 — ad strategy, pricing psychology, creative that converts, and the numbers behind it.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1158,9 +1191,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-cost-per-lead-benchmarks/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-cost-per-lead-benchmarks/" class="blog-card reveal" data-cats="data lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Benchmarks</span>
+            <span class="blog-card-tag">Industry Data</span>
             <h2 class="blog-card-title">Average Cost Per Lead for Med Spas by Treatment (2026 Benchmarks)</h2>
             <p class="blog-card-excerpt">Average cost per lead for med spas by treatment type, ad channel, and market size — 2026 benchmark data for practice owners and marketers.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1170,7 +1203,7 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-industry-statistics/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-industry-statistics/" class="blog-card reveal" data-cats="data" style="position:relative;">
           <div class="blog-card-body">
             <span class="blog-card-tag">Industry Data</span>
             <h2 class="blog-card-title">47 Med Spa Industry Statistics for 2026</h2>
@@ -1182,9 +1215,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-market-a-dermatology-clinic/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-market-a-dermatology-clinic/" class="blog-card reveal" data-cats="dermatology strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Dermatology</span>
+            <span class="blog-card-tag">Dermatology &amp; Skin</span>
             <h2 class="blog-card-title">How to Market a Dermatology Clinic in 2026</h2>
             <p class="blog-card-excerpt">A complete 2026 guide to marketing a dermatology clinic — from positioning against med spas to filling your cosmetic and medical schedules.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1194,9 +1227,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-marketing-cost/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-marketing-cost/" class="blog-card reveal" data-cats="strategy business" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Pricing</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">How Much Does Med Spa Marketing Cost? Real 2026 Numbers</h2>
             <p class="blog-card-excerpt">What does med spa marketing actually cost in 2026? Real numbers on Meta Ads, agencies, in-house staff, and what you should expect to pay for results.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1206,9 +1239,9 @@
           </div>
         </a>
 
-        <a href="/blog/med-spa-marketing-strategies/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/med-spa-marketing-strategies/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Med Spa Marketing</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Marketing Strategies That Actually Bring in Patients</h2>
             <p class="blog-card-excerpt">Twelve med spa marketing strategies that actually bring in patients in 2026 — from paid ads to retention programs to community partnerships.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1218,9 +1251,9 @@
           </div>
         </a>
 
-        <a href="/blog/how-to-market-a-med-spa/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-market-a-med-spa/" class="blog-card reveal" data-cats="strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Med Spa Marketing</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">How to Market a Med Spa in 2026: The Complete Playbook</h2>
             <p class="blog-card-excerpt">The complete 2026 playbook for marketing a med spa — from your first paid ad to a fully booked calendar. Real tactics, real numbers, no fluff.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1231,9 +1264,9 @@
         </a>
 
         <!-- Post 1 -->
-        <a href="/blog/how-to-get-more-med-spa-clients/" class="blog-card reveal" style="position:relative;">
+        <a href="/blog/how-to-get-more-med-spa-clients/" class="blog-card reveal" data-cats="lead-gen strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Patient Acquisition</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Get More Med Spa Clients: 7 Strategies for 2026</h2>
             <p class="blog-card-excerpt">The complete playbook for filling your med spa with qualified patients — from Meta Ads to referral systems to follow-up automation.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1244,9 +1277,9 @@
         </a>
 
         <!-- Post 2 -->
-        <a href="/blog/how-to-fill-med-spa-calendar/" class="blog-card reveal reveal-d1" style="position:relative;">
+        <a href="/blog/how-to-fill-med-spa-calendar/" class="blog-card reveal reveal-d1" data-cats="lead-gen strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Growth Strategy</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">How to Fill Your Med Spa Calendar Every Month</h2>
             <p class="blog-card-excerpt">Stop relying on referrals and hope. Here's the system that keeps your treatment rooms booked month after month.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1257,9 +1290,9 @@
         </a>
 
         <!-- Post 3 -->
-        <a href="/blog/med-spa-roi-marketing/" class="blog-card reveal reveal-d2" style="position:relative;">
+        <a href="/blog/med-spa-roi-marketing/" class="blog-card reveal reveal-d2" data-cats="strategy data" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">ROI & Analytics</span>
+            <span class="blog-card-tag">Marketing Strategy</span>
             <h2 class="blog-card-title">Med Spa Marketing ROI: What to Expect and How to Maximize Returns</h2>
             <p class="blog-card-excerpt">What should you actually expect from your marketing spend? Real numbers, realistic timelines, and how to maximize every dollar.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1270,9 +1303,9 @@
         </a>
 
         <!-- Post 4 -->
-        <a href="/blog/med-spa-lead-follow-up-system/" class="blog-card reveal reveal-d3" style="position:relative;">
+        <a href="/blog/med-spa-lead-follow-up-system/" class="blog-card reveal reveal-d3" data-cats="lead-gen" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Lead Follow-Up</span>
+            <span class="blog-card-tag">Lead Generation</span>
             <h2 class="blog-card-title">Med Spa Lead Follow-Up: Why Speed Kills (and How to Automate It)</h2>
             <p class="blog-card-excerpt">You're losing 80% of your leads to slow follow-up. Here's how to respond in seconds and book patients on autopilot.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1283,9 +1316,9 @@
         </a>
 
         <!-- Post 5 -->
-        <a href="/blog/med-spa-social-media-marketing/" class="blog-card reveal reveal-d4" style="position:relative;">
+        <a href="/blog/med-spa-social-media-marketing/" class="blog-card reveal reveal-d4" data-cats="meta-ads strategy" style="position:relative;">
           <div class="blog-card-body">
-            <span class="blog-card-tag">Social Media</span>
+            <span class="blog-card-tag">Facebook &amp; Instagram Ads</span>
             <h2 class="blog-card-title">Med Spa Social Media Marketing: Paid vs Organic Strategy Guide</h2>
             <p class="blog-card-excerpt">Should you invest in organic content or paid ads? The answer is both — but here's how to prioritize for maximum patient acquisition.</p>
             <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1426,6 +1459,54 @@
     </div>
   </footer>
 
+  <script>
+    /* Topic filter: chips are static, counts come from the cards so new posts are counted automatically.
+       ?topic=google-ads deep-links a filter; the canonical stays /blog/. */
+    (function () {
+      var bar = document.querySelector('.blog-filter');
+      if (!bar) return;
+      var cards = [].slice.call(document.querySelectorAll('.blog-grid .blog-card'));
+      var chips = [].slice.call(bar.querySelectorAll('.blog-filter-chip'));
+      var status = document.querySelector('.blog-filter-status');
+      var has = function (card, key) { return key === 'all' || (' ' + (card.getAttribute('data-cats') || '') + ' ').indexOf(' ' + key + ' ') > -1; };
+      chips.forEach(function (chip) {
+        var key = chip.getAttribute('data-filter');
+        var n = cards.filter(function (c) { return has(c, key); }).length;
+        chip.querySelector('.blog-filter-count').textContent = n;
+        if (!n) chip.hidden = true;
+      });
+      function apply(key, userAction) {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = has(card, key);
+          card.hidden = !match;
+          if (match) { shown++; if (userAction || key !== 'all') card.classList.add('visible'); }
+        });
+        var label = '';
+        chips.forEach(function (chip) {
+          var on = chip.getAttribute('data-filter') === key;
+          chip.classList.toggle('is-active', on);
+          chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+          if (on) label = chip.firstChild.textContent.trim();
+        });
+        if (status) status.textContent = key === 'all' ? 'Showing all ' + shown + ' articles' : 'Showing ' + shown + ' article' + (shown === 1 ? '' : 's') + ' in ' + label;
+        if (userAction) {
+          var url = new URL(location.href);
+          if (key === 'all') url.searchParams.delete('topic'); else url.searchParams.set('topic', key);
+          history.replaceState(null, '', url.pathname + url.search + url.hash);
+        }
+      }
+      bar.addEventListener('click', function (e) {
+        var chip = e.target.closest('.blog-filter-chip');
+        if (!chip) return;
+        var key = chip.getAttribute('data-filter');
+        apply(key, true);
+        if (window.shTrack) window.shTrack('blog_filter', { topic: key });
+      });
+      var initial = (new URLSearchParams(location.search).get('topic') || '').replace(/[^a-z-]/g, '');
+      apply(initial && bar.querySelector('[data-filter="' + initial + '"]') ? initial : 'all', false);
+    })();
+  </script>
   <script src="/js/main.js?v=20260908" defer></script>
 
 

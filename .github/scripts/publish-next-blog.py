@@ -31,7 +31,7 @@ BLOG_INDEX = BLOG_DIR / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
 
 META_RE = re.compile(
-    r'<!--META\s+tag="(?P<tag>[^"]+)"\s+excerpt="(?P<excerpt>[^"]+)"\s+read_time="(?P<read_time>\d+)"\s*-->'
+    r'<!--META\s+tag="(?P<tag>[^"]+)"\s+excerpt="(?P<excerpt>[^"]+)"\s+read_time="(?P<read_time>\d+)"(?:\s+cats="(?P<cats>[^"]*)")?\s*-->'
 )
 TITLE_RE = re.compile(r"<title>(?P<title>[^<]+)</title>")
 
@@ -84,12 +84,20 @@ def write_post(queue_file: Path, slug: str, today: str, today_h: str) -> Path:
     return target
 
 
-def update_blog_index(slug: str, title: str, tag: str, excerpt: str, read_time: str, today_h: str) -> None:
+def update_blog_index(slug: str, title: str, tag: str, excerpt: str, read_time: str, today_h: str, cats: str = "") -> None:
     index_html = BLOG_INDEX.read_text(encoding="utf-8")
 
     # Build new card markup matching existing style.
+    # Topic tags feed the /blog/ filter; the card image comes from scripts/blog-images.py.
+    cats_attr = f' data-cats="{cats}"' if cats else ""
+    card_img = ROOT / "images" / "blog" / f"{slug}-card.webp"
+    img_line = (
+        f'          <img class="blog-card-img" src="/images/blog/{slug}-card.webp" width="800" height="450" alt="" loading="lazy" decoding="async" />\n'
+        if card_img.exists() else ""
+    )
     card = (
-        f'        <a href="/blog/{slug}" class="blog-card reveal" style="position:relative;">\n'
+        f'        <a href="/blog/{slug}" class="blog-card reveal"{cats_attr} style="position:relative;">\n'
+        f'{img_line}'
         f'          <div class="blog-card-body">\n'
         f'            <span class="blog-card-tag">{tag}</span>\n'
         f'            <h2 class="blog-card-title">{title}</h2>\n'
@@ -152,7 +160,7 @@ def main() -> int:
     target = write_post(queue_file, slug, today, today_h)
     sys.stdout.write(f"  Wrote: {target.relative_to(ROOT)}\n")
 
-    update_blog_index(slug, title, meta["tag"], meta["excerpt"], meta["read_time"], today_h)
+    update_blog_index(slug, title, meta["tag"], meta["excerpt"], meta["read_time"], today_h, meta.get("cats") or "")
     sys.stdout.write("  Updated: blog/index.html\n")
 
     update_sitemap(slug, today)

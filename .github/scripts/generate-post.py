@@ -7,7 +7,7 @@ Usage: Called programmatically or via stdin JSON.
 import json, sys, textwrap
 from pathlib import Path
 
-TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}"-->
+TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}" cats="{cats}"-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -394,6 +394,7 @@ def generate(data: dict) -> str:
         tag=data["tag"],
         excerpt=data["excerpt"],
         read_time=data["read_time"],
+        cats=data.get("cats", "strategy"),
         title=data["title"],
         slug=data["slug"],
         twitter_desc=data.get("twitter_desc", data["excerpt"][:120]),
