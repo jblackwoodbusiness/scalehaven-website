@@ -352,7 +352,7 @@ TEMPLATE = '''<!--META tag="{tag}" excerpt="{excerpt}" read_time="{read_time}" c
             <a href="/med-spa-marketing-scorecard/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Free Marketing Scorecard</a>
             <a href="/med-spa-roi-calculator/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">ROI Calculator</a>
             <a href="/about/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">About Us</a>
-            <a href="https://thecliniccompass.com/" target="_blank" rel="noopener" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">List Your Clinic &mdash; The Clinic Compass</a>
+            <a href="https://thecliniccompass.com/" target="_blank" rel="noopener" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">List Your Clinic on The Clinic Compass</a>
             <a href="mailto:john@scalehaven.io" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">john@scalehaven.io</a>
             <a href="/blog/" style="font-size:0.875rem; color:rgba(255,255,255,0.6); text-decoration:none;">Blog</a>
           </div>
