@@ -2,7 +2,33 @@
   "permissions": {
     "allow": [
       "Bash(npm init:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(node -e ' *)",
+      "WebSearch",
+      "WebFetch(domain:transparency.meta.com)",
+      "WebFetch(domain:www.facebook.com)",
+      "Bash(python3 -c ' *)",
+      "Bash(node scripts/validate-site.mjs --quiet)",
+      "Bash(node -e 'const s=\"Botox clinic marketing that delivers booked patients. We run targeted Meta Ads for injectables and guarantee 15+ consultations in month one.\"; console.log\\(s.length, /\"/.test\\(s\\)?\"HAS QUOTE\":\"ok\"\\)')",
+      "Bash(node scripts/validate-site.mjs blog/facebook-ads-for-med-spas/index.html botox-clinic-marketing/index.html)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(node scripts/validate-site.mjs blog/_queue/*.html)",
+      "Bash(node scripts/validate-site.mjs blog/facebook-ads-for-med-spas/index.html)",
+      "Bash(node scripts/validate-site.mjs --quiet --skip-queue)",
+      "Bash(git stash *)",
+      "Bash(node --env-file=.env scripts/seo-report.mjs)",
+      "Bash(cp /private/tmp/claude-501/-Users-johnblackwood-ScaleHaven-Claude-Website/556ecb13-2549-4230-87f7-13f1dbda0fa3/scratchpad/drill.mjs ./scripts/.drill-tmp.mjs)",
+      "Bash(node --env-file=.env scripts/.drill-tmp.mjs)",
+      "Bash(grep -o '<p>[^§]\\\\{0,400\\\\}<a href=\"/[^\"]*\"[^>]*>[^<]*</a>' blog/botox-marketing-guide/index.html)",
+      "Bash(python3 -)",
+      "Bash(cd \"/Users/johnblackwood/ScaleHaven Claude Website\" && rm -f scripts/.drill-tmp.mjs scripts/.drill2.mjs && git status --short)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill)"
     ]
   }
 }
