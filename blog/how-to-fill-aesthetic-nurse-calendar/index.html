@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/how-to-fill-aesthetic-nurse-calendar-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/how-to-fill-aesthetic-nurse-calendar-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">NURSE</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/how-to-fill-aesthetic-nurse-calendar-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/how-to-fill-aesthetic-nurse-calendar-hero-wide.webp" width="2000" height="1125" alt="A minimalist calendar hanging on a colorful wall, perfect for planning and organization, illustrating how to fill your aesthetic nurse calendar" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">How to Fill Your Aesthetic Nurse Calendar</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/how-to-fill-aesthetic-nurse-calendar-hero.webp" width="1200" height="675" alt="A minimalist calendar hanging on a colorful wall, perfect for planning and organization, illustrating how to fill your aesthetic nurse calendar" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>If you're a solo aesthetic nurse — RN, NP, or PA running your own injector practice — almost everything written about "med spa marketing" doesn't apply to you. The playbooks assume a front desk, a Tesla-sized budget, and rooms to fill that you didn't book yourself. You don't have those. You have a treatment chair, an Instagram account, and the next eight hours to either inject patients or hunt for them.</p>
 
         <p>That changes the entire game. Personal brand replaces clinic brand. Instagram replaces SEO as the acquisition engine. A waitlist replaces a booking calendar. Referrals replace cold ads. Budget discipline isn't a preference — it's survival.</p>

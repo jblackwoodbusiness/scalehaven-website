@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-patient-retention-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-patient-retention-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">RETAIN</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/med-spa-patient-retention-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/med-spa-patient-retention-hero-wide.webp" width="2000" height="1125" alt="Healthcare professionals assisting at a modern clinic reception desk, illustrating how to get med spa patients to rebook &amp; stay loyal" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Med Spa Patient Retention</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/med-spa-patient-retention-hero.webp" width="1200" height="675" alt="Healthcare professionals assisting at a modern clinic reception desk, illustrating how to get med spa patients to rebook &amp; stay loyal" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>Here's the question nobody in the med spa industry wants to answer honestly. You spent $200 to acquire a new patient. They walked in, got a great Botox treatment, paid $650, and left smiling. Three months later, when they should be back for their next round — they're gone. They didn't rebook. They didn't respond to your email. They didn't even open it. They just disappeared.</p>
 
         <p>If that pattern sounds familiar, you're not running a med spa — you're running a treadmill. And the brutal math behind it is this: the average med spa rebooking rate sits at 40-50%. Dentistry's rebooking rate is roughly 90%. Both businesses sell repeat treatments to local patients. One built a retention system. The other built a leaky bucket and tried to pour more leads in.</p>

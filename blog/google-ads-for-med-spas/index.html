@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/google-ads-for-med-spas-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/google-ads-for-med-spas-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">GOOGLE</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/google-ads-for-med-spas-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/google-ads-for-med-spas-hero-wide.webp" width="2000" height="1125" alt="Close-up of hands typing on a laptop keyboard in a library setting, illustrating Google ads for med spas" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Google Ads for Med Spas</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/google-ads-for-med-spas-hero.webp" width="1200" height="675" alt="Close-up of hands typing on a laptop keyboard in a library setting, illustrating Google ads for med spas" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>Most med spa owners ask the wrong question about Google Ads. They ask, "is Google or Meta better?" The right question is, "where in the patient journey am I trying to win?" Meta Ads create demand — they put your clinic in front of someone who wasn't actively shopping for Botox yesterday. Google Ads capture demand — they put your clinic in front of someone typing "botox near me" right now, credit card in hand. Both matter. Both can be profitable. They just do different jobs.</p>
 
         <p>This guide walks through how to actually run Google Ads for a med spa in 2026 — real cost-per-lead benchmarks, the three campaign types that work (and the ones that don't), keyword strategy, landing page rules, conversion tracking, and exactly when to add Google to a Meta-led strategy versus the other way around. For the broader system that Google Ads plugs into, see our <a href="/med-spa-lead-generation/">med spa lead generation</a> approach.</p>

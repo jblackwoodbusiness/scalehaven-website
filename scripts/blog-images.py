@@ -4,7 +4,8 @@
   python3 scripts/blog-images.py pick   <slug>[:theme[:id]] ... | --all   choose one photo per post (or a hand-picked Pexels id), write WebP
   python3 scripts/blog-images.py sheet  <out.png> <slug> ...         contact sheet for visual QA before inserting
   python3 scripts/blog-images.py reject <slug> ...                   ban the chosen photo so the next pick re-chooses
-  python3 scripts/blog-images.py insert <slug> ...                   hero figure + og/twitter image + schema image on the post
+  python3 scripts/blog-images.py insert <slug> ...                   photo hero + og/twitter image + schema image on the post
+  python3 scripts/blog-images.py herobg <slug> ... | --all          photo hero only (visual; leaves og/schema alone, safe on held posts)
   python3 scripts/blog-images.py cards  [slug ...]                   card images on /blog/ (all posts that have one if no slugs)
 
 New posts: generate the queue file, then `pick <slug>:<theme>`, `sheet`, look at it,
@@ -26,7 +27,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from urllib.parse import quote
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageStat
 
 ROOT = Path(__file__).resolve().parent.parent
 IMG_DIR = ROOT / "images" / "blog"
@@ -325,6 +326,103 @@ def cmd_sheet(args):
     print(f"sheet {out}")
 
 
+NAVY = (13, 23, 32)
+
+
+def _fit(im, tw, th, vfocus=0.42):
+    w, h = im.size
+    r = tw / th
+    if w / h > r:
+        nw = int(h * r)
+        im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+    else:
+        nh = int(w / r)
+        top = int((h - nh) * vfocus)
+        im = im.crop((0, top, w, top + nh))
+    return im.resize((tw, th), Image.LANCZOS)
+
+
+def _tone(im):
+    """Normalise every backdrop into one moody band so a single CSS scrim works on all of them.
+    Bright white rooms otherwise wash out to flat grey under the navy scrim."""
+    m = ImageStat.Stat(im.convert("L")).mean[0]
+    im = ImageEnhance.Brightness(im).enhance(max(0.42, min(1.32, 102 / max(m, 1))))
+    im = ImageEnhance.Color(im).enhance(0.82)
+    im = ImageEnhance.Contrast(im).enhance(1.06)
+    return Image.blend(im, Image.new("RGB", im.size, NAVY), 0.14 if m > 130 else 0.07)
+
+
+def _save_capped(im, path, cap):
+    for q in (78, 70, 62, 54, 46, 40):
+        im.save(path, "WEBP", quality=q, method=6)
+        if path.stat().st_size <= cap:
+            return
+
+
+def render_backdrop(slug, e):
+    """2000x1125 wide + 800x1150 tall, tone-mapped, from the Pexels original."""
+    wide, tall = IMG_DIR / f"{slug}-hero-wide.webp", IMG_DIR / f"{slug}-hero-tall.webp"
+    if wide.exists() and tall.exists():
+        return True
+    with tempfile.TemporaryDirectory() as td:
+        raw = Path(td) / "orig.jpg"
+        try:
+            curl(e["src"].split("?")[0] + "?auto=compress&cs=tinysrgb&w=2400", out=raw)
+        except Exception as err:
+            print(f"  ! {slug}: download failed ({err})")
+            return False
+        im = Image.open(raw).convert("RGB")
+        _save_capped(_tone(_fit(im, 2000, 1125)), wide, 95000)
+        _save_capped(_tone(_fit(im, 800, 1150)), tall, 72000)
+    return True
+
+
+def apply_backdrop(slug, e):
+    """Put the photo behind the hero copy, drop the old in-article figure, add preloads. Idempotent."""
+    f = post_file(slug)
+    s = f.read_text()
+    wide, tall = f"/images/blog/{slug}-hero-wide.webp", f"/images/blog/{slug}-hero-tall.webp"
+    if "page-hero--photo" in s:
+        return "already"
+    alt = html.escape(e["alt"], quote=True)
+    media = ('    <div class="page-hero-media">\n'
+             '      <picture>\n'
+             f'        <source media="(max-width: 1024px)" srcset="{tall}" width="800" height="1150" />\n'
+             f'        <img src="{wide}" width="2000" height="1125" alt="{alt}" fetchpriority="high" decoding="async" />\n'
+             '      </picture>\n'
+             '    </div>\n')
+    s, n = re.subn(r'  <section class="page-hero">\n    <div class="ghost-text" aria-hidden="true">[^<]*</div>\n',
+                   lambda mm: '  <section class="page-hero page-hero--photo">\n' + media, s, count=1)
+    if not n:
+        return "no-hero"
+    s = re.sub(r'\n?        <figure style="margin:0 0 2\.25rem;">\n          <img src="/images/blog/[^"]+-hero\.webp"[^\n]*\n        </figure>\n', "\n", s, count=1)
+    pre = (f'  <link rel="preload" as="image" href="{wide}" media="(min-width: 1025px)" fetchpriority="high" />\n'
+           f'  <link rel="preload" as="image" href="{tall}" media="(max-width: 1024px)" fetchpriority="high" />\n')
+    s = re.sub(r'(  <link rel="stylesheet" href="/styles/main\.css\?v=[^"]*" />\n)', lambda mm: mm.group(1) + pre, s, count=1)
+    f.write_text(s)
+    return "applied"
+
+
+def _backdrop_all(slugs):
+    m = load_manifest()
+    todo = [(sl, m[sl]) for sl in slugs if sl in m and post_file(sl)]
+    for sl in slugs:
+        if sl not in m or not post_file(sl):
+            print(f"  ! {sl}: missing post or pick")
+    with ThreadPoolExecutor(8) as ex:
+        ok = dict(zip([t[0] for t in todo], ex.map(lambda t: render_backdrop(*t), todo)))
+    for sl, e in todo:
+        if ok.get(sl):
+            print(f"  {apply_backdrop(sl, e):<8} {sl}")
+
+
+def cmd_herobg(args):
+    if args == ["--all"]:
+        m = load_manifest()
+        args = sorted(k for k in m if not k.startswith("_") and post_file(k))
+    _backdrop_all(args)
+
+
 def cmd_insert(args):
     m = load_manifest()
     for slug in args:
@@ -334,25 +432,16 @@ def cmd_insert(args):
             print(f"  ! {slug}: missing post, pick, or image file")
             continue
         s = f.read_text()
-        if hero in s:
-            print(f"  = {slug}: already has a hero")
-            continue
-        alt = html.escape(e["alt"], quote=True)
-        fig = (f'        <figure style="margin:0 0 2.25rem;">\n'
-               f'          <img src="{hero}" width="1200" height="675" alt="{alt}" fetchpriority="high" decoding="async" '
-               f'style="display:block; width:100%; height:auto; border-radius:10px;" />\n'
-               f'        </figure>\n')
-        s, n1 = re.subn(r'(<article class="article-body[^"]*"[^>]*>\n)', lambda mm: mm.group(1) + "\n" + fig, s, count=1)
-        if not n1:
-            print(f"  ! {slug}: no <article> element, skipped")
-            continue
         url = SITE + hero
         s, n2 = re.subn(r'(<meta property="og:image" content=")[^"]*(")', lambda mm: mm.group(1) + url + mm.group(2), s, count=1)
         s, n3 = re.subn(r'(<meta name="twitter:image" content=")[^"]*(")', lambda mm: mm.group(1) + url + mm.group(2), s, count=1)
-        s, n4 = re.subn(r'("@type": "BlogPosting",\n(\s*)"headline": "(?:[^"\\\n]|\\.)*",\n)',
-                        lambda mm: mm.group(1) + f'{mm.group(2)}"image": "{url}",\n', s, count=1)
+        n4 = 0
+        if f'"image": "{url}"' not in s:
+            s, n4 = re.subn(r'("@type": "BlogPosting",\n(\s*)"headline": "(?:[^"\\\n]|\\.)*",\n)',
+                            lambda mm: mm.group(1) + f'{mm.group(2)}"image": "{url}",\n', s, count=1)
         f.write_text(s)
         print(f"  + {slug:<46} og {n2}  twitter {n3}  schema {n4}")
+    _backdrop_all(args)
 
 
 def cmd_cards(args):
@@ -374,6 +463,6 @@ def cmd_cards(args):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or sys.argv[1] not in {"pick", "sheet", "reject", "insert", "cards"}:
+    if len(sys.argv) < 2 or sys.argv[1] not in {"pick", "sheet", "reject", "insert", "herobg", "cards"}:
         sys.exit(__doc__)
     globals()[f"cmd_{sys.argv[1]}"](sys.argv[2:])

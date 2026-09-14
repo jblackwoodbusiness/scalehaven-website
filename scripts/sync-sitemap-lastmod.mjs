@@ -85,7 +85,7 @@ finalXml = finalXml.replace(/<url>([\s\S]*?)<\/url>/g, (block, inner) => {
   const loc = /<loc>https:\/\/scalehaven\.io(\/blog\/[^<]+\/)<\/loc>/.exec(cleaned);
   const file = loc && fileFor(loc[1]);
   const page = file && existsSync(file) ? readFileSync(file, "utf8") : "";
-  const tag = /<img\b[^>]*src="(\/images\/blog\/[^"]+-hero\.webp)"[^>]*>/.exec(page);
+  const tag = /<img\b[^>]*src="(\/images\/blog\/[^"]+-hero(?:-wide)?\.webp)"[^>]*>/.exec(page);
   if (!tag) return `<url>${cleaned}</url>`;
   const alt = unescHtml((/\balt="([^"]*)"/.exec(tag[0]) || [])[1] || "");
   images++;

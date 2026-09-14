@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-seo-vs-paid-ads-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-seo-vs-paid-ads-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">SEO vs Ads</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/med-spa-seo-vs-paid-ads-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/med-spa-seo-vs-paid-ads-hero-wide.webp" width="2000" height="1125" alt="Laptop displaying Google Analytics in a modern workspace, highlighting digital analytics and technology, illustrating med spa SEO vs paid ads" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Med Spa SEO vs Paid Ads</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/med-spa-seo-vs-paid-ads-hero.webp" width="1200" height="675" alt="Laptop displaying Google Analytics in a modern workspace, highlighting digital analytics and technology, illustrating med spa SEO vs paid ads" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>Every med spa owner eventually hits the same fork in the road: should you pour your marketing budget into SEO or paid ads? You've got a finite budget, a calendar that needs filling, and two camps of "experts" telling you opposite things. The SEO crowd says ads are a money pit you rent forever. The ads crowd says SEO is too slow to matter. Both are half right — and that's exactly why the honest answer for most med spas is not <em>either</em>. It's <em>both, in the right order</em>.</p>
 
         <p>This guide breaks down the real trade-offs between <a href="/med-spa-seo/">medical spa SEO</a> and paid advertising for aesthetic clinics — how fast each one works, what each costs over time, the kind of patient each one captures, and how to split your budget depending on whether you're a brand-new clinic or an established practice. By the end you'll know exactly where your next dollar should go. For the full picture on the organic side, this article is a spoke off our <a href="/blog/med-spa-seo/">complete med spa SEO playbook</a>.</p>

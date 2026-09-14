@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/beauty-clinic-names-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/beauty-clinic-names-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">NAME</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/beauty-clinic-names-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/beauty-clinic-names-hero-wide.webp" width="2000" height="1125" alt="Stack of blank business cards on a marble background, ideal for mockup and design presentations, illustrating beauty clinic names" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Beauty Clinic Names</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/beauty-clinic-names-hero.webp" width="1200" height="675" alt="Stack of blank business cards on a marble background, ideal for mockup and design presentations, illustrating beauty clinic names" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
 
         <p>Your clinic&rsquo;s name is the first marketing decision you will ever make, and one of the only ones you cannot easily undo. It goes on the sign, the domain, the Instagram handle, the Google listing, and eventually, if you build something great, the acquisition paperwork. So before the 150 ideas, five rules from the marketing side of the table, because we spend our days marketing clinics and we see which names help and which fight their owners forever.</p>
 

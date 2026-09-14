@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-marketing-budget-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-marketing-budget-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">Budget</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/med-spa-marketing-budget-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/med-spa-marketing-budget-hero-wide.webp" width="2000" height="1125" alt="Overhead view of a person analyzing financial documents using a calculator for investment planning, illustrating med spa marketing budget" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Med Spa Marketing Budget</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/med-spa-marketing-budget-hero.webp" width="1200" height="675" alt="Overhead view of a person analyzing financial documents using a calculator for investment planning, illustrating med spa marketing budget" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>Most med spa owners pick their marketing budget the same way they pick a restaurant on a Tuesday night — gut feel, recent disappointment, and whatever feels safe. The number ends up being either too small to move the needle or too big for the revenue base to support. Both end in the same place: a slow leak of cash and a calendar that never quite fills.</p>
 
         <p>Use our free <a href="/med-spa-roi-calculator/">med spa ROI calculator</a> to see what a given budget could return before you commit it. A real med spa marketing budget isn't a hunch. It's a percentage of revenue, allocated across channels in a specific ratio, scaled in step with capacity. The clinics that grow predictably from $30k months to $150k months are not the clinics that spend the most — they're the clinics that spend deliberately. This guide shows you exactly how much to spend, where to put it, and when to scale or pull back.</p>

@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-near-me-searches-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/med-spa-near-me-searches-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">Near Me</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/med-spa-near-me-searches-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/med-spa-near-me-searches-hero-wide.webp" width="2000" height="1125" alt="A smartphone with GPS navigation app mounted on a car dashboard during a road trip, illustrating how to win “med spa near me” searches in 2026" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Med Spa Near Me Searches</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/med-spa-near-me-searches-hero.webp" width="1200" height="675" alt="A smartphone with GPS navigation app mounted on a car dashboard during a road trip, illustrating how to win “med spa near me” searches in 2026" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>When someone types “med spa near me” into Google, they aren’t researching. They aren’t comparing ingredients or reading about how Botox works. They’ve already decided they want a treatment — now they’re deciding <em>where</em> to book it. That single distinction is what makes “near me” searches the most valuable real estate in all of aesthetic marketing.</p>
 
         <p>This guide breaks down exactly how Google decides who shows up for “medical spa near me,” why your Google Business Profile matters more than your website, and the specific moves that get your clinic into the Map Pack — the three local results that capture the majority of clicks. It’s a spoke in our broader <a href="/blog/med-spa-seo/">med spa SEO guide</a>, so if you want the full picture of local ranking, start there too.</p>

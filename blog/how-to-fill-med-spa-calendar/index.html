@@ -35,6 +35,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/how-to-fill-med-spa-calendar-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/how-to-fill-med-spa-calendar-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -171,8 +173,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">Calendar</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/how-to-fill-med-spa-calendar-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/how-to-fill-med-spa-calendar-hero-wide.webp" width="2000" height="1125" alt="Close-up of a calendar with red push pins marking important dates, emphasizing deadlines, illustrating how to fill your med spa calendar every month" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">How to Fill Your Med Spa Calendar</span>
@@ -195,9 +202,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/how-to-fill-med-spa-calendar-hero.webp" width="1200" height="675" alt="Close-up of a calendar with red push pins marking important dates, emphasizing deadlines, illustrating how to fill your med spa calendar every month" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
 
         <p>The feast-or-famine cycle kills med spas. One month you're turning patients away, the next you're staring at empty treatment rooms wondering where everyone went. You've tried posting on social media. You've asked happy patients to refer their friends. Maybe you even ran a Groupon that brought in bargain hunters who never came back.</p>
 

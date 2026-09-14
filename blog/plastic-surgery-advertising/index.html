@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/plastic-surgery-advertising-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/plastic-surgery-advertising-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">Surgery Ads</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/plastic-surgery-advertising-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/plastic-surgery-advertising-hero-wide.webp" width="2000" height="1125" alt="Close-up view of smartphone home screen featuring popular apps like Instagram, Snapchat, and Chrome, illustrating plastic surgery advertising" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Plastic Surgery Advertising</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/plastic-surgery-advertising-hero.webp" width="1200" height="675" alt="Close-up view of smartphone home screen featuring popular apps like Instagram, Snapchat, and Chrome, illustrating plastic surgery advertising" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>Plastic surgery advertising has a reputation problem: half the industry says paid ads "don't work for surgery," and the other half is quietly filling consult calendars with them. The difference isn't the channel — it's the structure. Surgical procedures have long consideration cycles and five-figure tickets, so campaigns built like med spa promos fail, and campaigns built for the surgical journey print.</p>
 
         <p>This is the full playbook for plastic and cosmetic surgery advertising: Meta and Google strategy, real cost numbers, creative that passes compliance, and the follow-up infrastructure that turns a $90 lead into a $12,000 procedure. It's one pillar of our complete guide to <a href="/blog/how-to-market-a-plastic-surgery-practice/">marketing a plastic surgery practice</a>.</p>

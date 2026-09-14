@@ -34,6 +34,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" /></noscript>
   <link rel="preload" as="style" href="/styles/main.css?v=20260911" />
   <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="preload" as="image" href="/images/blog/local-seo-for-med-spas-hero-wide.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/blog/local-seo-for-med-spas-hero-tall.webp" media="(max-width: 1024px)" fetchpriority="high" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -152,8 +154,13 @@
 
 
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="ghost-text" aria-hidden="true">Local</div>
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-media">
+      <picture>
+        <source media="(max-width: 1024px)" srcset="/images/blog/local-seo-for-med-spas-hero-tall.webp" width="800" height="1150" />
+        <img src="/images/blog/local-seo-for-med-spas-hero-wide.webp" width="2000" height="1125" alt="Maps app icon on a smartphone home screen, illustrating local SEO for med spas" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
     <div class="container" style="position:relative; z-index:1;">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span class="current">Local SEO for Med Spas</span>
@@ -175,9 +182,6 @@
     <div class="container">
       <article class="article-body reveal">
 
-        <figure style="margin:0 0 2.25rem;">
-          <img src="/images/blog/local-seo-for-med-spas-hero.webp" width="1200" height="675" alt="Maps app icon on a smartphone home screen, illustrating local SEO for med spas" fetchpriority="high" decoding="async" style="display:block; width:100%; height:auto; border-radius:10px;" />
-        </figure>
         <p>When someone in your city types "med spa near me" or "Botox in [your city]" into Google, three local results appear at the top of the page with a map beside them. That block is the Google Map Pack, and for a med spa, it is the single most valuable piece of real estate on the internet. The clinics that live in those three spots get the calls, the directions taps, and the booked consultations. Everyone below them fights over scraps.</p>
 
         <p>This guide breaks down <strong>local SEO for med spas</strong> from the ground up: what the Map Pack is, the three factors Google uses to rank it, and the specific moves that get an aesthetic clinic into the top three. If you want the full organic playbook beyond local, our <a href="/blog/med-spa-seo/">complete med spa SEO guide</a> covers everything from treatment pages to technical SEO. This article zooms in on the part that matters most for a local business: showing up in the map.</p>
