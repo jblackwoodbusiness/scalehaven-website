@@ -80,7 +80,7 @@
   <!-- Blog -->
   <url>
     <loc>https://scalehaven.io/blog/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -90,7 +90,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-med-spa-clients-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-med-spa-clients-hero-wide.webp</image:loc>
       <image:title>Minimalist white clinic room with examination table and furniture, illustrating how to get more med spa clients</image:title>
     </image:image>
   </url>
@@ -100,7 +100,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-fill-med-spa-calendar-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-fill-med-spa-calendar-hero-wide.webp</image:loc>
       <image:title>Close-up of a calendar with red push pins marking important dates, emphasizing deadlines, illustrating how to fill your med spa calendar every month</image:title>
     </image:image>
   </url>
@@ -110,7 +110,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-roi-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-roi-marketing-hero-wide.webp</image:loc>
       <image:title>Magnifying glass and colored pencils on financial trend graphs highlighting sales growth, illustrating med spa marketing ROI</image:title>
     </image:image>
   </url>
@@ -120,7 +120,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-lead-follow-up-system-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-lead-follow-up-system-hero-wide.webp</image:loc>
       <image:title>A man consults a receptionist in a modern clinic setting with contemporary design, illustrating med spa lead follow-up</image:title>
     </image:image>
   </url>
@@ -130,7 +130,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-social-media-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-social-media-marketing-hero-wide.webp</image:loc>
       <image:title>A close-up shot of smartphone displaying social media apps icons on screen, illustrating med spa social media marketing</image:title>
     </image:image>
   </url>
@@ -141,7 +141,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-med-spa-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-med-spa-hero-wide.webp</image:loc>
       <image:title>Overhead view of a laptop showing data visualizations and charts on its screen, illustrating how to market a med spa in 2026</image:title>
     </image:image>
   </url>
@@ -151,7 +151,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-strategies-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-strategies-hero-wide.webp</image:loc>
       <image:title>Flat lay of office stationery items with a minimalist design on a dark background, illustrating 12 med spa marketing strategies that work in 2026</image:title>
     </image:image>
   </url>
@@ -161,7 +161,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-cost-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-cost-hero-wide.webp</image:loc>
       <image:title>Calculator, pen, and printed financial report on a desk, illustrating what med spa marketing costs</image:title>
     </image:image>
   </url>
@@ -171,7 +171,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-dermatology-clinic-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-dermatology-clinic-hero-wide.webp</image:loc>
       <image:title>Dermatologist examining a patient's skin using a digital dermatoscope and tablet for precision observation, illustrating how to market a dermatology clinic in 2026</image:title>
     </image:image>
   </url>
@@ -180,6 +180,10 @@
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-industry-statistics-hero-wide.webp</image:loc>
+      <image:title>Close-up of a colorful business chart placed on a table with documents highlighting trends, illustrating 47 med spa industry statistics for 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-cost-per-lead-benchmarks/</loc>
@@ -187,7 +191,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-cost-per-lead-benchmarks-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-cost-per-lead-benchmarks-hero-wide.webp</image:loc>
       <image:title>A laptop displaying an analytics dashboard with real-time data tracking and analysis tools, illustrating average med spa cost per lead by treatment</image:title>
     </image:image>
   </url>
@@ -196,6 +200,10 @@
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/botox-marketing-guide-hero-wide.webp</image:loc>
+      <image:title>Syringe and small medication vials on a gray surface, illustrating Botox marketing</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/aesthetic-clinic-marketing-playbook/</loc>
@@ -203,7 +211,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/aesthetic-clinic-marketing-playbook-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/aesthetic-clinic-marketing-playbook-hero-wide.webp</image:loc>
       <image:title>Business professionals engaging in a collaborative meeting with charts and documents, illustrating aesthetic clinic marketing</image:title>
     </image:image>
   </url>
@@ -213,7 +221,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/aesthetic-clinic-lead-generation-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/aesthetic-clinic-lead-generation-hero-wide.webp</image:loc>
       <image:title>An adult using a laptop indoors, browsing Google at a wooden table with coffee, illustrating how to generate leads for aesthetic clinics on autopilot</image:title>
     </image:image>
   </url>
@@ -222,6 +230,10 @@
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/glp1-semaglutide-marketing-med-spas-hero-wide.webp</image:loc>
+      <image:title>A blue measuring tape wrapped around a fork representing dieting or healthy eating concept, illustrating GLP-1 &amp; semaglutide marketing for med spas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/cosmetic-clinic-lead-generation/</loc>
@@ -229,7 +241,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/cosmetic-clinic-lead-generation-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/cosmetic-clinic-lead-generation-hero-wide.webp</image:loc>
       <image:title>Medical professional discusses health with senior man in modern office setting, illustrating cosmetic clinic lead generation</image:title>
     </image:image>
   </url>
@@ -238,6 +250,10 @@
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/facebook-ads-for-med-spas-hero-wide.webp</image:loc>
+      <image:title>A detailed close-up of social media icons on a smartphone screen, including Facebook and Twitter, illustrating Facebook ads for med spas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/morpheus8-marketing-guide/</loc>
@@ -245,7 +261,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/morpheus8-marketing-guide-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/morpheus8-marketing-guide-hero-wide.webp</image:loc>
       <image:title>Close-up of a hand holding a laser hair removal device in a clinic setting, illustrating Morpheus8 marketing</image:title>
     </image:image>
   </url>
@@ -255,7 +271,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/coolsculpting-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/coolsculpting-marketing-hero-wide.webp</image:loc>
       <image:title>Close-up of an aesthetic ultrasound machine and its handheld applicator, illustrating CoolSculpting marketing</image:title>
     </image:image>
   </url>
@@ -265,7 +281,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/instagram-ads-aesthetic-clinics-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/instagram-ads-aesthetic-clinics-hero-wide.webp</image:loc>
       <image:title>Crop unrecognizable female setting mobile phone on tripod while recording vlog on blurred background, illustrating Instagram ads for aesthetic clinics that actually convert</image:title>
     </image:image>
   </url>
@@ -275,7 +291,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/aesthetic-industry-statistics-2026-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/aesthetic-industry-statistics-2026-hero-wide.webp</image:loc>
       <image:title>Detailed view of business reports with graphs during a corporate meeting, illustrating 63 aesthetic industry statistics for 2026</image:title>
     </image:image>
   </url>
@@ -285,7 +301,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/filler-clinic-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/filler-clinic-marketing-hero-wide.webp</image:loc>
       <image:title>Syringe balanced on small medication vials against a purple backdrop, illustrating filler marketing</image:title>
     </image:image>
   </url>
@@ -295,7 +311,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-patients-aesthetic-practice-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-patients-aesthetic-practice-hero-wide.webp</image:loc>
       <image:title>Professional equipment in doctor office with couch for medical treatment procedures behind protective screen, illustrating how to get more patients for your aesthetic practice</image:title>
     </image:image>
   </url>
@@ -305,7 +321,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-skincare-clinic-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-skincare-clinic-hero-wide.webp</image:loc>
       <image:title>Elegant glass skincare bottles with labels on a textured fabric, illustrating how to market a skincare clinic in a crowded market</image:title>
     </image:image>
   </url>
@@ -315,7 +331,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/botox-advertising-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/botox-advertising-hero-wide.webp</image:loc>
       <image:title>Close-up view of popular social media app icons on a smartphone screen, illustrating Botox advertising</image:title>
     </image:image>
   </url>
@@ -325,7 +341,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-seo-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-seo-hero-wide.webp</image:loc>
       <image:title>Hands typing on a laptop keyboard on a wooden desk, illustrating med spa SEO</image:title>
     </image:image>
   </url>
@@ -335,7 +351,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-google-business-profile-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-google-business-profile-hero-wide.webp</image:loc>
       <image:title>Passenger checking a navigation app on a smartphone, illustrating a med spa Google Business Profile</image:title>
     </image:image>
   </url>
@@ -345,7 +361,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/local-seo-for-med-spas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/local-seo-for-med-spas-hero-wide.webp</image:loc>
       <image:title>Maps app icon on a smartphone home screen, illustrating local SEO for med spas</image:title>
     </image:image>
   </url>
@@ -355,7 +371,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-near-me-searches-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-near-me-searches-hero-wide.webp</image:loc>
       <image:title>A smartphone with GPS navigation app mounted on a car dashboard during a road trip, illustrating how to win “med spa near me” searches in 2026</image:title>
     </image:image>
   </url>
@@ -365,7 +381,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-seo-cost-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-seo-cost-hero-wide.webp</image:loc>
       <image:title>Calculator placed on financial graphs and reports showcasing data analysis and business documentation, illustrating med spa SEO cost</image:title>
     </image:image>
   </url>
@@ -375,7 +391,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-seo-vs-paid-ads-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-seo-vs-paid-ads-hero-wide.webp</image:loc>
       <image:title>Laptop displaying Google Analytics in a modern workspace, highlighting digital analytics and technology, illustrating med spa SEO vs paid ads</image:title>
     </image:image>
   </url>
@@ -385,7 +401,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-plastic-surgery-practice-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-market-a-plastic-surgery-practice-hero-wide.webp</image:loc>
       <image:title>Bright and clean medical waiting room with modern seating and decor, illustrating how to market a plastic surgery practice in 2026</image:title>
     </image:image>
   </url>
@@ -395,7 +411,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/plastic-surgery-advertising-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/plastic-surgery-advertising-hero-wide.webp</image:loc>
       <image:title>Close-up view of smartphone home screen featuring popular apps like Instagram, Snapchat, and Chrome, illustrating plastic surgery advertising</image:title>
     </image:image>
   </url>
@@ -404,6 +420,10 @@
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/plastic-surgery-seo-hero-wide.webp</image:loc>
+      <image:title>Close-up of hands using laptop for image searching and browsing digital photo gallery, illustrating plastic surgeon SEO</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/plastic-surgery-lead-generation/</loc>
@@ -411,7 +431,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/plastic-surgery-lead-generation-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/plastic-surgery-lead-generation-hero-wide.webp</image:loc>
       <image:title>A minimalist medical examination room featuring a desk, illustrating plastic surgery lead generation</image:title>
     </image:image>
   </url>
@@ -421,7 +441,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-plastic-surgery-consultations-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-plastic-surgery-consultations-hero-wide.webp</image:loc>
       <image:title>A female doctor consulting a patient in a modern medical office setting, illustrating how to get more plastic surgery consultations</image:title>
     </image:image>
   </url>
@@ -437,7 +457,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-med-spa-patients-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-med-spa-patients-hero-wide.webp</image:loc>
       <image:title>A well-equipped aesthetic clinic room featuring modern spa amenities and equipment, illustrating how to get more med spa patients</image:title>
     </image:image>
   </url>
@@ -446,6 +466,10 @@
     <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/best-med-spa-websites-hero-wide.webp</image:loc>
+      <image:title>A laptop displaying an online checkout form, highlighting technology and e-commerce, illustrating best med spa websites</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-get-more-google-reviews-med-spa/</loc>
@@ -453,7 +477,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-google-reviews-med-spa-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-google-reviews-med-spa-hero-wide.webp</image:loc>
       <image:title>Tablet with five yellow stars on a blue background, ideal for rating concepts, illustrating how to get more Google reviews for your med spa</image:title>
     </image:image>
   </url>
@@ -463,7 +487,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-ideas-hero-wide.webp</image:loc>
       <image:title>Open notebook with a pen on a wooden desk beside a laptop, illustrating med spa marketing ideas</image:title>
     </image:image>
   </url>
@@ -473,7 +497,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-plan-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-plan-hero-wide.webp</image:loc>
       <image:title>Overhead shot of a laptop with notebooks and a pencil on a patterned cloth, illustrating how to build a med spa marketing plan</image:title>
     </image:image>
   </url>
@@ -483,7 +507,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-budget-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-marketing-budget-hero-wide.webp</image:loc>
       <image:title>Overhead view of a person analyzing financial documents using a calculator for investment planning, illustrating med spa marketing budget</image:title>
     </image:image>
   </url>
@@ -493,7 +517,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/botox-marketing-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/botox-marketing-ideas-hero-wide.webp</image:loc>
       <image:title>Medication vials, a syringe, and a stethoscope on a reflective clinical surface, illustrating Botox marketing ideas</image:title>
     </image:image>
   </url>
@@ -503,7 +527,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-advertise-botox-legally-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-advertise-botox-legally-hero-wide.webp</image:loc>
       <image:title>Hands signing a contract with a blue pen, close-up view, illustrating how to advertise Botox legally in 2026</image:title>
     </image:image>
   </url>
@@ -513,7 +537,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/digital-marketing-for-aesthetic-clinics-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/digital-marketing-for-aesthetic-clinics-hero-wide.webp</image:loc>
       <image:title>Sleek laptop showcasing data analytics and graphs on the screen in a bright room, illustrating digital marketing for aesthetic clinics</image:title>
     </image:image>
   </url>
@@ -523,7 +547,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-business-plan-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-business-plan-hero-wide.webp</image:loc>
       <image:title>Top-down view of a desk with laptop, planner, and notebooks. Perfect for business and productivity themes, illustrating how to write a med spa business plan</image:title>
     </image:image>
   </url>
@@ -533,7 +557,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-start-a-med-spa-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-start-a-med-spa-hero-wide.webp</image:loc>
       <image:title>White cabinet stocked with medical instruments and supplies in a bright clinic room, illustrating how to start a med spa</image:title>
     </image:image>
   </url>
@@ -543,7 +567,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-equipment-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-equipment-hero-wide.webp</image:loc>
       <image:title>A clean and organized medical office featuring a stethoscope on a desk, symbolizing healthcare professionalism, illustrating med spa equipment</image:title>
     </image:image>
   </url>
@@ -553,7 +577,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/new-med-spa-marketing-first-90-days-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/new-med-spa-marketing-first-90-days-hero-wide.webp</image:loc>
       <image:title>Person writing important notes in a desk calendar with a pen, set in an office, illustrating new med spa marketing</image:title>
     </image:image>
   </url>
@@ -569,7 +593,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-patient-acquisition-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-patient-acquisition-hero-wide.webp</image:loc>
       <image:title>Medical staff members in scrub suits at a modern clinic's reception area, illustrating med spa patient acquisition</image:title>
     </image:image>
   </url>
@@ -579,7 +603,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/chemical-peel-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/chemical-peel-marketing-hero-wide.webp</image:loc>
       <image:title>High-angle view of skincare products including serums, illustrating chemical peel marketing</image:title>
     </image:image>
   </url>
@@ -589,7 +613,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/google-ads-for-med-spas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/google-ads-for-med-spas-hero-wide.webp</image:loc>
       <image:title>Close-up of hands typing on a laptop keyboard in a library setting, illustrating Google ads for med spas</image:title>
     </image:image>
   </url>
@@ -599,7 +623,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/why-isnt-my-med-spa-growing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/why-isnt-my-med-spa-growing-hero-wide.webp</image:loc>
       <image:title>Hands using a calculator at a desk with documents and folders, illustrating why isn't my med spa growing</image:title>
     </image:image>
   </url>
@@ -609,7 +633,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-compete-with-bigger-med-spas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-compete-with-bigger-med-spas-hero-wide.webp</image:loc>
       <image:title>A clean and equipped medical examination room with diverse healthcare tools, illustrating how to compete with bigger med spas in your area</image:title>
     </image:image>
   </url>
@@ -619,7 +643,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-fill-aesthetic-nurse-calendar-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-fill-aesthetic-nurse-calendar-hero-wide.webp</image:loc>
       <image:title>A minimalist calendar hanging on a colorful wall, perfect for planning and organization, illustrating how to fill your aesthetic nurse calendar</image:title>
     </image:image>
   </url>
@@ -629,7 +653,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-patient-retention-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-patient-retention-hero-wide.webp</image:loc>
       <image:title>Healthcare professionals assisting at a modern clinic reception desk, illustrating how to get med spa patients to rebook &amp; stay loyal</image:title>
     </image:image>
   </url>
@@ -638,6 +662,10 @@
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/best-crm-for-med-spas-hero-wide.webp</image:loc>
+      <image:title>Laptop showing charts and dashboards on a round wooden table, illustrating the best CRM and tech stack for med spas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-build-a-7-figure-med-spa/</loc>
@@ -645,7 +673,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-build-a-7-figure-med-spa-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-build-a-7-figure-med-spa-hero-wide.webp</image:loc>
       <image:title>Close-up of person using a calculator with financial documents in an office, illustrating how to build a 7-figure med spa</image:title>
     </image:image>
   </url>
@@ -655,7 +683,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/aesthetic-clinic-marketing-solo-providers-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/aesthetic-clinic-marketing-solo-providers-hero-wide.webp</image:loc>
       <image:title>Smartphone on tripod capturing person writing on paper, showing content creation process, illustrating aesthetic clinic marketing for solo providers</image:title>
     </image:image>
   </url>
@@ -665,7 +693,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-revenue-ceiling-50k-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-revenue-ceiling-50k-hero-wide.webp</image:loc>
       <image:title>Close-up of hands analyzing financial data with charts, laptop, and calculator, illustrating why med spas hit a $50K/month ceiling</image:title>
     </image:image>
   </url>
@@ -675,7 +703,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-franchise-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-franchise-hero-wide.webp</image:loc>
       <image:title>A diverse group of professionals having a meeting in a modern office setting. Teamwork and collaboration, illustrating med spa franchise vs independent</image:title>
     </image:image>
   </url>
@@ -684,6 +712,10 @@
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/how-much-do-med-spa-owners-make-hero-wide.webp</image:loc>
+      <image:title>A creative workspace featuring startup planning on a notepad, eyeglasses, and a cup of coffee, illustrating how much do med spa owners make</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/privacy/</loc>
@@ -703,7 +735,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/botox-party-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/botox-party-hero-wide.webp</image:loc>
       <image:title>Close-up of medical vials and syringe on stainless tray in clinical setting, illustrating Botox parties</image:title>
     </image:image>
   </url>
@@ -713,7 +745,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-medical-director-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-medical-director-hero-wide.webp</image:loc>
       <image:title>Clean and modern medical examination room with equipment ready for use, illustrating med spa medical director</image:title>
     </image:image>
   </url>
@@ -722,6 +754,10 @@
     <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-insurance-hero-wide.webp</image:loc>
+      <image:title>Close-up of a hand signing a legal document with a fountain pen, symbolizing signature and agreement, illustrating med spa insurance</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-pricing/</loc>
@@ -729,7 +765,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-pricing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-pricing-hero-wide.webp</image:loc>
       <image:title>Calculator with glasses and folders on an office desk. Perfect for finance and accounting themes, illustrating med spa pricing</image:title>
     </image:image>
   </url>
@@ -739,7 +775,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-open-house-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-open-house-ideas-hero-wide.webp</image:loc>
       <image:title>Champagne bottles and empty flutes set out for an evening event, illustrating med spa open house ideas</image:title>
     </image:image>
   </url>
@@ -749,7 +785,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-consultant-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-consultant-hero-wide.webp</image:loc>
       <image:title>Group of professionals having a casual meeting in a bright office, illustrating how to choose a med spa consultant</image:title>
     </image:image>
   </url>
@@ -759,7 +795,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-name-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-name-ideas-hero-wide.webp</image:loc>
       <image:title>Close-up of blank white business cards on a pastel orange background. Ideal for design mockups, illustrating med spa name ideas</image:title>
     </image:image>
   </url>
@@ -769,7 +805,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/iv-therapy-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/iv-therapy-marketing-hero-wide.webp</image:loc>
       <image:title>IV drip bag and tubing beside a treatment chair, illustrating IV therapy marketing</image:title>
     </image:image>
   </url>
@@ -779,7 +815,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/hydrafacial-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/hydrafacial-marketing-hero-wide.webp</image:loc>
       <image:title>Three amber glass bottles with black caps in a minimalist setup, illustrating HydraFacial marketing</image:title>
     </image:image>
   </url>
@@ -789,7 +825,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/weight-loss-clinic-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/weight-loss-clinic-marketing-hero-wide.webp</image:loc>
       <image:title>A digital glass weighing scale with a blue measuring tape, symbolizing weight management, illustrating weight loss clinic marketing</image:title>
     </image:image>
   </url>
@@ -799,7 +835,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/laser-hair-removal-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/laser-hair-removal-marketing-hero-wide.webp</image:loc>
       <image:title>A medical professional using a laser machine with a touch screen interface in a clinical setting, illustrating laser hair removal marketing that books packages</image:title>
     </image:image>
   </url>
@@ -809,7 +845,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-branding-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-branding-hero-wide.webp</image:loc>
       <image:title>A close-up of a hand holding a blank business card above a wooden desk with office, illustrating med spa branding</image:title>
     </image:image>
   </url>
@@ -819,7 +855,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-ads-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-ads-hero-wide.webp</image:loc>
       <image:title>Smartphone displaying popular social media apps like Instagram, Pinterest, Twitter, and Snapchat, illustrating med spa ads</image:title>
     </image:image>
   </url>
@@ -829,7 +865,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/wellness-clinic-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/wellness-clinic-marketing-hero-wide.webp</image:loc>
       <image:title>Relaxing spa scene featuring flickering candles, soft towels, and fresh flowers, illustrating wellness clinic marketing</image:title>
     </image:image>
   </url>
@@ -839,7 +875,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-email-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-email-marketing-hero-wide.webp</image:loc>
       <image:title>A person typing on a laptop in a bright, modern office setting, showing productivity and technology, illustrating med spa email marketing</image:title>
     </image:image>
   </url>
@@ -849,7 +885,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/hipaa-compliant-med-spa-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/hipaa-compliant-med-spa-marketing-hero-wide.webp</image:loc>
       <image:title>Close-up of hands signing a contract on a desk with office supplies, symbolizing legal agreements, illustrating HIPAA-compliant med spa marketing</image:title>
     </image:image>
   </url>
@@ -859,7 +895,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/emsculpt-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/emsculpt-marketing-hero-wide.webp</image:loc>
       <image:title>Serene spa setting with a lit candle, ceramic holder, and plush towels for relaxation, illustrating EMSculpt marketing</image:title>
     </image:image>
   </url>
@@ -869,7 +905,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-visibility-system-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-visibility-system-hero-wide.webp</image:loc>
       <image:title>Hands typing on a laptop with orange juice on a marble surface, illustrating the med spa visibility system</image:title>
     </image:image>
   </url>
@@ -879,7 +915,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/esthetician-marketing-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/esthetician-marketing-ideas-hero-wide.webp</image:loc>
       <image:title>Minimalist composition of beauty bottles with droppers and containers on fabric under natural lighting, illustrating esthetician marketing ideas</image:title>
     </image:image>
   </url>
@@ -888,6 +924,10 @@
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-membership-programs-hero-wide.webp</image:loc>
+      <image:title>Customer makes a cashless payment at a clinic reception using wireless technology, illustrating med spa membership, loyalty &amp; referral programs</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/med-spa-staffing/</loc>
@@ -895,7 +935,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-staffing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-staffing-hero-wide.webp</image:loc>
       <image:title>Close-up of a diverse business handshake over documents, symbolizing agreement and collaboration, illustrating med spa staffing</image:title>
     </image:image>
   </url>
@@ -905,7 +945,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/healthcare-facebook-ads-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/healthcare-facebook-ads-hero-wide.webp</image:loc>
       <image:title>Close-up of a hand holding a smartphone with app icons and a nature wallpaper, illustrating Facebook ads for healthcare</image:title>
     </image:image>
   </url>
@@ -915,7 +955,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/dermatology-seo-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/dermatology-seo-hero-wide.webp</image:loc>
       <image:title>Beautician examines skincare products under a magnifying lamp in a well-lit treatment room, illustrating dermatology SEO</image:title>
     </image:image>
   </url>
@@ -925,7 +965,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/med-spa-content-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/med-spa-content-ideas-hero-wide.webp</image:loc>
       <image:title>Smartphone on a tripod filming content in a bright kitchen studio, illustrating med spa content ideas</image:title>
     </image:image>
   </url>
@@ -935,7 +975,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/medical-spa-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/medical-spa-marketing-hero-wide.webp</image:loc>
       <image:title>Contemporary aesthetic clinic featuring treatment table, ring light, and modern decor, illustrating medical spa marketing</image:title>
     </image:image>
   </url>
@@ -944,6 +984,10 @@
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/best-med-spa-marketing-companies-hero-wide.webp</image:loc>
+      <image:title>Three businessmen in suits discussing documents in a modern office setting, engaging in teamwork, illustrating best med spa marketing companies in 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/how-to-get-more-patients/</loc>
@@ -951,7 +995,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-patients-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/how-to-get-more-patients-hero-wide.webp</image:loc>
       <image:title>A doctor conducts a patient consultation in a bright, modern medical office, illustrating how to get more patients</image:title>
     </image:image>
   </url>
@@ -961,7 +1005,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/botox-promotion-ideas-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/botox-promotion-ideas-hero-wide.webp</image:loc>
       <image:title>Syringe and medicine capsules illuminated in a dark, dramatic setting, emphasizing medical themes, illustrating Botox promotion ideas</image:title>
     </image:image>
   </url>
@@ -971,7 +1015,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/medical-practice-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/medical-practice-marketing-hero-wide.webp</image:loc>
       <image:title>A female doctor writes notes at her desk with a stethoscope around her neck, illustrating medical practice marketing</image:title>
     </image:image>
   </url>
@@ -981,7 +1025,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/skincare-marketing-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/skincare-marketing-hero-wide.webp</image:loc>
       <image:title>Minimalist setup of skincare bottles with bamboo lids on a textile surface, illustrating skincare marketing</image:title>
     </image:image>
   </url>
@@ -991,7 +1035,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://scalehaven.io/images/blog/beauty-clinic-names-hero.webp</image:loc>
+      <image:loc>https://scalehaven.io/images/blog/beauty-clinic-names-hero-wide.webp</image:loc>
       <image:title>Stack of blank business cards on a marble background, ideal for mockup and design presentations, illustrating beauty clinic names</image:title>
     </image:image>
   </url>
@@ -1000,5 +1044,9 @@
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/clinic-marketing-ideas-hero-wide.webp</image:loc>
+      <image:title>Close-up of a desk with a keyboard and a calendar open to a marketing strategy note, illustrating clinic marketing ideas</image:title>
+    </image:image>
   </url>
 </urlset>
