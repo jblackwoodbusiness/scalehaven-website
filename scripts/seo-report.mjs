@@ -202,11 +202,25 @@ if (process.env.DATAFORSEO_LOGIN && process.env.DATAFORSEO_PASSWORD) {
 // ---------------------------------------------------------------------------
 const EVAL_DAYS = 21; // rankings and CTR need this long to settle. 7 is not enough.
 
-const inspect = async (url) => {
-  const r = await (await fetch("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", {
-    method: "POST", headers: H, body: JSON.stringify({ inspectionUrl: url, siteUrl: SITE }),
-  })).json();
-  return r.inspectionResult?.indexStatusResult ?? null;
+// Cached: change tracking and the crawl-age sweep inspect overlapping URLs.
+const inspected = new Map();
+const inspect = (url) => {
+  if (!inspected.has(url)) {
+    inspected.set(url, fetch("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", {
+      method: "POST", headers: H, body: JSON.stringify({ inspectionUrl: url, siteUrl: SITE }),
+    }).then((r) => r.json()).then((r) => r.inspectionResult?.indexStatusResult ?? null));
+  }
+  return inspected.get(url);
+};
+// Run fn over items with a small worker pool. Sequential inspection of ~110
+// URLs took over 10 minutes on Sep 14 2026; the API allows 600/min.
+const pool = async (items, n, fn) => {
+  const out = new Array(items.length);
+  let i = 0;
+  await Promise.all(Array.from({ length: n }, async () => {
+    while (i < items.length) { const k = i++; out[k] = await fn(items[k]).catch(() => null); }
+  }));
+  return out;
 };
 
 try {
@@ -215,22 +229,32 @@ try {
   // Table rows: | date | `page` | change | hypothesis | status |
   const logged = [...md.matchAll(/^\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*`([^`]+)`[^|]*\|\s*([^|]+?)\s*\|[^|]*\|\s*([^|]+?)\s*\|/gm)]
     .map((m) => ({ date: m[1], page: m[2].trim(), what: m[3].trim(), status: m[4].trim() }))
-    .filter((c) => c.page.startsWith("/"));
+    .filter((c) => c.page.startsWith("/"))
+    // Only open experiments. Closed (worked/no-effect/hurt), held and done rows
+    // need no crawl check. Found Sep 14 2026: the old slice(0, 12) meant every
+    // pending change older than the newest dozen rows was never inspected.
+    .filter((c) => /pending-crawl|measuring/i.test(c.status))
+    // Two rows can share a page and date (e.g. two homepage changes on Sep 8).
+    .filter((c, i, all) => all.findIndex((o) => o.page === c.page && o.date === c.date) === i);
 
   if (logged.length) {
     console.log(`\n## Change tracking (verify crawl, then measure)\n`);
-    const pending = [], measured = [];
+    const pending = [], fresh = [], measured = [];
+    const idxs = await pool(logged, 8, (c) => inspect(`https://scalehaven.io${c.page}`));
 
-    for (const c of logged.slice(0, 12)) {
+    for (const [k, c] of logged.entries()) {
       const url = `https://scalehaven.io${c.page}`;
-      const idx = await inspect(url).catch(() => null);
+      const idx = idxs[k];
       const crawled = idx?.lastCrawlTime?.slice(0, 10) ?? null;
       const seen = crawled && crawled > c.date;
       // GSC data lags ~2 days, so a change shipped today reads as negative. Clamp.
       const elapsed = Math.max(0, Math.round((new Date(day(2)) - new Date(c.date)) / 864e5));
 
       if (!seen) { pending.push({ ...c, crawled, elapsed }); continue; }
-      if (elapsed < 3) { pending.push({ ...c, crawled, elapsed, fresh: true }); continue; }
+      // Crawled after ship but too new to measure. Google HAS seen it, so it must
+      // not land on the Request Indexing list (Sep 14 2026: /blog/ was listed
+      // although it was crawled two days after the change).
+      if (elapsed < 3) { fresh.push({ ...c, crawled, elapsed }); continue; }
 
       // Equal-length windows either side of the ship date, capped at EVAL_DAYS.
       const n = Math.min(elapsed, EVAL_DAYS);
@@ -247,9 +271,14 @@ try {
     if (pending.length) {
       console.log(`### ⏳ Not yet crawled — DO NOT re-edit these`);
       for (const p of pending)
-        console.log(`- \`${p.page}\` — shipped ${p.date} (${p.elapsed === 0 ? "today" : `${p.elapsed}d ago`}), Google last crawled ${p.crawled ?? "never"}.${p.fresh ? " Just shipped." : ""} Unmeasurable. ${p.what}`);
+        console.log(`- \`${p.page}\` — shipped ${p.date} (${p.elapsed === 0 ? "today" : `${p.elapsed}d ago`}), Google last crawled ${p.crawled ?? "never"}. Unmeasurable. ${p.what}`);
       console.log(`\n**Request Indexing in GSC for these:**`);
       for (const p of pending) console.log(`- https://scalehaven.io${p.page}`);
+    }
+
+    if (fresh.length) {
+      console.log(`\n### ✅ Crawled after the change, too new to measure`);
+      for (const f of fresh) console.log(`- \`${f.page}\` — shipped ${f.date}, crawled ${f.crawled}. Leave it alone.`);
     }
 
     if (measured.length) {
@@ -268,19 +297,29 @@ try {
   }
 } catch (e) { console.log(`\n## Change tracking\n- skipped: ${e.message}`); }
 
-// Crawl-age watch: stale lastmod / weak linking shows up here first.
+// Crawl-age watch: every sitemap URL, not a hand-picked eight. Measured Sep 14
+// 2026: 52 of 111 URLs were 14+ days uncrawled and a post had fallen out of the
+// index, none of which the old eight-page watch list could show.
 try {
   console.log(`\n## Crawl-age watch (stale pages cannot be measured or improved)`);
-  const WATCH = ["/med-spa-seo/", "/med-spa-lead-generation/", "/med-spa-web-design/", "/botox-clinic-marketing/",
-    "/dermatology-marketing/", "/med-spa-google-ads/", "/blog/best-med-spa-websites/", "/blog/botox-marketing-guide/"];
+  const { readFileSync } = await import("node:fs");
+  const paths = [...readFileSync("sitemap.xml", "utf8").matchAll(/<loc>https:\/\/scalehaven\.io([^<]*)<\/loc>/g)]
+    .map((m) => m[1]).filter((p) => !/\.(webp|png|jpe?g)$/i.test(p));
   const now = Date.now();
-  const ages = [];
-  for (const p of WATCH) {
-    const idx = await inspect(`https://scalehaven.io${p}`).catch(() => null);
-    if (idx?.lastCrawlTime) ages.push([Math.round((now - new Date(idx.lastCrawlTime)) / 864e5), p, idx.lastCrawlTime.slice(0, 10)]);
+  const idxs = await pool(paths, 8, (p) => inspect(`https://scalehaven.io${p}`));
+  const rows = paths.map((p, k) => {
+    const idx = idxs[k];
+    const t = idx?.lastCrawlTime ?? null;
+    return { p, t: t?.slice(0, 10) ?? "never", age: t ? Math.round((now - new Date(t)) / 864e5) : 999, state: idx?.coverageState ?? "inspection failed" };
+  });
+  const stale = rows.filter((r) => r.age >= 14).sort((a, b) => b.age - a.age);
+  const notIndexed = rows.filter((r) => !/indexed/i.test(r.state) || /not indexed/i.test(r.state));
+  console.log(`- **${stale.length} of ${rows.length}** sitemap URLs not crawled in 14+ days`);
+  if (notIndexed.length) {
+    console.log(`- ⚠ **Not indexed:**`);
+    for (const r of notIndexed) console.log(`  - ${r.p} — ${r.state} (last crawl ${r.t})`);
   }
-  ages.sort((a, b) => b[0] - a[0]);
-  for (const [age, p, t] of ages) console.log(`- ${String(age).padStart(2)}d  ${p}  (last crawl ${t})${age >= 14 ? "  ⚠ stale" : ""}`);
+  for (const r of stale) console.log(`- ${r.age === 999 ? "  —" : String(r.age).padStart(3)}d  ${r.p}  (last crawl ${r.t})  ⚠ stale`);
 } catch (e) { console.log(`- crawl-age check failed: ${e.message}`); }
 
 // Change log — what we shipped and when, so movement can be attributed.
