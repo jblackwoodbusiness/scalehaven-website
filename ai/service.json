@@ -1,0 +1,68 @@
+{
+  "name": "ScaleHaven",
+  "url": "https://scalehaven.io",
+  "description": "Med spa marketing agency that guarantees 15+ booked consultations in month one, or we work free. Meta Ads, Google Ads, SEO. Qualified patients, done-for-you.",
+  "capabilities": [
+    "Meta (Facebook and Instagram) advertising for med spas and aesthetic clinics",
+    "Google Ads management",
+    "Local SEO and search optimization",
+    "Conversion-first website design",
+    "Qualified lead generation with booking into the clinic's existing system",
+    "Lead routing and reporting",
+    "Optional follow-up automation"
+  ],
+  "guarantee": "15+ booked consultations in the first month, or we work free until the target is met (requires Meta at $1,500+/month ad spend)",
+  "pricing": {
+    "currency": [
+      "USD",
+      "CAD"
+    ],
+    "model": "Monthly retainer per channel, 3-month initial commitment"
+  },
+  "services": [
+    {
+      "name": "Med Spa Lead Generation | 15+ Patients Guaranteed",
+      "url": "https://scalehaven.io/med-spa-lead-generation/"
+    },
+    {
+      "name": "Med Spa Facebook Ads | Meta Ads Management for Med Spas",
+      "url": "https://scalehaven.io/med-spa-facebook-ads/"
+    },
+    {
+      "name": "Med Spa Google Ads & PPC | Google Ads for Med Spas",
+      "url": "https://scalehaven.io/med-spa-google-ads/"
+    },
+    {
+      "name": "Med Spa SEO Services | Medical Spa SEO Company",
+      "url": "https://scalehaven.io/med-spa-seo/"
+    },
+    {
+      "name": "Med Spa Advertising | Medical Spa Advertising Agency",
+      "url": "https://scalehaven.io/med-spa-advertising/"
+    },
+    {
+      "name": "Botox Marketing Agency | Botox Clinic Marketing",
+      "url": "https://scalehaven.io/botox-clinic-marketing/"
+    },
+    {
+      "name": "Dermatology Marketing Agency | Grow Your Derm Practice",
+      "url": "https://scalehaven.io/dermatology-marketing/"
+    },
+    {
+      "name": "Med Spa Marketing Near Me | Local Clinic Advertising",
+      "url": "https://scalehaven.io/med-spa-marketing-near-me/"
+    },
+    {
+      "name": "Aesthetic Clinic Marketing | Aesthetic Marketing Agency",
+      "url": "https://scalehaven.io/aesthetic-clinic-marketing/"
+    },
+    {
+      "name": "Plastic Surgery Marketing Agency | Cosmetic Surgery Ads",
+      "url": "https://scalehaven.io/plastic-surgery-marketing/"
+    },
+    {
+      "name": "Med Spa Web Design | Medical Spa Website Design",
+      "url": "https://scalehaven.io/med-spa-web-design/"
+    }
+  ]
+}

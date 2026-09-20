@@ -1,0 +1,13 @@
+# ai.txt for ScaleHaven
+Name: ScaleHaven
+URL: https://scalehaven.io
+Description: Med spa marketing agency that guarantees 15+ booked consultations in month one, or we work free. Meta Ads, Google Ads, SEO. Qualified patients, done-for-you.
+Contact: john@scalehaven.io
+Summary: https://scalehaven.io/ai/summary.json
+FAQ: https://scalehaven.io/ai/faq.json
+Services: https://scalehaven.io/ai/service.json
+LLMs: https://scalehaven.io/llms.txt
+LLMs-Full: https://scalehaven.io/llms-full.txt
+Sitemap: https://scalehaven.io/sitemap.xml
+Feed: https://scalehaven.io/feed.xml
+Policy: Content may be cited with attribution and a link to the source page.

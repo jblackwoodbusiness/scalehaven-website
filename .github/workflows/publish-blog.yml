@@ -46,6 +46,9 @@ jobs:
       # failure here is the only thing standing between a bad post and prod.
       # The runner is ephemeral — if this fails nothing is committed and the
       # post stays in blog/_queue/ for the next scheduled run.
+      - name: Rebuild feed, llms.txt, and AI discovery files
+        run: node scripts/build-ai-files.mjs
+
       - name: Validate site
         run: node scripts/validate-site.mjs --quiet --skip-queue
 

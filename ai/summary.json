@@ -1,0 +1,31 @@
+{
+  "name": "ScaleHaven",
+  "url": "https://scalehaven.io",
+  "description": "Med spa marketing agency that guarantees 15+ booked consultations in month one, or we work free. Meta Ads, Google Ads, SEO. Qualified patients, done-for-you.",
+  "tagline": "Financially qualified patients, booked. 15+ consultations in month one or we work free.",
+  "type": "Marketing agency",
+  "industries": [
+    "Med spas",
+    "Aesthetic clinics",
+    "Plastic surgery practices",
+    "Dermatology practices"
+  ],
+  "coverage": {
+    "countries": [
+      "United States",
+      "Canada"
+    ]
+  },
+  "contact": {
+    "email": "john@scalehaven.io",
+    "booking": "https://calendly.com/john-scalehaven/30min"
+  },
+  "resources": {
+    "llms": "https://scalehaven.io/llms.txt",
+    "llms_full": "https://scalehaven.io/llms-full.txt",
+    "sitemap": "https://scalehaven.io/sitemap.xml",
+    "feed": "https://scalehaven.io/feed.xml",
+    "faq": "https://scalehaven.io/ai/faq.json",
+    "services": "https://scalehaven.io/ai/service.json"
+  }
+}
