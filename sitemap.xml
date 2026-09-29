@@ -24,7 +24,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/med-spa-google-ads/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -80,7 +80,7 @@
   <!-- Blog -->
   <url>
     <loc>https://scalehaven.io/blog/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1084,11 +1084,19 @@
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/dermatology-website-design-hero-wide.webp</image:loc>
+      <image:title>A stylish workspace featuring a laptop and monitors displaying design software, illustrating dermatology website design</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://scalehaven.io/blog/plastic-surgery-statistics/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/plastic-surgery-statistics-hero-wide.webp</image:loc>
+      <image:title>Close-up of eyeglasses resting on financial documents with various charts and graphs, illustrating plastic surgery statistics 2026</image:title>
+    </image:image>
   </url>
 </urlset>
