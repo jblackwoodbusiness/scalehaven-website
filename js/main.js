@@ -20,7 +20,7 @@ window.shTrack = function (name, params) {
 document.addEventListener('click', function (e) {
   var a = e.target && e.target.closest ? e.target.closest('a[href*="calendly.com"]') : null;
   if (!a) return;
-  var loc = a.closest('nav') ? 'nav' : a.closest('footer') ? 'footer' : a.closest('.sh-popup') ? 'popup' : a.closest('.mobile-menu') ? 'mobile_menu' : 'body';
+  var loc = a.closest('nav') ? 'nav' : a.closest('footer') ? 'footer' : a.closest('.sh-inline-cta') ? 'inline_cta' : a.closest('.mobile-menu') ? 'mobile_menu' : 'body';
   var sec = a.closest('section'); if (loc === 'body' && sec && sec.id) loc = 'section_' + sec.id;
   window.shTrack('calendly_click', {
     link_url: a.href, page_path: location.pathname, link_location: loc,
@@ -85,74 +85,53 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
   });
 });
 
-/* ── SCORECARD SCROLL POP-UP ─────────────────────────────── */
-(function() {
-  var KEY = 'sh_popup_dismissed';
-  var DAYS = 7;
-  var path = location.pathname;
-  // Only show on the homepage and blog pages (not service pages or the scorecard)
-  var isHome = (path === '/' || path === '/index.html');
-  var isBlog = path.indexOf('/blog') === 0;
-  if (!(isHome || isBlog)) return;
-  // Never show to someone who already gave us their info via any form
+/* ── INLINE SCORECARD CTA (blog posts) ───────────────────── */
+/* Replaced the scroll pop-up (Sep 2026): 309 shows, 2 clicks, 0 from the
+   US or Canada. This sits in the article flow and never blocks reading.
+   Booking a call stays the primary goal, so it carries a Calendly link too. */
+(function () {
+  if (location.pathname.indexOf('/blog/') !== 0) return;
+  var article = document.querySelector('.article-body');
+  if (!article) return;
+  if (article.querySelector('a[href*="/med-spa-marketing-scorecard"]')) return; // post already pitches it
   try { if (localStorage.getItem('sh_lead_captured')) return; } catch (e) {}
-  // Respect a recent dismissal
-  try {
-    var ts = parseInt(localStorage.getItem(KEY) || '0', 10);
-    if (ts && (Date.now() - ts) < DAYS * 86400000) return;
-  } catch (e) {}
 
-  var shown = false;
+  var heads = Array.prototype.filter.call(article.querySelectorAll('h2'), function (h) { return h.parentNode === article; });
+  if (heads.length < 4) return;
+  var i = Math.ceil(heads.length / 2);
+  while (i > 1 && /frequently asked|faq/i.test(heads[i].textContent)) i--;
 
-  function remember() { try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {} }
+  var el = document.createElement('aside');
+  el.className = 'sh-inline-cta';
+  el.setAttribute('aria-label', 'Free Med Spa Marketing Scorecard');
+  el.innerHTML =
+    '<div class="sh-inline-dial" aria-hidden="true">' +
+      '<svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="27" class="sh-dial-track"/><circle cx="32" cy="32" r="27" class="sh-dial-fill"/></svg>' +
+      '<span>?</span>' +
+    '</div>' +
+    '<div class="sh-inline-copy">' +
+      '<span class="sh-inline-eyebrow">Free 2-minute scorecard</span>' +
+      '<p class="sh-inline-h">How does your clinic\'s marketing <em>score?</em></p>' +
+      '<p class="sh-inline-p">12 questions. An instant score out of 100, plus the fixes that would book you the most consultations.</p>' +
+      '<div class="sh-inline-actions">' +
+        '<a href="/med-spa-marketing-scorecard/" class="btn-gold sh-inline-btn">Get My Score &rarr;</a>' +
+        '<a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="sh-inline-alt">Or skip ahead and book a call</a>' +
+      '</div>' +
+    '</div>';
+  article.insertBefore(el, heads[i]);
 
-  function build() {
-    var o = document.createElement('div');
-    o.className = 'sh-popup-overlay';
-    o.innerHTML =
-      '<div class="sh-popup" role="dialog" aria-modal="true" aria-label="Free Med Spa Marketing Scorecard">' +
-        '<button class="sh-popup-close" aria-label="Close">&times;</button>' +
-        '<span class="sh-popup-eyebrow">Free 2-Minute Scorecard</span>' +
-        '<h3>How healthy is your <em>clinic\'s marketing?</em></h3>' +
-        '<p>Answer 12 quick questions and get an instant score — plus a personalized action plan to book more consultations.</p>' +
-        '<a href="/med-spa-marketing-scorecard/" class="btn-gold">Take the Free Scorecard &rarr;</a>' +
-        '<button class="sh-popup-dismiss">No thanks, maybe later</button>' +
-      '</div>';
-    document.body.appendChild(o);
-
-    function dismiss() {
-      o.classList.remove('show');
-      remember();
-      document.removeEventListener('keydown', onEsc);
-      setTimeout(function () { if (o.parentNode) o.parentNode.removeChild(o); }, 400);
-    }
-    function onEsc(e) { if (e.key === 'Escape') dismiss(); }
-
-    o.querySelector('.sh-popup-close').addEventListener('click', function () { window.shTrack('popup_dismissed', { how: 'close', page_path: location.pathname }); dismiss(); });
-    o.querySelector('.sh-popup-dismiss').addEventListener('click', function () { window.shTrack('popup_dismissed', { how: 'no_thanks', page_path: location.pathname }); dismiss(); });
-    o.querySelector('.btn-gold').addEventListener('click', function () { window.shTrack('popup_cta_click', { page_path: location.pathname }); remember(); }); // don't reshow after they click through
-    o.addEventListener('click', function (e) { if (e.target === o) dismiss(); });
-    document.addEventListener('keydown', onEsc);
-
-    window.shTrack('popup_shown', { page_path: location.pathname });
-    requestAnimationFrame(function () { o.classList.add('show'); });
-  }
-
-  function trigger() {
-    if (shown) return;
-    shown = true;
-    window.removeEventListener('scroll', onScroll);
-    build();
-  }
-
-  function onScroll() {
-    var st = window.pageYOffset || document.documentElement.scrollTop;
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    if (h > 0 && (st / h) > 0.45) trigger();
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  setTimeout(trigger, 35000); // fallback: show after 35s even without deep scroll
+  el.querySelector('.sh-inline-btn').addEventListener('click', function () {
+    window.shTrack('inline_cta_click', { page_path: location.pathname });
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      el.classList.add('seen');
+      window.shTrack('inline_cta_view', { page_path: location.pathname });
+    }, { threshold: 0.6 });
+    io.observe(el);
+  } else { el.classList.add('seen'); }
 })();
 
 /* ── CONTACT LEAD FORM (AJAX → Netlify) ──────────────── */

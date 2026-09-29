@@ -779,36 +779,60 @@ nav {
   .responsive-4col { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-/* ── SCORECARD SCROLL POP-UP ────────────────────────────── */
-.sh-popup-overlay {
-  position: fixed; inset: 0; z-index: 2000;
-  background: rgba(13,23,32,0.62); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center; padding: 1.5rem;
-  opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease;
+/* ── INLINE SCORECARD CTA (blog posts) ──────────────────── */
+.sh-inline-cta {
+  position: relative; display: flex; align-items: flex-start; gap: 1.5rem;
+  margin: 3rem 0; padding: 1.75rem 2rem 1.75rem 1.75rem;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(192,149,64,0.10), transparent 55%),
+    var(--cream-light);
+  border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(26,39,69,0.04), 0 12px 32px -12px rgba(26,39,69,0.14);
 }
-.sh-popup-overlay.show { opacity: 1; visibility: visible; }
-.sh-popup {
-  background: var(--cream-light); border-radius: 12px; max-width: 440px; width: 100%;
-  padding: 2.5rem 2rem 2rem; text-align: center; position: relative;
-  box-shadow: 0 24px 64px rgba(13,23,32,0.4); border-top: 4px solid var(--gold);
-  transform: translateY(20px) scale(0.98); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+.sh-inline-dial { position: relative; flex: 0 0 64px; width: 64px; height: 64px; }
+.sh-inline-dial svg { transform: rotate(-90deg); display: block; }
+.sh-inline-dial circle { fill: none; stroke-width: 3; }
+.sh-dial-track { stroke: var(--cream-dark); }
+.sh-dial-fill {
+  stroke: var(--gold); stroke-linecap: round;
+  stroke-dasharray: 170; stroke-dashoffset: 170;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.16,1,0.3,1) 0.15s;
 }
-.sh-popup-overlay.show .sh-popup { transform: translateY(0) scale(1); }
-.sh-popup-close {
-  position: absolute; top: 0.75rem; right: 0.75rem; width: 32px; height: 32px;
-  border: none; background: transparent; color: var(--text-muted); cursor: pointer;
-  font-size: 1.5rem; line-height: 1; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s ease, color 0.2s ease;
+.sh-inline-cta.seen .sh-dial-fill { stroke-dashoffset: 48; }
+.sh-inline-dial span {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; font-weight: 600;
+  font-style: italic; color: var(--navy);
 }
-.sh-popup-close:hover { background: var(--cream-dark); color: var(--navy); }
-.sh-popup-eyebrow { font-family:'Work Sans',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); }
-.sh-popup h3 { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:600; color:var(--navy); margin:0.5rem 0 0.625rem; line-height:1.15; letter-spacing:-0.02em; }
-.sh-popup h3 em { font-style:italic; color:var(--gold); }
-.sh-popup p { font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); line-height:1.6; margin-bottom:1.5rem; }
-.sh-popup .btn-gold { width:100%; justify-content:center; }
-.sh-popup-dismiss { display:inline-block; margin-top:0.875rem; font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:var(--text-muted); background:none; border:none; cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
-.sh-popup-dismiss:hover { color:var(--navy); }
+.sh-inline-copy { flex: 1; min-width: 0; }
+.sh-inline-eyebrow {
+  font-family: 'Work Sans', sans-serif; font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dark);
+}
+.article-body .sh-inline-h {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.375rem, 2.6vw, 1.625rem);
+  font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--navy);
+  margin: 0.375rem 0 0.5rem;
+}
+.sh-inline-h em { font-style: italic; color: var(--gold-dark); }
+.article-body .sh-inline-p { font-size: 0.9375rem; line-height: 1.65; color: var(--text-muted); margin-bottom: 1.125rem; }
+.sh-inline-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.875rem 1.5rem; }
+.article-body a.sh-inline-btn { color: #fff; text-decoration: none; padding: 0.8125rem 1.625rem; }
+.article-body a.sh-inline-alt {
+  font-family: 'Work Sans', sans-serif; font-size: 0.875rem; color: var(--navy);
+  text-decoration: underline; text-decoration-color: rgba(192,149,64,0.6); text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+.article-body a.sh-inline-alt:hover { color: var(--gold-dark); }
+.article-body a.sh-inline-alt:active { color: var(--navy-dark); }
+.article-body a.sh-inline-alt:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+@media (max-width: 600px) {
+  .sh-inline-cta { flex-direction: column; gap: 1rem; padding: 1.5rem 1.25rem; margin: 2.5rem 0; }
+  .sh-inline-dial, .sh-inline-dial svg { width: 52px; height: 52px; flex-basis: 52px; }
+  .sh-inline-dial span { font-size: 1.5rem; }
+  .article-body a.sh-inline-btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .sh-dial-fill { transition: none; } }
 
 /* ── GROWTH-PLAN LEAD FORM SECTION ──────────────────────── */
 .sh-leadform-section { background: var(--cream); padding: 5rem 0; }
