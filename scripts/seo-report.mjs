@@ -223,6 +223,19 @@ const pool = async (items, n, fn) => {
   return out;
 };
 
+// When did a logged change actually go live? Prefer the commit hash quoted in
+// the row; otherwise the last commit that day touching the page's own file.
+// null = unknown, so a same-day crawl stays pending (never guess it was seen).
+const { execFileSync } = await import("node:child_process");
+const shipTime = (c) => {
+  const git = (...a) => { try { return execFileSync("git", a, { encoding: "utf8" }).trim(); } catch { return ""; } };
+  const hash = c.what.match(/commit `([0-9a-f]{7,40})`/)?.[1];
+  const file = c.page === "/" ? "index.html" : `${c.page.replace(/^\//, "")}index.html`;
+  const iso = hash ? git("show", "-s", "--format=%cI", hash)
+    : git("log", "-1", "--format=%cI", `--since=${c.date}T00:00:00`, `--until=${c.date}T23:59:59`, "--", file);
+  return iso ? new Date(iso) : null;
+};
+
 try {
   const { readFileSync } = await import("node:fs");
   const md = readFileSync("keyword-data/change-log.md", "utf8");
@@ -246,7 +259,12 @@ try {
       const url = `https://scalehaven.io${c.page}`;
       const idx = idxs[k];
       const crawled = idx?.lastCrawlTime?.slice(0, 10) ?? null;
-      const seen = crawled && crawled > c.date;
+      // Compare full timestamps when we can date the ship. Found Sep 28 2026: a
+      // date-only `>` listed three Sep 21 pages as uncrawled although Google
+      // fetched them ~8h after the 14:35 UTC push.
+      const shipped = shipTime(c);
+      const seen = crawled && (crawled > c.date ||
+        (crawled === c.date && shipped !== null && new Date(idx.lastCrawlTime) > shipped));
       // GSC data lags ~2 days, so a change shipped today reads as negative. Clamp.
       const elapsed = Math.max(0, Math.round((new Date(day(2)) - new Date(c.date)) / 864e5));
 
