@@ -80,7 +80,7 @@
   <!-- Blog -->
   <url>
     <loc>https://scalehaven.io/blog/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1051,7 +1051,7 @@
   </url>
   <url>
     <loc>https://scalehaven.io/blog/beauty-clinic-branding/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1104,5 +1104,9 @@
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://scalehaven.io/images/blog/cherry-vs-carecredit-med-spa-hero-wide.webp</image:loc>
+      <image:title>Close-up of financial documents with calculator and pen, ideal for business management themes, illustrating cherry vs carecredit for med spas</image:title>
+    </image:image>
   </url>
 </urlset>
