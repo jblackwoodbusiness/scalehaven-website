@@ -254,6 +254,14 @@ try {
     console.log(`\n## Change tracking (verify crawl, then measure)\n`);
     const pending = [], fresh = [], measured = [];
     const idxs = await pool(logged, 8, (c) => inspect(`https://scalehaven.io${c.page}`));
+    // The 21-day window starts at the FIRST crawl after the ship, not the ship
+    // date. Found Oct 5 2026: counting from ship labelled pages crawled the day
+    // before as "worked". GSC only returns the LATEST crawl, so the first one we
+    // see is cached here (gitignored). Rows with no record get today's reading,
+    // which is conservative: the window can start late, never early.
+    const { writeFileSync, existsSync } = await import("node:fs");
+    const seenFile = "keyword-data/crawl-first-seen.json";
+    const firstSeen = existsSync(seenFile) ? JSON.parse(readFileSync(seenFile, "utf8")) : {};
 
     for (const [k, c] of logged.entries()) {
       const url = `https://scalehaven.io${c.page}`;
@@ -269,22 +277,29 @@ try {
       const elapsed = Math.max(0, Math.round((new Date(day(2)) - new Date(c.date)) / 864e5));
 
       if (!seen) { pending.push({ ...c, crawled, elapsed }); continue; }
+      const key = `${c.page}|${c.date}`;
+      firstSeen[key] ??= crawled;
+      const start = firstSeen[key];
+      // Days since the change became visible to Google, same GSC lag clamp.
+      const live = Math.max(0, Math.round((new Date(day(2)) - new Date(start)) / 864e5));
       // Crawled after ship but too new to measure. Google HAS seen it, so it must
       // not land on the Request Indexing list (Sep 14 2026: /blog/ was listed
       // although it was crawled two days after the change).
-      if (elapsed < 3) { fresh.push({ ...c, crawled, elapsed }); continue; }
+      if (live < 3) { fresh.push({ ...c, crawled: start, elapsed: live }); continue; }
 
-      // Equal-length windows either side of the ship date, capped at EVAL_DAYS.
-      const n = Math.min(elapsed, EVAL_DAYS);
+      // Before: n days up to the ship. After: n days from the first crawl.
+      const n = Math.min(live, EVAL_DAYS);
       const shift = (d, k) => new Date(new Date(`${d}T00:00:00Z`).getTime() + k * 864e5).toISOString().slice(0, 10);
       const filt = { dimensionFilterGroups: [{ filters: [{ dimension: "page", operator: "equals", expression: url }] }] };
       const [a, b] = await Promise.all([
-        q({ startDate: shift(c.date, 1), endDate: shift(c.date, n), ...filt }),
+        q({ startDate: shift(start, 1), endDate: shift(start, n), ...filt }),
         q({ startDate: shift(c.date, -n), endDate: shift(c.date, -1), ...filt }),
       ]);
       const g = (r) => (r[0] ? { imp: r[0].impressions, clk: r[0].clicks, ctr: r[0].ctr * 100, pos: r[0].position } : { imp: 0, clk: 0, ctr: 0, pos: 0 });
-      measured.push({ ...c, crawled, elapsed, n, A: g(a), B: g(b), ripe: elapsed >= EVAL_DAYS });
+      measured.push({ ...c, crawled: start, elapsed: live, n, A: g(a), B: g(b), ripe: live >= EVAL_DAYS });
     }
+
+    writeFileSync(seenFile, JSON.stringify(firstSeen, null, 2) + "\n");
 
     if (pending.length) {
       console.log(`### ⏳ Not yet crawled — DO NOT re-edit these`);
@@ -301,7 +316,7 @@ try {
 
     if (measured.length) {
       console.log(`\n### 📊 Crawled and measuring (${EVAL_DAYS}-day window)`);
-      console.log(`| page | shipped | crawled | imp | clicks | CTR | position | verdict |`);
+      console.log(`| page | shipped | first crawl | imp | clicks | CTR | position | verdict |`);
       console.log(`|---|---|---|---|---|---|---|---|`);
       for (const m of measured) {
         const arrow = (v, inv = false) => { const s = inv ? -v : v; return s > 0.05 ? "▲" : s < -0.05 ? "▼" : "="; };
