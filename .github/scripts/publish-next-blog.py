@@ -13,7 +13,7 @@ Queue file format:
 - Any occurrence of {{TODAY}} in the file is replaced with today's ISO date.
 - Any occurrence of {{TODAY_HUMAN}} is replaced with "Month Day, Year".
 
-Run with no arguments. Exits 0 on success, 1 on no posts to publish, 2 on error.
+Run with no arguments. Exits 0 on success or an empty queue, 2 on error.
 """
 
 from __future__ import annotations
@@ -96,7 +96,7 @@ def update_blog_index(slug: str, title: str, tag: str, excerpt: str, read_time: 
         if card_img.exists() else ""
     )
     card = (
-        f'        <a href="/blog/{slug}" class="blog-card reveal"{cats_attr} style="position:relative;">\n'
+        f'        <a href="/blog/{slug}/" class="blog-card reveal"{cats_attr} style="position:relative;">\n'
         f'{img_line}'
         f'          <div class="blog-card-body">\n'
         f'            <span class="blog-card-tag">{tag}</span>\n'
@@ -145,8 +145,10 @@ def update_sitemap(slug: str, today: str) -> None:
 def main() -> int:
     queue_file = find_next_queued()
     if queue_file is None:
+        # Exit 0: an empty queue is a normal state, not a failed run. The workflow's
+        # commit step already no-ops when nothing changed.
         sys.stdout.write("No queued blog posts to publish. Queue is empty.\n")
-        return 1
+        return 0
 
     sys.stdout.write(f"Publishing: {queue_file.name}\n")
 
