@@ -85,16 +85,14 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
   });
 });
 
-/* ── INLINE SCORECARD CTA (blog posts) ───────────────────── */
-/* Replaced the scroll pop-up (Sep 2026): 309 shows, 2 clicks, 0 from the
-   US or Canada. This sits in the article flow and never blocks reading.
-   Booking a call stays the primary goal, so it carries a Calendly link too. */
+/* ── INLINE BOOK-A-CALL CTA (blog posts) ─────────────────── */
+/* Sits in the article flow and never blocks reading. Oct 2026: the call is now
+   the primary action and the scorecard the fallback. As a scorecard-first card
+   it drew 3 clicks from 124 views. Leads with the Texas case study. */
 (function () {
   if (location.pathname.indexOf('/blog/') !== 0) return;
   var article = document.querySelector('.article-body');
   if (!article) return;
-  if (article.querySelector('a[href*="/med-spa-marketing-scorecard"]')) return; // post already pitches it
-  try { if (localStorage.getItem('sh_lead_captured')) return; } catch (e) {}
 
   var heads = Array.prototype.filter.call(article.querySelectorAll('h2'), function (h) { return h.parentNode === article; });
   if (heads.length < 4) return;
@@ -103,25 +101,27 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
 
   var el = document.createElement('aside');
   el.className = 'sh-inline-cta';
-  el.setAttribute('aria-label', 'Free Med Spa Marketing Scorecard');
+  el.setAttribute('aria-label', 'Book a free strategy call');
   el.innerHTML =
-    '<div class="sh-inline-dial" aria-hidden="true">' +
+    '<div class="sh-inline-dial sh-inline-dial--stat" aria-hidden="true">' +
       '<svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="27" class="sh-dial-track"/><circle cx="32" cy="32" r="27" class="sh-dial-fill"/></svg>' +
-      '<span>?</span>' +
+      '<span>11x</span>' +
     '</div>' +
     '<div class="sh-inline-copy">' +
-      '<span class="sh-inline-eyebrow">Free 2-minute scorecard</span>' +
-      '<p class="sh-inline-h">How does your clinic\'s marketing <em>score?</em></p>' +
-      '<p class="sh-inline-p">12 questions. An instant score out of 100, plus the fixes that would book you the most consultations.</p>' +
+      '<span class="sh-inline-eyebrow">Real result &middot; a Texas med spa</span>' +
+      '<p class="sh-inline-h">$2,500 in ads. <em>$28,000</em> in first-visit revenue.</p>' +
+      '<p class="sh-inline-p">30 days, Google and Meta together, about $50 per new patient. Want the plan for your clinic? We guarantee 15+ booked consultations in month one, or we work free until you hit it.</p>' +
       '<div class="sh-inline-actions">' +
-        '<a href="/med-spa-marketing-scorecard/" class="btn-gold sh-inline-btn">Get My Score &rarr;</a>' +
-        '<a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="sh-inline-alt">Or skip ahead and book a call</a>' +
+        '<a href="https://calendly.com/john-scalehaven/30min" target="_blank" rel="noopener noreferrer" class="btn-gold sh-inline-btn">Book a Free Call &rarr;</a>' +
+        '<a href="/med-spa-marketing-scorecard/" class="sh-inline-alt">Not ready? Score your marketing first</a>' +
       '</div>' +
     '</div>';
   article.insertBefore(el, heads[i]);
 
-  el.querySelector('.sh-inline-btn').addEventListener('click', function () {
-    window.shTrack('inline_cta_click', { page_path: location.pathname });
+  el.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    window.shTrack('inline_cta_click', { page_path: location.pathname, cta_target: a.classList.contains('sh-inline-btn') ? 'call' : 'scorecard' });
   });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {

@@ -779,7 +779,7 @@ nav {
   .responsive-4col { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-/* ── INLINE SCORECARD CTA (blog posts) ──────────────────── */
+/* ── INLINE CTA (blog posts) ──────────────────── */
 .sh-inline-cta {
   position: relative; display: flex; align-items: flex-start; gap: 1.5rem;
   margin: 3rem 0; padding: 1.75rem 2rem 1.75rem 1.75rem;
@@ -804,6 +804,7 @@ nav {
   font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; font-weight: 600;
   font-style: italic; color: var(--navy);
 }
+.sh-inline-dial--stat span { font-family: 'Work Sans', sans-serif; font-size: 1.0625rem; font-weight: 700; font-style: normal; letter-spacing: -0.02em; }
 .sh-inline-copy { flex: 1; min-width: 0; }
 .sh-inline-eyebrow {
   font-family: 'Work Sans', sans-serif; font-size: 0.6875rem; font-weight: 600;
@@ -830,6 +831,7 @@ nav {
   .sh-inline-cta { flex-direction: column; gap: 1rem; padding: 1.5rem 1.25rem; margin: 2.5rem 0; }
   .sh-inline-dial, .sh-inline-dial svg { width: 52px; height: 52px; flex-basis: 52px; }
   .sh-inline-dial span { font-size: 1.5rem; }
+  .sh-inline-dial--stat span { font-size: 0.9375rem; }
   .article-body a.sh-inline-btn { width: 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .sh-dial-fill { transition: none; } }
