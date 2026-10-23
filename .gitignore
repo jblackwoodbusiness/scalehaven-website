@@ -31,3 +31,7 @@ brand_assets/new logos_brand guidelines/
 
 # SEO strategy + keyword research + client data (local only, never deploy)
 keyword-data/
+
+# Local business context (never commit)
+CLAUDE.local.md
+.business-facts.md
