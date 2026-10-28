@@ -93,6 +93,34 @@ function checkJsonLd(html, issues) {
   });
 }
 
+/* John's standing rule (Oct 2026): zero em or en dashes anywhere a reader or
+   Google can see them: visible copy, metas, alt text and JSON-LD. Inline code
+   comments are exempt. */
+function checkDashes(html, issues) {
+  const visible = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<script\b(?![^>]*ld\+json)[^>]*>[\s\S]*?<\/script>/gi, '');
+  const n = (visible.match(/\u2014|\u2013|&mdash;|&ndash;|&#8212;|&#8211;/g) || []).length;
+  if (n) issues.push(`${n} em/en dash${n === 1 ? '' : 'es'} in copy, metas or schema (rule: zero; restructure the sentence)`);
+}
+
+/* Claims the business does not make (source: .business-facts.md, Oct 22 2026).
+   Blog advice about what a clinic should do is fine; these are the phrasings
+   that only ever appeared as promises about our own service. */
+const NEVER_CLAIM = [
+  [/no fine print/i, '"no fine print" (the guarantee has conditions)'],
+  [/\b(we|our)\b[^.]{0,40}missed[- ]call text-?back/i, 'missed-call text-back as our service'],
+  [/\b(our|a) calling team\b/i, 'a calling team'],
+  [/real humans calling on your behalf/i, 'humans calling on the clinic\'s behalf'],
+  [/we pick up the phone/i, '"we pick up the phone"'],
+  [/\b(we|our system|our team)\b[^.]{0,40}automated (sms|text|email)[^.]{0,40}within 60 seconds/i, 'our automated SMS/email within 60 seconds'],
+  [/(we work|work on a|we are|we\'re)[^.]{0,25}month-to-month/i, 'month-to-month engagements (contracts are three-month terms)'],
+  [/weekly (performance )?report/i, 'weekly reporting (clients get a live dashboard per channel)'],
+  [/automated sms review request/i, 'automated review-request texts'],
+];
+function checkClaims(html, issues) {
+  const text = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<script\b(?![^>]*ld\+json)[^>]*>[\s\S]*?<\/script>/gi, '');
+  for (const [re, label] of NEVER_CLAIM) if (re.test(text)) issues.push(`claims ${label}`);
+}
+
 function checkInternalLinks(html, issues) {
   const hrefs = [...html.matchAll(/href="(\/[^"#?]*)"/g)].map((m) => m[1]);
   const broken = new Set();
@@ -169,6 +197,8 @@ async function main() {
     }
     checkTagBalance(html, issues);
     checkInternalLinks(html, issues);
+  checkDashes(html, issues);
+  checkClaims(html, issues);
 
     if (issues.length) {
       failed++;
