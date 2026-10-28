@@ -125,3 +125,11 @@
   to = "/404.html"
   status = 404
   force = true
+
+# Self-hosted videos: filenames carry their size (-1080/-720), so a changed
+# cut gets a new name and the old one can be cached for a year.
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"

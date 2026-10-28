@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/styles/main.css?v=20260911" />
+  <link rel="stylesheet" href="/styles/main.css?v=20261025" />
   <!-- Google tag (gtag.js): production hostnames only. Netlify deploy previews and localhost define gtag() but never load or configure GA4. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -182,7 +182,7 @@
         <div class="reveal reveal-d2" style="background:var(--cream-light); border:1px solid var(--border); border-radius:14px; padding:2rem 1.75rem; box-shadow:0 14px 40px rgba(26,39,69,0.06);">
           <div style="font-family:'Cormorant Garamond',serif; font-size:2.75rem; font-weight:600; line-height:1; color:var(--gold); margin-bottom:1rem;">02</div>
           <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--navy); letter-spacing:-0.02em; margin-bottom:0.625rem;">Block 20 to 30 minutes</h3>
-          <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); line-height:1.7;">That's all it takes. Come with a rough sense of your monthly patient volume, what you're spending on marketing now, and the treatments you most want to grow.</p>
+          <p style="font-family:'Work Sans',sans-serif; font-size:0.9375rem; color:var(--text-muted); line-height:1.7;">That's all it takes, and you don't need to prepare anything. Think about one thing: if you could fill your schedule with one treatment, which would it be? If someone else helps make the decision, bring them along.</p>
         </div>
         <div class="reveal reveal-d3" style="background:var(--cream-light); border:1px solid var(--border); border-radius:14px; padding:2rem 1.75rem; box-shadow:0 14px 40px rgba(26,39,69,0.06);">
           <div style="font-family:'Cormorant Garamond',serif; font-size:2.75rem; font-weight:600; line-height:1; color:var(--gold); margin-bottom:1rem;">03</div>
@@ -199,24 +199,17 @@
       <div style="text-align:center; max-width:620px; margin:0 auto 2.5rem;">
         <span class="eyebrow reveal" style="margin-bottom:1rem;">Before we talk</span>
         <div class="gold-rule reveal reveal-d1" style="margin:0 auto 1.5rem; background:linear-gradient(90deg,transparent,var(--gold),transparent); width:3rem;"></div>
-        <h2 class="section-h reveal reveal-d2" style="margin-bottom:0.75rem;">A two-minute <em>intro from John.</em></h2>
-        <p class="reveal reveal-d3" style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75;">Who we are, how we work, and what a good first month looks like. Watch it before the call and we can skip the basics.</p>
+        <h2 class="section-h reveal reveal-d2" style="margin-bottom:0.75rem;">A one-minute <em>intro from John.</em></h2>
+        <p class="reveal reveal-d3" style="font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--text-muted); line-height:1.75;">Who John is, where he learned the business, and what the call will cover. Under a minute. Watch it before we talk and we can skip the basics.</p>
       </div>
 
-      <!-- VIDEO EMBED GOES HERE.
-           Replace the placeholder element with id="intro-video" below with the embed iframe.
-           Keep the wrapper's aspect-ratio and border-radius so it sits in the same frame.
-           Example (YouTube):
-           <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0" title="ScaleHaven intro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
-      -->
-      <div class="reveal reveal-d2" style="position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%); box-shadow:0 24px 70px rgba(13,23,32,0.28); border:1px solid rgba(192,149,64,0.22);">
-        <div id="intro-video" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem; text-align:center; padding:1.25rem; overflow:hidden;">
-          <div aria-hidden="true" style="width:72px; height:72px; flex:0 0 72px; border-radius:50%; border:1px solid rgba(192,149,64,0.5); background:rgba(192,149,64,0.12); display:flex; align-items:center; justify-content:center;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
-          </div>
-          <p style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:#fff; letter-spacing:-0.02em; margin:0;">Intro video coming soon</p>
-          <p style="font-family:'Work Sans',sans-serif; font-size:0.8125rem; color:rgba(255,255,255,0.5); letter-spacing:0.08em; text-transform:uppercase; margin:0;">We'll have it here before your call</p>
-        </div>
+      <div class="sh-video reveal reveal-d2" data-video="before_the_call" data-src-1080="/video/before-the-call-1080.mp4" data-src-720="/video/before-the-call-720.mp4" data-poster="/video/before-the-call-poster-1280.webp">
+        <img src="/video/before-the-call-poster-1280.webp" srcset="/video/before-the-call-poster-1280.webp 1280w, /video/before-the-call-poster-1920.webp 1920w" sizes="(min-width: 960px) 900px, 100vw" width="1280" height="720" alt="John Blackwood, founder of ScaleHaven, standing at the front desk of the clinic where he had his first job" loading="lazy" decoding="async" />
+        <button type="button" class="sh-video-play" aria-label="Play the intro from John, 52 seconds">
+          <span class="sh-video-play-btn" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg></span>
+          <span class="sh-video-label">Watch &middot; 0:52</span>
+        </button>
+        <noscript><video controls preload="none" playsinline poster="/video/before-the-call-poster-1280.webp" src="/video/before-the-call-1080.mp4"></video></noscript>
       </div>
     </div>
   </section>
@@ -288,6 +281,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260908" defer></script>
+  <script src="/js/main.js?v=20261025" defer></script>
 </body>
 </html>

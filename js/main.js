@@ -173,3 +173,40 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
     });
   });
 })();
+
+/* ── CLICK-TO-PLAY VIDEO (.sh-video) ──────────────────────
+   The markup ships a poster + play button only. On tap we create the
+   <video>, pick 720p on phones or Save-Data, and play with native controls.
+   Nothing autoplays and no video bytes load before the tap. */
+document.addEventListener('click', function (e) {
+  var btn = e.target && e.target.closest ? e.target.closest('.sh-video-play') : null;
+  if (!btn) return;
+  var box = btn.closest('.sh-video');
+  if (!box || box.querySelector('video')) return;
+  var conn = navigator.connection || {};
+  var small = window.innerWidth <= 768 || conn.saveData === true || /(^|-)2g$/.test(conn.effectiveType || '');
+  var src = (small && box.getAttribute('data-src-720')) || box.getAttribute('data-src-1080');
+  var name = box.getAttribute('data-video') || 'video';
+  var v = document.createElement('video');
+  v.src = src;
+  v.poster = box.getAttribute('data-poster') || '';
+  v.controls = true;
+  v.preload = 'auto';
+  v.playsInline = true;
+  v.setAttribute('playsinline', '');
+  v.setAttribute('controlslist', 'nodownload');
+  box.appendChild(v);
+  box.classList.add('is-playing');
+  var p = v.play();
+  if (p && typeof p.catch === 'function') p.catch(function () {});
+  window.shTrack('video_play', { video_name: name, page_path: location.pathname, quality: /720/.test(src) ? '720p' : '1080p' });
+  var fired = {};
+  v.addEventListener('timeupdate', function () {
+    if (!v.duration) return;
+    var pct = v.currentTime / v.duration;
+    [25, 50, 75].forEach(function (m) {
+      if (pct * 100 >= m && !fired[m]) { fired[m] = true; window.shTrack('video_progress', { video_name: name, percent: m, page_path: location.pathname }); }
+    });
+  });
+  v.addEventListener('ended', function () { window.shTrack('video_complete', { video_name: name, page_path: location.pathname }); });
+});

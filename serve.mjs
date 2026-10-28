@@ -25,6 +25,9 @@ const mime = {
   '.xml': 'application/xml',
   '.txt': 'text/plain',
   '.toml': 'text/plain',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
+  '.vtt': 'text/vtt',
 };
 
 const server = createServer(async (req, res) => {
@@ -41,7 +44,27 @@ const server = createServer(async (req, res) => {
   try {
     const data = await readFile(filePath);
     const ext = extname(filePath).toLowerCase();
-    res.writeHead(200, { 'Content-Type': mime[ext] || 'application/octet-stream' });
+    const type = mime[ext] || 'application/octet-stream';
+    // Range requests: Safari refuses to play <video> from a server that
+    // ignores Range, and every browser needs it to seek. Netlify does this
+    // in production; this mirrors it locally.
+    const range = req.headers.range && /^bytes=(\d*)-(\d*)$/.exec(req.headers.range);
+    if (range && (range[1] || range[2])) {
+      const start = range[1] ? parseInt(range[1], 10) : Math.max(0, data.length - parseInt(range[2], 10));
+      const end = range[1] && range[2] ? Math.min(parseInt(range[2], 10), data.length - 1) : data.length - 1;
+      if (start >= data.length || start > end) {
+        res.writeHead(416, { 'Content-Range': `bytes */${data.length}` });
+        return res.end();
+      }
+      res.writeHead(206, {
+        'Content-Type': type,
+        'Content-Range': `bytes ${start}-${end}/${data.length}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': end - start + 1,
+      });
+      return res.end(data.subarray(start, end + 1));
+    }
+    res.writeHead(200, { 'Content-Type': type, 'Content-Length': data.length, 'Accept-Ranges': 'bytes' });
     res.end(data);
   } catch {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
